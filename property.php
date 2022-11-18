@@ -15,7 +15,7 @@ include("config.php");
 
 <!-- Meta Tags -->
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="description" content="Homex template">
+<meta name="description" content="ihome template">
 <meta name="keywords" content="">
 <meta name="author" content="Unicoder">
 <link rel="shortcut icon" href="images/favicon.ico">
@@ -66,7 +66,7 @@ include("config.php");
             <div class="container">
                 <div class="row">
                     <div class="col-md-6">
-                        <h2 class="page-name float-left text-white text-uppercase mt-1 mb-0"><b>Property Grid</b></h2>
+                        <h2 class="page-name float-left text-white text-uppercase mt-1 mb-0"><b>DANH SÁCH CĂN HỘ</b></h2>
                     </div>
                 </div>
             </div>
@@ -117,37 +117,9 @@ include("config.php");
                         </div>
                     </div>
 					
-                    <div class="col-lg-4">
-                        <div class="sidebar-widget">
-                            <h4 class="double-down-line-left text-secondary position-relative pb-4 my-4">Instalment Calculator</h4>
-						<form class="d-inline-block w-100" action="calc.php" method="post">
-                            <label class="sr-only">Property Amount</label>
-                            <div class="input-group mb-2 mr-sm-2">
-                                <div class="input-group-prepend">
-                                    <div class="input-group-text">$</div>
-                                </div>
-                                <input type="text" class="form-control" name="amount" placeholder="Property Price">
-                            </div>
-                            <label class="sr-only">Month</label>
-                            <div class="input-group mb-2 mr-sm-2">
-                                <div class="input-group-prepend">
-                                    <div class="input-group-text"><i class="far fa-calendar-alt"></i></div>
-                                </div>
-                                <input type="text" class="form-control" name="month" placeholder="Duration Year">
-                            </div>
-                            <label class="sr-only">Interest Rate</label>
-                            <div class="input-group mb-2 mr-sm-2">
-                                <div class="input-group-prepend">
-                                    <div class="input-group-text">%</div>
-                                </div>
-                                <input type="text" class="form-control" name="interest" placeholder="Interest Rate">
-                            </div>
-                            <button type="submit" value="submit" name="calc" class="btn btn-primary mt-4">Calclute Instalment</button>
-                        </form>
-                        </div>
-                        
+                    <div class="col-lg-4"> 
                         <div class="sidebar-widget mt-5">
-                            <h4 class="double-down-line-left text-secondary position-relative pb-4 mb-4">Recent Property Add</h4>
+                            <h4 class="double-down-line-left text-secondary position-relative pb-4 mb-4">Mới thêm gần đây</h4>
                             <ul class="property_list_widget">
 							
 								<?php 

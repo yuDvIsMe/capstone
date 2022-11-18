@@ -68,15 +68,7 @@ if(!isset($_SESSION['uemail']))
             <div class="container">
                 <div class="row">
                     <div class="col-md-6">
-                        <h2 class="page-name float-left text-white text-uppercase mt-1 mb-0"><b>User Listed Property</b></h2>
-                    </div>
-                    <div class="col-md-6">
-                        <nav aria-label="breadcrumb" class="float-left float-md-right">
-                            <ol class="breadcrumb bg-transparent m-0 p-0">
-                                <li class="breadcrumb-item text-white"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item active">User Listed Property</li>
-                            </ol>
-                        </nav>
+                        <h2 class="page-name float-left text-white text-uppercase mt-1 mb-0"><b>Căn hộ đã đăng</b></h2>
                     </div>
                 </div>
             </div>
@@ -89,7 +81,7 @@ if(!isset($_SESSION['uemail']))
             <div class="container">
                     <div class="row mb-5">
 						<div class="col-lg-12">
-							<h2 class="text-secondary double-down-line text-center">User Listed Property</h2>
+							<h2 class="text-secondary double-down-line text-center">Căn hộ đã đăng</h2>
 							<?php 
 								if(isset($_GET['msg']))	
 								echo $_GET['msg'];	
@@ -99,13 +91,13 @@ if(!isset($_SESSION['uemail']))
 					<table class="items-list col-lg-12" style="border-collapse:inherit;">
                         <thead>
                              <tr  class="bg-primary">
-                                <th class="text-white font-weight-bolder">Properties</th>
+                                <th class="text-white font-weight-bolder">Căn hộ</th>
                                 <th class="text-white font-weight-bolder">BHK</th>
-                                <th class="text-white font-weight-bolder">Reason</th>
-                                <th class="text-white font-weight-bolder">Added Date</th>
-								<th class="text-white font-weight-bolder">Status</th>
-                                <th class="text-white font-weight-bolder">Update</th>
-								<th class="text-white font-weight-bolder">Delete</th>
+                                <th class="text-white font-weight-bolder">Sale/Rent</th>
+                                <th class="text-white font-weight-bolder">Ngày đăng</th>
+								<th class="text-white font-weight-bolder">Trạng thái</th>
+                                <th class="text-white font-weight-bolder">Chỉnh sửa</th>
+								<th class="text-white font-weight-bolder">Xóa</th>
                              </tr>
                         </thead>
                         <tbody>

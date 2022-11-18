@@ -15,8 +15,21 @@ if(isset($_REQUEST['reg']))
 	$query = "SELECT * FROM user where uemail='$email'";
 	$res=mysqli_query($con, $query);
 	$num=mysqli_num_rows($res);
-	
-	if($num == 1)
+
+	if(isset($pass)) {
+		$password = $pass;
+		$number = preg_match('@[0-9]@', $password);
+		$uppercase = preg_match('@[A-Z]@', $password);
+		$lowercase = preg_match('@[a-z]@', $password);
+		$specialChars = preg_match('@[^\w]@', $password);
+	   
+		if(strlen($password) < 8 || !$number || !$uppercase || !$lowercase || !$specialChars) {
+		  $msg = "<p class='alert alert-warning'>Mật khẩu phải có độ dài ít nhất 8 kí tự bao gồm số, chữ hoa, chữ thường và kí tự đặc biệt!";
+		} else { // it nhat 1 so, 1 chu hoa, 1 chu thuong 
+		  $msg = "<p class='alert alert-warning'>Mật khẩu mạnh!";
+		}
+	}else{
+		if($num == 1)
 	{
 		$error = "<p class='alert alert-warning'>Email đã tồn tại</p> ";
 	}
@@ -25,9 +38,9 @@ if(isset($_REQUEST['reg']))
 		if(!empty($name) && !empty($email) && !empty($phone) && !empty($pass) && !empty($uimage))
 		{
 			
-			$sql="INSERT INTO user (uname,uemail,uphone,upass,utype,uimage) VALUES ('$name','$email','$phone','$pass','$utype','$uimage')";
+			$sql="INSERT INTO user (uname,uemail,uphone,upass,uimage) VALUES ('$name','$email','$phone','$pass','$uimage')";
 			$result=mysqli_query($con, $sql);
-			move_uploaded_file($temp_name1,"admin/user/$uimage");
+			// move_uploaded_file($temp_name1,"admin/user/$uimage");
 			   if($result){
 				   $msg = "<p class='alert alert-success'>Đăng ký thành công</p> ";
 			   }
@@ -38,6 +51,8 @@ if(isset($_REQUEST['reg']))
 			$error = "<p class='alert alert-warning'>Vui lòng điền đẩy đủ thông tin</p>";
 		}
 	}
+	}
+	
 	
 }
 ?>
@@ -133,22 +148,6 @@ if(isset($_REQUEST['reg']))
 									<div class="form-group">
 										<input type="text" name="pass"  class="form-control" placeholder="Mật khẩu*">
 									</div>
-
-									 <div class="form-check-inline">
-									  <label class="form-check-label">
-										<input type="radio" class="form-check-input" name="utype" value="user" checked>User
-									  </label>
-									</div>
-									<div class="form-check-inline">
-									  <label class="form-check-label">
-										<input type="radio" class="form-check-input" name="utype" value="agent">Agent
-									  </label>
-									</div>
-									<div class="form-check-inline disabled">
-									  <label class="form-check-label">
-										<input type="radio" class="form-check-input" name="utype" value="builder">Builder
-									  </label>
-									</div> 
 									
 									<div class="form-group">
 										<label class="col-form-label"><b>Ảnh đại diện</b></label>

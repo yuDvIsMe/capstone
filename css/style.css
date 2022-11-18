@@ -3128,3 +3128,16 @@ form.subscribe {
 	font-weight: 600;
 	color: #fff;
 }
+
+#sethPhatMap {
+	width:100%;
+	height:100%;
+}
+
+#address-list {
+	right: 0;
+}
+
+#address-list.shown {
+	display: block;
+}

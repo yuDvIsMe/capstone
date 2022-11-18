@@ -1,32 +1,46 @@
-<?php 
-	session_start();
-	include("config.php");
-	$error="";
-	if(isset($_POST['login']))
-	{
-		$user=$_REQUEST['user'];
-		$pass=$_REQUEST['pass'];
-		
-		if(!empty($user) && !empty($pass))
-		{
-			$query = "SELECT auser, apass FROM admin WHERE auser='$user' AND apass='$pass'";
-			$result = mysqli_query($con,$query)or die(mysqli_error());
-			$num_row = mysqli_num_rows($result);
-			$row=mysqli_fetch_array($result);
-			if( $num_row ==1 )
-			{
-				$_SESSION['auser']=$user;
-				header("Location: dashboard.php");
-			}
-			else
-			{
-				$error='* Invalid User Name and Password';
-			}
-		}else{
-			$error="* Please Fill all the Fileds!";
-		}
-		
-	}   
+<?php
+session_start();
+include("config.php");
+$error="";
+$msg=""; 
+if(isset($_REQUEST['login']))
+{
+	$email=$_REQUEST['email'];
+	$pass=$_REQUEST['pass'];
+	
+	$msg="";
+
+	if(isset($pass)) {
+	  $password = $pass;
+	  $number = preg_match('@[0-9]@', $password);
+	  $uppercase = preg_match('@[A-Z]@', $password);
+	  $lowercase = preg_match('@[a-z]@', $password);
+	  $specialChars = preg_match('@[^\w]@', $password);
+	 
+	  if(strlen($password) < 8 || !$number || !$uppercase || !$lowercase || !$specialChars) {
+		$msg = "<p class='alert alert-warning'>Mật khẩu phải có độ dài ít nhất 8 kí tự bao gồm số, chữ hoa, chữ thường và kí tự đặc biệt!";
+	  } else
+	  {
+		  if(!empty($email) && !empty($pass))
+	  {
+		  $sql = "SELECT * FROM user where uemail='$email' && upass='$pass'";
+		  $result=mysqli_query($con, $sql);
+		  $row=mysqli_fetch_array($result);
+			 if($row){
+				 
+				  $_SESSION['uid']=$row['uid'];
+				  $_SESSION['uemail']=$email;
+				  header("location:dashboard.php");
+			 }
+			 else{
+				 $error = "<p class='alert alert-warning'>Email hoặc mật khẩu không chính xác.</p> ";
+			 }
+	  }else{
+		  $error = "<p class='alert alert-warning'>Vui lòng điền đẩy đủ thông tin</p>";
+	  }
+	  }
+	}
+} 
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -63,20 +77,19 @@
                 	<div class="loginbox">
                         <div class="login-right">
 							<div class="login-right-wrap">
-								<h1>Login</h1>
-								<p class="account-subtitle">Access to our dashboard</p>
+								<h1>Đăng nhập vào iHome</h1>
+								<?php echo $error; ?><?php echo $msg; ?>
 								<p style="color:red;"><?php echo $error; ?></p>
 								<!-- Form -->
 								<form method="post">
 									<div class="form-group">
-										<input class="form-control" name="user" type="text" placeholder="User Name">
+										<input type="email"  name="email" class="form-control" placeholder="Email">
 									</div>
 									<div class="form-group">
-										<input class="form-control" type="password" name="pass" placeholder="Password">
+										<input type="password" name="pass"  class="form-control" placeholder="Mật khẩu">
 									</div>
-									<div class="form-group">
-										<button class="btn btn-primary btn-block" name="login" type="submit">Login</button>
-									</div>
+									<p class="account-forgotpass"><a href="#" style="color: #000">Quên mật khẩu?</a></p>
+									<button class="btn btn-primary" name="login" value="Login" type="submit">Đăng nhập</button>
 								</form>
 								
 								<div class="login-or">

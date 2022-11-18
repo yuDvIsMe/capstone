@@ -1,9 +1,9 @@
 <?php
 
-	$con = mysqli_connect("localhost","root","","developers");
+	$con = mysqli_connect("localhost","root","","ihome");
 	if (mysqli_connect_errno())
 	{
-		echo "Failed to connect to MySQL: " . mysqli_connect_error();
+		echo "Kết nối SQL thất bại: " . mysqli_connect_error();
 	}
 	
 ?>

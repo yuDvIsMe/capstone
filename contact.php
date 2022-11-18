@@ -22,7 +22,7 @@ if(isset($_POST['send']))
 			   $error = "<p class='alert alert-warning'>Gửi không thành công</p> ";
 		   }
 	}else{
-		$error = "<p class='alert alert-warning'>Please Fill all the fields</p>";
+		$error = "<p class='alert alert-warning'>Vui lòng điền đầy đủ thông tin</p>";
 	}
 }
 ?>
@@ -147,7 +147,7 @@ if(isset($_POST['send']))
 												<input type="text"  name="phone" class="form-control" placeholder="Số điện thoại" maxlength="10">
 											</div>
 											<div class="form-group col-lg-6">
-												<input type="text" name="subject"  class="form-control" placeholder="Subject">
+												<input type="text" name="subject"  class="form-control" placeholder="Tiêu đề">
 											</div>
 											<div class="col-lg-12">
 												<div class="form-group">
@@ -163,10 +163,12 @@ if(isset($_POST['send']))
 						</div>
 					</div>
                 </div>
+				<div class="map-contact">
+					<h3 class="map-title" style="padding:15px 0; color: #000;">Xem trên bản đồ</h3>
+					<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d3834.112082918063!2d108.2107576079534!3d16.059672515473814!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1svi!2s!4v1666266385526!5m2!1svi!2s" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+				</div>
             </div>
-        </div>
-        <!--	Contact Inforamtion -->
-        
+        </div>    
         <!--	Footer   start-->
 		<?php include("include/footer.php");?>
 		<!--	Footer   start-->

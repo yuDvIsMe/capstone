@@ -33,9 +33,12 @@ if(isset($_POST['add']))
 	$state=$_POST['state'];
 	$status=$_POST['status'];
 	$uid=$_SESSION['uid'];
-	$feature=$_POST['feature'];
+	// $feature=$_POST['feature'];
 	
 	$totalfloor=$_POST['totalfl'];
+	$lat = $_POST['lat'];
+	$long = $_POST['long'];
+
 	
 	$aimage=$_FILES['aimage']['name'];
 	$aimage1=$_FILES['aimage1']['name'];
@@ -66,10 +69,12 @@ if(isset($_POST['add']))
 	move_uploaded_file($temp_name5,"admin/property/$fimage");
 	move_uploaded_file($temp_name6,"admin/property/$fimage1");
 	move_uploaded_file($temp_name7,"admin/property/$fimage2");
+
+	var_dump([$lat, $long]);
 	
-	$sql="insert into property (title,pcontent,type,bhk,stype,bedroom,bathroom,balcony,kitchen,hall,floor,size,price,location,city,state,feature,pimage,pimage1,pimage2,pimage3,pimage4,uid,status,mapimage,topmapimage,groundmapimage,totalfloor)
+	$sql="insert into property (title,pcontent,type,bhk,stype,bedroom,bathroom,balcony,kitchen,hall,floor,size,price,location,city,pimage,pimage1,pimage2,pimage3,pimage4,uid,status,mapimage,topmapimage,groundmapimage,totalfloor,lat,`long`) 
 	values('$title','$content','$ptype','$bhk','$stype','$bed','$bath','$balc','$kitc','$hall','$floor','$asize','$price',
-	'$loc','$city','$state','$feature','$aimage','$aimage1','$aimage2','$aimage3','$aimage4','$uid','$status','$fimage','$fimage1','$fimage2','$totalfloor')";
+	'$loc','$city','$aimage','$aimage1','$aimage2','$aimage3','$aimage4','$uid','$status','$fimage','$fimage1','$fimage2','$totalfloor','$lat','$long')";
 	$result=mysqli_query($con,$sql);
 	if($result)
 		{
@@ -194,13 +199,12 @@ if(isset($_POST['add']))
 													<label class="col-lg-3 col-form-label">Property Type</label>
 													<div class="col-lg-9">
 														<select class="form-control" required name="ptype">
-															<option value="">Select Type</option>
-															<option value="appartment">Appartment</option>
-															<option value="flat">Flat</option>
-															<option value="bunglow">Bunglow</option>
-															<option value="house">House</option>
-															<option value="villa">Villa</option>
-															<option value="office">Office</option>
+															<option value="">Loại</option>
+															<option value="house">Nhà phố</option>
+														<option value="Apartment">Chung cư</option>
+														<option value="penhouse">Penhouse</option>
+														<option value="villa">Villa</option>
+														<option value="office">Văn phòng</option>
 														</select>
 													</div>
 												</div>
@@ -333,48 +337,15 @@ if(isset($_POST['add']))
 												</div>
 												<div class="form-group row">
 													<label class="col-lg-3 col-form-label">Address</label>
-													<div class="col-lg-9">
-														<input type="text" class="form-control" name="loc" required placeholder="Enter Address">
+													<div class="col-lg-9 position-relative">
+														<input type="hidden" class="form-control" id="address-long" name="long" required placeholder="Enter Address">
+														<input type="hidden" class="form-control" id="address-lat" name="lat" required placeholder="Enter Address">
+														<input type="text" class="form-control" id="address" name="loc" required placeholder="Enter Address">
+														<div id="address-list" class="dropdown-menu">
+														</div>
 													</div>
 												</div>
 												
-											</div>
-										</div>
-										
-										<div class="form-group row">
-											<label class="col-lg-2 col-form-label">Feature</label>
-											<div class="col-lg-9">
-											<p class="alert alert-danger">* Important Please Do Not Remove Below Content Only Change <b>Yes</b> Or <b>No</b> or Details and Do Not Add More Details</p>
-											
-											<textarea class="tinymce form-control" name="feature" rows="10" cols="30">
-												<!---feature area start--->
-												<div class="col-md-4">
-														<ul>
-														<li class="mb-3"><span class="text-secondary font-weight-bold">Property Age : </span>10 Years</li>
-														<li class="mb-3"><span class="text-secondary font-weight-bold">Swiming Pool : </span>Yes</li>
-														<li class="mb-3"><span class="text-secondary font-weight-bold">Parking : </span>Yes</li>
-														<li class="mb-3"><span class="text-secondary font-weight-bold">GYM : </span>Yes</li>
-														</ul>
-													</div>
-													<div class="col-md-4">
-														<ul>
-														<li class="mb-3"><span class="text-secondary font-weight-bold">Type : </span>Appartment</li>
-														<li class="mb-3"><span class="text-secondary font-weight-bold">Security : </span>Yes</li>
-														<li class="mb-3"><span class="text-secondary font-weight-bold">Dining Capacity : </span>10 People</li>
-														<li class="mb-3"><span class="text-secondary font-weight-bold">Temple  : </span>Yes</li>
-														
-														</ul>
-													</div>
-													<div class="col-md-4">
-														<ul>
-														<li class="mb-3"><span class="text-secondary font-weight-bold">3rd Party : </span>No</li>
-														<li class="mb-3"><span class="text-secondary font-weight-bold">Alivator : </span>Yes</li>
-														<li class="mb-3"><span class="text-secondary font-weight-bold">CCTV : </span>Yes</li>
-														<li class="mb-3"><span class="text-secondary font-weight-bold">Water Supply : </span>Ground Water / Tank</li>
-														</ul>
-													</div>
-												<!---feature area end---->
-											</textarea>
 											</div>
 										</div>
 												
@@ -488,5 +459,60 @@ if(isset($_POST['add']))
 <script src="js/jquery.slider.js"></script> 
 <script src="js/wow.js"></script> 
 <script src="js/custom.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js" integrity="sha512-WFN04846sdKMIP5LKNphMaWzU7YpMyCU245etK3g/2ARYbPK9Ub18eG+ljU96qKRCWh+quCY7yefSmlkQw1ANQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.1.3/axios.min.js" integrity="sha512-0qU9M9jfqPw6FKkPafM3gy2CBAvUWnYVOfNPDYKVuRTel1PrciTj+a9P3loJB+j0QmN2Y0JYQmkBBS8W+mbezg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+	const addressInput = document.getElementById("address")
+
+	const addressList = document.getElementById("address-list")
+	const addressLong = document.getElementById("address-long")
+	const addressLat = document.getElementById("address-lat")
+
+	const search = _.debounce(async(value) => {
+		const res = await axios.post('http://localhost/testcapstone1/search-map.php', {
+			query: value
+		})
+
+		const resources = _.get(res, 'data.resourceSets.0.resources', []);
+
+		if (!_.isEmpty(resources)) {
+			addressList.classList.add("shown");
+
+			addressList.innerHTML = ""
+
+			const els = _.map(resources, (resource) => {
+				const a = document.createElement("a")
+
+				a.addEventListener("click", () => completeResult(resource));
+
+				a.innerText = resource.name
+
+				a.classList.add('dropdown-item')
+
+				a.href = '#'
+
+				addressList.appendChild(a)
+			});
+			
+		} else {
+			addressList.classList.remove("shown");
+		}
+	}, 500)
+
+	const completeResult = (resource) => {
+		event.preventDefault();
+		addressInput.value = resource.name;
+		addressLat.value = resource.geocodePoints[0].coordinates[0];
+		addressLong.value = resource.geocodePoints[0].coordinates[1];
+		addressList.innerHTML = ""
+		addressList.classList.remove("shown");
+	}
+
+	addressInput.addEventListener("keyup", async(event) => {
+		const value = event.target.value;
+
+		await search(value)
+	})
+</script>
 </body>
 </html>

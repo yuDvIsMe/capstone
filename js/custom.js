@@ -649,7 +649,7 @@
 		
 		// Template color change
 		$(".color-box li").each( function() {		
-			if ($.cookie('homex_color') && $.cookie('homex_color') == $(this).attr('class')) {
+			if ($.cookie('ihome_color') && $.cookie('ihome_color') == $(this).attr('class')) {
 				$(this).addClass('active');
 				var path = $(this).data('path');
 				var logo1 = $(this).data('image');
@@ -662,7 +662,7 @@
 		
 		$(".color-box li").on('click',function() {
 			var file_name = $(this).attr('data-name');
-			$.cookie('homex_color', file_name, { path: '/', expires: 365 });
+			$.cookie('ihome_color', file_name, { path: '/', expires: 365 });
 		});
 		
 		// Layout select with slide button

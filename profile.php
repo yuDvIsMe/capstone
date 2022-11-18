@@ -26,13 +26,13 @@ if(isset($_POST['insert']))
 		$sql="INSERT INTO feedback (uid,fdescription,status) VALUES ('$uid','$content','0')";
 		   $result=mysqli_query($con, $sql);
 		   if($result){
-			   $msg = "<p class='alert alert-success'>Feedback Send Successfully</p> ";
+			   $msg = "<p class='alert alert-success'>Gửi thành công</p> ";
 		   }
 		   else{
-			   $error = "<p class='alert alert-warning'>Feedback Not Send Successfully</p> ";
+			   $error = "<p class='alert alert-warning'>Gửi không thành công</p> ";
 		   }
 	}else{
-		$error = "<p class='alert alert-warning'>Please Fill all the fields</p>";
+		$error = "<p class='alert alert-warning'>Vui lòng điền đầy đủ thông tin</p>";
 	}
 }								
 ?>
@@ -96,15 +96,7 @@ if(isset($_POST['insert']))
             <div class="container">
                 <div class="row">
                     <div class="col-md-6">
-                        <h2 class="page-name float-left text-white text-uppercase mt-1 mb-0"><b>Profile</b></h2>
-                    </div>
-                    <div class="col-md-6">
-                        <nav aria-label="breadcrumb" class="float-left float-md-right">
-                            <ol class="breadcrumb bg-transparent m-0 p-0">
-                                <li class="breadcrumb-item text-white"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item active">Profile</li>
-                            </ol>
-                        </nav>
+                        <h2 class="page-name float-left text-white text-uppercase mt-1 mb-0"><b>Thông tin</b></h2>
                     </div>
                 </div>
             </div>
@@ -117,30 +109,30 @@ if(isset($_POST['insert']))
             <div class="container">
                     <div class="row">
 						<div class="col-lg-12">
-							<h2 class="text-secondary double-down-line text-center">Profile</h2>
+							<h2 class="text-secondary double-down-line text-center">Thông tin cá nhân</h2>
                         </div>
 					</div>
                 <div class="dashboard-personal-info p-5 bg-white">
                     <form action="#" method="post">
-                        <h5 class="text-secondary border-bottom-on-white pb-3 mb-4">Feedback Form</h5>
+                        <h5 class="text-secondary border-bottom-on-white pb-3 mb-4">Feedback form</h5>
 						<?php echo $msg; ?><?php echo $error; ?>
                         <div class="row">
                             <div class="col-lg-6 col-md-12">
                                 <div class="form-group">
-                                    <label for="user-id">Name</label>
-                                    <input type="text" name="name" class="form-control" placeholder="Enter Name">
+                                    <label for="user-id">Tên</label>
+                                    <input type="text" name="name" class="form-control" placeholder="Nhập tên">
                                 </div>                
                                 
                                 <div class="form-group">
-                                    <label for="phone">Phone Number</label>
-                                    <input type="text" name="phone"  class="form-control" placeholder="Enter Phone" maxlength="10">
+                                    <label for="phone">Số điện thoại</label>
+                                    <input type="text" name="phone"  class="form-control" placeholder="Nhập số điện thoại" maxlength="10">
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="about-me">Description</label>
-                                    <textarea class="form-control" name="content" rows="7" placeholder="Enter Description"></textarea>
+                                    <label for="about-me">Feedback</label>
+                                    <textarea class="form-control" name="content" rows="7" placeholder="Nhập feedback"></textarea>
                                 </div>
-                                <input type="submit" class="btn btn-primary mb-4" name="insert" value="Send">
+                                <input type="submit" class="btn btn-primary mb-4" name="insert" value="Gửi">
                             </div>
 							</form>
                             <div class="col-lg-1"></div>
@@ -157,10 +149,9 @@ if(isset($_POST['insert']))
                                     </div>
 									
                                     <div class="font-18">
-                                        <div class="mb-1 text-capitalize"><b>Name:</b> <?php echo $row['1'];?></div>
+                                        <div class="mb-1 text-capitalize"><b>Tên:</b> <?php echo $row['1'];?></div>
                                         <div class="mb-1 text-capitalize"><b>Email:</b> <?php echo $row['2'];?></div>
-                                        <div class="mb-1 text-capitalize"><b>Phone:</b> <?php echo $row['3'];?></div>
-										<div class="mb-1 text-capitalize"><b>Role:</b> <?php echo $row['5'];?></div>
+                                        <div class="mb-1 text-capitalize"><b>SĐT:</b> <?php echo $row['3'];?></div>
                                     </div>
 									<?php } ?>
                                 </div>

@@ -8,7 +8,8 @@ if(isset($_REQUEST['login']))
 	$email=$_REQUEST['email'];
 	$pass=$_REQUEST['pass'];
 	
-	
+	$msg="";
+
 	if(isset($pass)) {
 	  $password = $pass;
 	  $number = preg_match('@[0-9]@', $password);
@@ -17,28 +18,27 @@ if(isset($_REQUEST['login']))
 	  $specialChars = preg_match('@[^\w]@', $password);
 	 
 	  if(strlen($password) < 8 || !$number || !$uppercase || !$lowercase || !$specialChars) {
-		$msg = "Mật khẩu phải có độ dài ít nhất 8 kí tự bao gồm số, chữ hoa, chữ thường và kí tự đặc biệt!";
-	  } else { // it nhat 1 so, 1 chu hoa, 1 chu thuong 
-		$msg = "Mật khẩu mạnh!";
+		$msg = "<p class='alert alert-warning'>Mật khẩu phải có độ dài ít nhất 8 kí tự bao gồm số, chữ hoa, chữ thường và kí tự đặc biệt!";
+	  } else
+	  {
+		  if(!empty($email) && !empty($pass))
+	  {
+		  $sql = "SELECT * FROM user where uemail='$email' && upass='$pass'";
+		  $result=mysqli_query($con, $sql);
+		  $row=mysqli_fetch_array($result);
+			 if($row){
+				 
+				  $_SESSION['uid']=$row['uid'];
+				  $_SESSION['uemail']=$email;
+				  header("location:index.php");
+			 }
+			 else{
+				 $error = "<p class='alert alert-warning'>Email hoặc mật khẩu không chính xác.</p> ";
+			 }
+	  }else{
+		  $error = "<p class='alert alert-warning'>Vui lòng điền đẩy đủ thông tin</p>";
 	  }
-	}else
-	{
-	if(!empty($email) && !empty($pass))
-	{
-		$sql = "SELECT * FROM user where uemail='$email' && upass='$pass'";
-		$result=mysqli_query($con, $sql);
-		$row=mysqli_fetch_array($result);
-		   if($row){
-			   
-				$_SESSION['uid']=$row['uid'];
-				$_SESSION['uemail']=$email;
-				header("location:index.php");
-		   }
-		   else{
-			   $error = "<p class='alert alert-warning'>Email hoặc mật khẩu không chính xác.</p> ";
-		   }
-	}else{
-		$error = "<p class='alert alert-warning'>Vui lòng điền đẩy đủ thông tin</p>";
+	  }
 	}
 }
 ?>
@@ -115,11 +115,22 @@ if(isset($_REQUEST['login']))
 									<div class="form-group">
 										<input type="password" name="pass"  class="form-control" placeholder="Mật khẩu">
 									</div>
-									<span class="psw"><a href="#">Forgot password?</a></span>
+									<p class="account-forgotpass"><a href="#" style="color: #000">Quên mật khẩu?</a></p>
 									<button class="btn btn-primary" name="login" value="Login" type="submit">Đăng nhập</button>
-									
 								</form>
+								<div class="login-or">
+									<span class="or-line"></span>
+									<span class="span-or">or</span>
+								</div>
 								
+								<!-- Social Login -->
+								<div class="social-login">
+									<span>Đăng nhập với</span>
+									<a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
+									<a href="#" class="google"><i class="fa fa-google"></i></a>
+									<a href="#" class="facebook"><i class="fa fa-twitter"></i></a>
+									<a href="#" class="google"><i class="fa fa-instagram"></i></a>
+								</div>
 								
 								
 								<div class="text-center dont-have">Bạn chưa có tài khoản? <a href="register.php" style="color: #000">Đăng kí ngay!</a></div>

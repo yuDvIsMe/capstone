@@ -64,7 +64,7 @@ include("config.php");
                     <div class="col-lg-12">
                         <div class="text-white">
                             <h1 class="mb-4"><span class="text-primary">Tìm kiếm</span><br></h1>
-                            <form method="post" action="propertygrid.php">
+                            <form method="post" action="#">
                                 <div class="row">
                                     <div class="col-md-6 col-lg-2">
                                         <div class="form-group">
@@ -95,6 +95,32 @@ include("config.php");
                                     <div class="col-md-4 col-lg-2">
                                         <div class="form-group">
                                             <button type="submit" name="filter" class="btn btn-primary w-100">Tìm kiếm</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 col-lg-2">
+                                        <div class="form-group">
+                                            <select class="form-control" name="area">
+                                                <option value="">Diện tích</option>
+												<option value=""> < 30 m<sup>2 </option>
+												<option value="">30-60 m<sup>2</option>
+												<option value="">60-90 m<sup>2</option>
+												<option value="">90-120 m<sup>2</option>
+												<option value="">>120 m<sup>2</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-lg-2">
+                                        <div class="form-group">
+                                            <select class="form-control" name="price">
+                                                <option value="">Giá</option>
+												<option value=""> < 30 m<sup>2 </option>
+												<option value="">30-60 m<sup>2</option>
+												<option value="">60-90 m<sup>2</option>
+												<option value="">90-120 m<sup>2</option>
+												<option value="">>120 m<sup>2</option>
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
@@ -286,11 +312,11 @@ include("config.php");
                             <div class="overflow-hidden position-relative overlay-secondary hover-zoomer mx-n13 z-index-9"> <img src="images/thumbnail4/danang_tn.jpg" alt="">
                                 <div class="text-white xy-center z-index-9 position-absolute text-center w-100">
 									<?php
-										$query=mysqli_query($con,"SELECT count(state), property.* FROM property where state='Đà Nẵng'");
+										$query=mysqli_query($con,"SELECT count(city), property.* FROM property where city='Đà Nẵng'");
 											while($row=mysqli_fetch_array($query))
 												{
 										?>
-                                    <h4 class="hover-text-primary text-capitalize"><a href="stateproperty.php?id=<?php echo $row['17']?>"><?php echo $row['state'];?></a></h4>
+                                    <h4 class="hover-text-primary text-capitalize"><a href="#?id=<?php echo $row['17']?>"><?php echo $row['city'];?></a></h4>
                                     <span><?php 
 												$total = $row[0];
 												echo $total;?> căn hiện có</span> </div>
@@ -301,11 +327,11 @@ include("config.php");
                             <div class="overflow-hidden position-relative overlay-secondary hover-zoomer mx-n13 z-index-9"> <img src="images/thumbnail4/hanoi_tn.jpg" alt="">
                                 <div class="text-white xy-center z-index-9 position-absolute text-center w-100">
 									<?php
-										$query=mysqli_query($con,"SELECT count(state), property.* FROM property where state='Hà Nội'");
+										$query=mysqli_query($con,"SELECT count(city), property.* FROM property where city='Hà Nội'");
 											while($row=mysqli_fetch_array($query))
 												{
 										?>
-                                    <h4 class="hover-text-primary text-capitalize"><a href="stateproperty.php?id=<?php echo $row['17']?>"><?php echo $row['state'];?></a></h4>
+                                    <h4 class="hover-text-primary text-capitalize"><a href="#?id=<?php echo $row['17']?>"><?php echo $row['city'];?></a></h4>
                                     <span><?php 
 												$total = $row[0];
 												echo $total;?> căn hiện có</span> </div>
@@ -316,11 +342,11 @@ include("config.php");
                             <div class="overflow-hidden position-relative overlay-secondary hover-zoomer mx-n13 z-index-9"> <img src="images/thumbnail4/saigon_tn.jpg" alt="">
                                 <div class="text-white xy-center z-index-9 position-absolute text-center w-100">
                                     <?php
-										$query=mysqli_query($con,"SELECT count(state), property.* FROM property where state='TP Hồ Chí Minh'");
+										$query=mysqli_query($con,"SELECT count(city), property.* FROM property where city='TP Hồ Chí Minh'");
 											while($row=mysqli_fetch_array($query))
 												{
 										?>
-                                    <h4 class="hover-text-primary text-capitalize"><a href="stateproperty.php?id=<?php echo $row['17']?>"><?php echo $row['state'];?></a></h4>
+                                    <h4 class="hover-text-primary text-capitalize"><a href="#?id=<?php echo $row['17']?>"><?php echo $row['city'];?></a></h4>
                                     <span><?php 
 												$total = $row[0];
 												echo $total;?> căn hiện có</span> </div>
@@ -331,11 +357,11 @@ include("config.php");
                             <div class="overflow-hidden position-relative overlay-secondary hover-zoomer mx-n13 z-index-9"> <img src="images/thumbnail4/hue_tn.jpg" alt="">
                                 <div class="text-white xy-center z-index-9 position-absolute text-center w-100">
                                     <?php
-										$query=mysqli_query($con,"SELECT count(state), property.* FROM property where state='Huế'");
+										$query=mysqli_query($con,"SELECT count(city), property.* FROM property where city='Huế'");
 											while($row=mysqli_fetch_array($query))
 												{
 										?>
-                                    <h4 class="hover-text-primary text-capitalize"><a href="stateproperty.php?id=<?php echo $row['17']?>"><?php echo $row['state'];?></a></h4>
+                                    <h4 class="hover-text-primary text-capitalize"><a href="propertydetail.php?id=<?php echo $row['17']?>"><?php echo $row['city'];?></a></h4>
                                     <span><?php 
 												$total = $row[0];
 												echo $total;?> căn hiện có</span> </div>
