@@ -55,95 +55,69 @@ include("config.php");
 		<?php include("include/header.php");?>
         <!--	Header end  -->
         
-        <!--	Banner   --->
+        	<!-- Banner   --->
         <div class="banner-full-row page-banner" style="background-image:url('images/breadcromb.jpg');">
             <div class="container">
                 <div class="row">
                     <div class="col-md-6">
-                        <h2 class="page-name float-left text-white text-uppercase mt-1 mb-0"><b>About US</b></h2>
-                    </div>
-                    <div class="col-md-6">
-                        <nav aria-label="breadcrumb" class="float-left float-md-right">
-                            <ol class="breadcrumb bg-transparent m-0 p-0">
-                                <li class="breadcrumb-item text-white"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item active">About Us</li>
-                            </ol>
-                        </nav>
+                        <h2 class="page-name float-left text-white text-uppercase mt-1 mb-0"><b>GIỚI THIỆU</b></h2>
                     </div>
                 </div>
             </div>
         </div>
-         <!--	Banner   --->
-		 
+         <!--	Banner   - -->
         <!--	About Our Company -->
-        <div class="full-row">
-            <div class="container">
-                
-				
-				<?php 
-					
-					$query=mysqli_query($con,"SELECT * FROM about");
-					while($row=mysqli_fetch_array($query))
-					{
-				?>
-				<div class="row">
-                    <div class="col-md-12 col-lg-12">
-                        <h3 class="double-down-line-left text-secondary position-relative pb-4 mb-4"><?php echo $row['1'];?></h3>
-                    </div>
-                </div>
-                <div class="row about-company">
-                    <div class="col-md-12 col-lg-7">
-                        <div class="about-content">
-                            <?php echo $row['2'];?>
-                        </div>
-                    </div>
-                    <div class="col-md-12 col-lg-5 mt-5">
-                        <div class="about-img"> <img src="admin/upload/<?php echo $row['3'];?>" alt="about image"> </div>
-                    </div>
-                </div>
-				
-				<?php } ?>
-				
-            </div>
-        </div>
-        <!--	About Our Company -->  
+		<div class="container">
+			<img class="mb-5" src="./images/about/about.jpg" alt="" style="margin-top: 50px ;">
+			<div class="row about-text">
+				<div class="col-xl-6 about-text-left">
+					<h5 style="color: #17c788 ;">GIỚI THIỆU</h5>
+					<p>Chúng tôi là một nhóm sinh viên thuộc khóa K25 khoa Đào tạo Quốc tế, ngành công nghệ phần mềm của Đại học Duy Tân. Và đây là sản phẩm thuộc đồ án Capstone 1 mà chúng tôi đã thiết kế.</p>
+					<p>Mục đích của chúng tôi khi mở ra iHome là muốn tất cả mọi người tham gia làm cho tài sản của mình trở nên đơn giản, hiệu quả và không gây căng thẳng. Cho dù bạn mới bắt đầu hành trình bất động sản của mình hay đã có nhiều năm kinh nghiệm, thì iHome là địa điểm thích hợp để mọi người cùng nhau khám phá, nghiên cứu và chia sẻ niềm đam mê với bất động sản Việt Nam.</p>
+				</div>
+				<div class="col-xl-6 about-text-right">
+					<h5 style="color: #17c788;">CHẤT LƯỢNG</h5>
+					<p>Chúng tôi cung cấp chất lượng, trải nghiệm tốt nhất với sự tương tác của khách hàng, giải quyết các vấn đề của khách hàng bằng cách cung cấp cho những ai tham gia website của chúng tôi những dịch vụ tốt nhất có thể, phù hợp với giá trị sản phẩm và túi tiền của mọi người. </p>
+				</div>
+			</div>
+		</div>
                 
         <!--	Text Block One
 		======================================================-->
-        <div class="full-row bg-gray">
+        <div class="full-row bg-gray" style="margin-top:50px;">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h2 class="text-secondary double-down-line text-center mb-5">What We Do</h2></div>
+                        <h2 class="text-secondary double-down-line text-center mb-5">DỊCH VỤ</h2></div>
                 </div>
                 <div class="text-box-one">
                     <div class="row">
                         <div class="col-lg-3 col-md-6">
                             <div class="p-4 text-center hover-bg-white hover-shadow rounded mb-4 transation-3s"> 
 								<i class="flaticon-rent text-primary flat-medium" aria-hidden="true"></i>
-                                <h5 class="text-secondary hover-text-primary py-3 m-0"><a href="#">Selling Service</a></h5>
-                                <p>Service selling requires a powerful organization to establish a successful market output with the customers</p>
+                                <h5 class="text-secondary hover-text-primary py-3 m-0"><a href="#">Dịch vụ thanh lý</a></h5>
+                                <p>Bất cứ ai muốn thanh lý các căn nhà của mình đều có thể tham gia ở đây.</p>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-6">
                             <div class="p-4 text-center hover-bg-white hover-shadow rounded mb-4 transation-3s"> 
 								<i class="flaticon-for-rent text-primary flat-medium" aria-hidden="true"></i>
-                                <h5 class="text-secondary hover-text-primary py-3 m-0"><a href="#">Rental Service</a></h5>
-                                <p>Rental service means a person who gathers and catalogs information concerning apartments</p>
+                                <h5 class="text-secondary hover-text-primary py-3 m-0"><a href="#">Dịch vụ cho thuê</a></h5>
+                                <p>Nếu bạn có nhu cầu cho thuê các căn hộ của mình, bạn cũng có thể đến với chúng tôi.</p>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-6">
                             <div class="p-4 text-center hover-bg-white hover-shadow rounded mb-4 transation-3s"> 
 								<i class="flaticon-list text-primary flat-medium" aria-hidden="true"></i>
-                                <h5 class="text-secondary hover-text-primary py-3 m-0"><a href="#">Property Listing</a></h5>
-                                <p>An agreement that represents the right of a real estate agent or Broker to handle the sale of real property.</p>
+                                <h5 class="text-secondary hover-text-primary py-3 m-0"><a href="#">Đăng bán</a></h5>
+                                <p>Quý khách có thể tự do đăng và chỉnh sửa chi tiết các căn nhà của mình tại website của chúng tôi.</p>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-6">
                             <div class="p-4 text-center hover-bg-white hover-shadow rounded mb-4 transation-3s"> 
 								<i class="flaticon-diagram text-primary flat-medium" aria-hidden="true"></i>
-                                <h5 class="text-secondary hover-text-primary py-3 m-0"><a href="#">Legal Investment</a></h5>
-                                <p>Legal investments. Investments that a regulated entity is permitted to make under the rules.</p>
+                                <h5 class="text-secondary hover-text-primary py-3 m-0"><a href="#">Đầu tư</a></h5>
+                                <p>Bất cứ lĩnh vực đầu tư nào cũng sẽ có rủi ro và lợi nhuận, hãy làm chủ suy nghĩ và cảm xúc của mình nhé.</p>
                             </div>
                         </div>
                     </div>
@@ -159,7 +133,7 @@ include("config.php");
 					<div class="col-lg-12">
 						<div class="content-sidebar p-4">
 							<div class="mb-3 col-lg-12">
-								<h4 class="double-down-line-left text-secondary position-relative pb-4 mb-4">Testimonial</h4>
+								<h4 class="double-down-line-left text-secondary position-relative pb-4 mb-4">Bình luận</h4>
 									<div class="recent-review owl-carousel owl-dots-gray owl-dots-hover-primary">
 									
 										<?php

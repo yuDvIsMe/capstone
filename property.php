@@ -68,14 +68,6 @@ include("config.php");
                     <div class="col-md-6">
                         <h2 class="page-name float-left text-white text-uppercase mt-1 mb-0"><b>Property Grid</b></h2>
                     </div>
-                    <div class="col-md-6">
-                        <nav aria-label="breadcrumb" class="float-left float-md-right">
-                            <ol class="breadcrumb bg-transparent m-0 p-0">
-                                <li class="breadcrumb-item text-white"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item active">Property Grid</li>
-                            </ol>
-                        </nav>
-                    </div>
                 </div>
             </div>
         </div>
@@ -99,40 +91,29 @@ include("config.php");
                             <div class="col-md-6">
                                 <div class="featured-thumb hover-zoomer mb-4">
                                     <div class="overlay-black overflow-hidden position-relative"> <img src="admin/property/<?php echo $row['18'];?>" alt="pimage">
-                                        
-                                        <div class="sale bg-secondary text-white">For <?php echo $row['5'];?></div>
-                                        <div class="price text-primary text-capitalize">$<?php echo $row['13'];?> <span class="text-white"><?php echo $row['12'];?> Sqft</span></div>
-                                        
+                                        <div class="sale bg-secondary text-white"><?php echo $row['5'];?></div>
+                                        <div class="price text-primary text-capitalize"><?php echo $row['13'];?> VNĐ</div>
                                     </div>
                                     <div class="featured-thumb-data shadow-one">
-                                        <div class="p-4">
-                                            <h5 class="text-secondary hover-text-primary mb-2 text-capitalize"><a href="propertydetail.php?pid=<?php echo $row['0'];?>"><?php echo $row['1'];?></a></h5>
-                                            <span class="location text-capitalize"><i class="fas fa-map-marker-alt text-primary"></i> <?php echo $row['14'];?></span> </div>
-                                        <div class="px-4 pb-4 d-inline-block w-100">
-                                            <div class="float-left text-capitalize"><i class="fas fa-user text-primary mr-1"></i>By : <?php echo $row['uname'];?></div>
-                                            <div class="float-right"><i class="far fa-calendar-alt text-primary mr-1"></i> 6 Months Ago</div>
-                                        </div>
+                                                <div class="p-3">
+                                                    <h5 class="text-secondary hover-text-primary mb-2 text-capitalize"><a href="propertydetail.php?pid=<?php echo $row['0'];?>"><?php echo $row['1'];?></a></h5>
+                                                    <span class="location text-capitalize"><i class="fas fa-map-marker-alt text-primary"></i> <?php echo $row['14'];?></span> </div>
+                                                <div class="bg-gray quantity px-4 pt-4">
+                                                    <ul>
+                                                        <li>Phòng ngủ: <?php echo $row['6'];?></li>
+                                                        <li>Phòng tắm: <?php echo $row['7'];?></li>
+                                                        <li>Bếp: <?php echo $row['9'];?></li>
+                                                        <li>Bang công: <?php echo $row['8'];?></li>
+                                                        <li>Diện tích: <?php echo $row['12'];?> m<sup>2</li>       
+                                                    </ul>
+                                                </div>
+                                                <div class="p-4 d-inline-block w-100">
+                                                    <div class="float-left text-capitalize"><i class="fas fa-user text-primary mr-1"></i>Người đăng: <?php echo $row['uname'];?></div>
+                                                </div>
                                     </div>
                                 </div>
                             </div>
                             <?php } ?>
-                            
-
-                            
-                            
-                        <!--    <div class="col-md-12">
-                                <nav aria-label="Page navigation">
-                                    <ul class="pagination justify-content-center mt-4">
-                                        <li class="page-item disabled"> <span class="page-link">Previous</span> </li>
-                                        <li class="page-item active" aria-current="page"> <span class="page-link"> 1 <span class="sr-only">(current)</span> </span> </li>
-                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                        <li class="page-item">...</li>
-                                        <li class="page-item"><a class="page-link" href="#">5</a></li>
-                                        <li class="page-item"> <a class="page-link" href="#">Next</a> </li>
-                                    </ul>
-                                </nav>
-                            </div>  -->
                         </div>
                     </div>
 					

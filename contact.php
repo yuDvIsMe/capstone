@@ -16,10 +16,10 @@ if(isset($_POST['send']))
 		$sql="INSERT INTO contact (name,email,phone,subject,message) VALUES ('$name','$email','$phone','$subject','$message')";
 		   $result=mysqli_query($con, $sql);
 		   if($result){
-			   $msg = "<p class='alert alert-success'>Message Send Successfully</p> ";
+			   $msg = "<p class='alert alert-success'>Gửi thành công</p> ";
 		   }
 		   else{
-			   $error = "<p class='alert alert-warning'>Message Not Send Successfully</p> ";
+			   $error = "<p class='alert alert-warning'>Gửi không thành công</p> ";
 		   }
 	}else{
 		$error = "<p class='alert alert-warning'>Please Fill all the fields</p>";
@@ -83,15 +83,7 @@ if(isset($_POST['send']))
             <div class="container">
                 <div class="row">
                     <div class="col-md-6">
-                        <h2 class="page-name float-left text-white text-uppercase mt-1 mb-0"><b>Contact</b></h2>
-                    </div>
-                    <div class="col-md-6">
-                        <nav aria-label="breadcrumb" class="float-left float-md-right">
-                            <ol class="breadcrumb bg-transparent m-0 p-0">
-                                <li class="breadcrumb-item text-white"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item active">Contact</li>
-                            </ol>
-                        </nav>
+                        <h2 class="page-name float-left text-white text-uppercase mt-1 mb-0"><b>Liên hệ</b></h2>
                     </div>
                 </div>
             </div>
@@ -104,27 +96,27 @@ if(isset($_POST['send']))
                 <div class="row">
                     <div class="col-lg-4 mb-5 bg-primary">
                         <div class="contact-info">
-                            <h3 class="mb-4 mt-4 text-white">Contacts</h3>
+                            <h3 class="mb-4 mt-4 text-white">Địa chỉ liên hệ</h3>
 							
                             <ul>
                                 <li class="d-flex mb-4"> <i class="fas fa-map-marker-alt text-white mr-2 font-13 mt-1"></i>
                                     <div class="contact-address">
-                                        <h5 class="text-white">Address</h5>
+                                        <h5 class="text-white">Địa chỉ</h5>
                                          
-										<span class="text-secondary">Peshawar Cantonment, Peshawar, Khyber Pakhtunkhwa, Pakistan</span>
+										<span class="text-secondary">254 Nguyễn Văn Linh, Quận Thanh Khê - Tp. Đà Nẵng</span>
 										</div>
                                 </li>
                                 <li class="d-flex mb-4"> <i class="fas fa-phone-alt text-white mr-2 font-13 mt-1"></i>
                                     <div class="contact-address">
-                                        <h5 class="text-white">Call Us</h5>
-                                        <span class="d-table text-secondary">0333 4567809</span>
+                                        <h5 class="text-white">Số hotline</h5>
+                                        <span class="d-table text-secondary">+84 795797593</span>
 										
 									</div>
                                 </li>
                                 <li class="d-flex mb-4"> <i class="fas fa-envelope text-white mr-2 font-13 mt-1"></i>
                                     <div class="contact-address">
-                                        <h5 class="text-white">Email Adderss</h5>
-										<span class="d-table text-secondary">salmansyed10@gmail.com</span>
+                                        <h5 class="text-white">Địa chỉ email</h5>
+										<span class="d-table text-secondary">contact.ihome@gmail.com</span>
 										
 										</div>
                                 </li>
@@ -136,7 +128,7 @@ if(isset($_POST['send']))
 						<div class="container">
                         <div class="row">
 							<div class="col-lg-12">
-								<h2 class="text-secondary double-down-line text-center mb-5">Get In Touch</h2>
+								<h2 class="text-secondary double-down-line text-center mb-5">Trao đổi chi tiết</h2>
 								<?php echo $msg; ?><?php echo $error; ?>
 							</div>
 						</div>
@@ -146,24 +138,24 @@ if(isset($_POST['send']))
 									<div class="row">
 										<div class="row mb-4">
 											<div class="form-group col-lg-6">
-												<input type="text"  name="name" class="form-control" placeholder="Your Name*">
+												<input type="text"  name="name" class="form-control" placeholder="Tên đầy đủ*">
 											</div>
 											<div class="form-group col-lg-6">
-												<input type="text"  name="email" class="form-control" placeholder="Email Address*">
+												<input type="text"  name="email" class="form-control" placeholder="Địa chỉ email*">
 											</div>
 											<div class="form-group col-lg-6">
-												<input type="text"  name="phone" class="form-control" placeholder="Phone" maxlength="10">
+												<input type="text"  name="phone" class="form-control" placeholder="Số điện thoại" maxlength="10">
 											</div>
 											<div class="form-group col-lg-6">
 												<input type="text" name="subject"  class="form-control" placeholder="Subject">
 											</div>
 											<div class="col-lg-12">
 												<div class="form-group">
-													<textarea name="message" class="form-control" rows="5" placeholder="Type Comments..."></textarea>
+													<textarea name="message" class="form-control" rows="5" placeholder="Nội dung..."></textarea>
 												</div>
 											</div>
 										</div>
-										<button type="submit" value="send message" name="send" class="btn btn-primary">Send Message</button>
+										<button type="submit" value="send message" name="send" class="btn btn-primary">Gửi</button>
 									</div>
 								</form>
 							</div>
@@ -174,10 +166,6 @@ if(isset($_POST['send']))
             </div>
         </div>
         <!--	Contact Inforamtion -->
-        
-        <!--	Map -->
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3307.618748932185!2d71.5332632144145!3d34.00232522780807!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38d917a4e84923c9%3A0xd2cb2a8ceb8dc031!2sPeshawar%20Cantonment%2C%20Peshawar%2C%20Khyber%20Pakhtunkhwa%2C%20Pakistan!5e0!3m2!1sen!2s!4v1643472028632!5m2!1sen!2s" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-		<!--	Map -->
         
         <!--	Footer   start-->
 		<?php include("include/footer.php");?>

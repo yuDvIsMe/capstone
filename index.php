@@ -128,7 +128,7 @@ include("config.php");
                                             <div class="overlay-black overflow-hidden position-relative"> <img src="admin/property/<?php echo $row['18'];?>" alt="pimage">
                                                 <div class="featured bg-primary text-white">Mới</div>
                                                 <div class="sale bg-secondary text-white text-capitalize"><?php echo $row['5'];?></div>
-                                                <div class="price text-primary"><b>$<?php echo $row['13'];?> </b></div>
+                                                <div class="price text-primary"><b><?php echo $row['13'];?> VNĐ</b></div>
                                             </div>
                                             <div class="featured-thumb-data shadow-one">
                                                 <div class="p-3">

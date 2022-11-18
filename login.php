@@ -9,6 +9,20 @@ if(isset($_REQUEST['login']))
 	$pass=$_REQUEST['pass'];
 	
 	
+	if(isset($pass)) {
+	  $password = $pass;
+	  $number = preg_match('@[0-9]@', $password);
+	  $uppercase = preg_match('@[A-Z]@', $password);
+	  $lowercase = preg_match('@[a-z]@', $password);
+	  $specialChars = preg_match('@[^\w]@', $password);
+	 
+	  if(strlen($password) < 8 || !$number || !$uppercase || !$lowercase || !$specialChars) {
+		$msg = "Mật khẩu phải có độ dài ít nhất 8 kí tự bao gồm số, chữ hoa, chữ thường và kí tự đặc biệt!";
+	  } else { // it nhat 1 so, 1 chu hoa, 1 chu thuong 
+		$msg = "Mật khẩu mạnh!";
+	  }
+	}else
+	{
 	if(!empty($email) && !empty($pass))
 	{
 		$sql = "SELECT * FROM user where uemail='$email' && upass='$pass'";
@@ -65,17 +79,6 @@ if(isset($_REQUEST['login']))
 </head>
 <body>
 
-<!--	Page Loader
-=============================================================
-<div class="page-loader position-fixed z-index-9999 w-100 bg-white vh-100">
-	<div class="d-flex justify-content-center y-middle position-relative">
-	  <div class="spinner-border" role="status">
-		<span class="sr-only">Loading...</span>
-	  </div>
-	</div>
-</div>
---> 
-
 
 <div id="page-wrapper">
     <div class="row"> 
@@ -112,8 +115,8 @@ if(isset($_REQUEST['login']))
 									<div class="form-group">
 										<input type="password" name="pass"  class="form-control" placeholder="Mật khẩu">
 									</div>
-									
-										<button class="btn btn-primary" name="login" value="Login" type="submit">Đăng nhập</button>
+									<span class="psw"><a href="#">Forgot password?</a></span>
+									<button class="btn btn-primary" name="login" value="Login" type="submit">Đăng nhập</button>
 									
 								</form>
 								

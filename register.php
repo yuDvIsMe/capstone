@@ -8,7 +8,6 @@ if(isset($_REQUEST['reg']))
 	$email=$_REQUEST['email'];
 	$phone=$_REQUEST['phone'];
 	$pass=$_REQUEST['pass'];
-	$utype=$_REQUEST['utype'];
 	
 	$uimage=$_FILES['uimage']['name'];
 	$temp_name1 = $_FILES['uimage']['tmp_name'];
@@ -22,8 +21,7 @@ if(isset($_REQUEST['reg']))
 		$error = "<p class='alert alert-warning'>Email đã tồn tại</p> ";
 	}
 	else
-	{
-		
+	{	
 		if(!empty($name) && !empty($email) && !empty($phone) && !empty($pass) && !empty($uimage))
 		{
 			
