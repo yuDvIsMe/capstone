@@ -41,15 +41,6 @@ include("config.php");
 </head>
 <body>
 
-<!--	Page Loader  -->
-<!--<div class="page-loader position-fixed z-index-9999 w-100 bg-white vh-100">
-	<div class="d-flex justify-content-center y-middle position-relative">
-	  <div class="spinner-border" role="status">
-		<span class="sr-only">Loading...</span>
-	  </div>
-	</div>
-</div>  -->
-<!--	Page Loader  -->
 
 <div id="page-wrapper">
     <div class="row"> 
@@ -64,7 +55,7 @@ include("config.php");
                     <div class="col-lg-12">
                         <div class="text-white">
                             <h1 class="mb-4"><span class="text-primary">Tìm kiếm</span><br></h1>
-                            <form method="post" action="#">
+                            <form method="post" action="propertygrid.php">
                                 <div class="row">
                                     <div class="col-md-6 col-lg-2">
                                         <div class="form-group">
@@ -162,10 +153,10 @@ include("config.php");
                                                     <span class="location text-capitalize"><i class="fas fa-map-marker-alt text-primary"></i> <?php echo $row['14'];?></span> </div>
                                                 <div class="bg-gray quantity px-4 pt-4">
                                                     <ul>
+                                                        <li>Loại nhà ở: <?php echo $row['3']; ?></li>
                                                         <li>Phòng ngủ: <?php echo $row['6'];?></li>
                                                         <li>Phòng tắm: <?php echo $row['7'];?></li>
                                                         <li>Bếp: <?php echo $row['9'];?></li>
-                                                        <li>Bang công: <?php echo $row['8'];?></li>
                                                         <li>Diện tích: <?php echo $row['12'];?> m<sup>2</li>       
                                                     </ul>
                                                 </div>
@@ -188,16 +179,13 @@ include("config.php");
             </div>
         </div>
 		<!--	Recent Properties  -->
-        
-       
-		<!--	why choose us -->
 		
 		<!--	How it work -->
         <div class="full-row">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h2 class="text-secondary double-down-line text-center mb-5">Qui trình hoạt động</h2>
+                        <h2 class="text-secondary double-down-line text-center mb-5">Quy trình hoạt động</h2>
                         </div>
                 </div>
                 <div class="row">
@@ -280,7 +268,8 @@ include("config.php");
                             </div>
                         </div>
                         <div class="col-md-3">
-                            <div class="count wow text-center  mb-sm-50" data-wow-duration="300ms"> <i class="flaticon-man flat-large text-white" aria-hidden="true"></i>
+                            <div class="count wow text-center mb-sm-50" data-wow-duration="300ms"> 
+                                <i class="flaticon-man flat-large text-white" aria-hidden="true"></i>
                                 <?php
 										$query=mysqli_query($con,"SELECT count(uid) FROM user");
 											while($row=mysqli_fetch_array($query))

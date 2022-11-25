@@ -11,7 +11,7 @@ if(!isset($_SESSION['auser']))
   <div class="header">
 			
 				<!-- Logo -->
-                <div class="header-left">
+                <div class="header-left" style="margin-top: -6px;">
                     <a href="dashboard.php" class="logo">
 						<img src="assets/img/logo.png" alt="Logo">
 					</a>
@@ -35,10 +35,8 @@ if(!isset($_SESSION['auser']))
 				
 				<!-- Header Right Menu -->
 				<ul class="nav user-menu">
-
-					
 					<!-- User Menu -->
-					<h4 style="color:white;margin-top:13px;text-transform:capitalize;"><?php echo $_SESSION['auser'];?></h4>
+					<h4 style="color:#23b14d;margin-top:13px;text-transform:capitalize;"><?php echo $_SESSION['auser'];?></h4>
 					<li class="nav-item dropdown app-dropdown">
 						<a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
 							<span class="user-img"><img class="rounded-circle" src="assets/img/profiles/avatar-01.png" width="31" alt="Ryan Taylor"></span>
@@ -51,11 +49,11 @@ if(!isset($_SESSION['auser']))
 								</div>
 								<div class="user-text">
 									<h6><?php echo $_SESSION['auser'];?></h6>
-									<p class="text-muted mb-0">Administrator</p>
+									<p class="text-muted mb-0">Quản trị viên</p>
 								</div>
 							</div>
-							<a class="dropdown-item" href="profile.php">Profile</a>
-							<a class="dropdown-item" href="logout.php">Logout</a>
+							<a class="dropdown-item" href="profile.php">Trang cá nhân</a>
+							<a class="dropdown-item" href="logout.php">Đăng xuất</a>
 						</div>
 					</li>
 
@@ -76,83 +74,44 @@ if(!isset($_SESSION['auser']))
 					<div id="sidebar-menu" class="sidebar-menu">
 						<ul>
 							<li class="menu-title"> 
-								<span>Main</span>
+								<span>Quản trị</span>
 							</li>
 							<li> 
-								<a href="dashboard.php"><i class="fe fe-home"></i> <span>Dashboard</span></a>
+								<a href="dashboard.php"><i class="fe fe-bar-chart"></i> <span>Dashboard</span></a>
 							</li>
-							
 							<li class="menu-title"> 
-								<span>Authentication</span>
+								<span>Tài khoản</span>
 							</li>
 						
 							<li class="submenu">
-								<a href="#"><i class="fe fe-user"></i> <span> Authentication </span> <span class="menu-arrow"></span></a>
-								<ul style="display: none;">
-									<li><a href="index.php"> Login </a></li>
-									<li><a href="register.php"> Register </a></li>
-									
-								</ul>
-							</li>
-							<li class="menu-title"> 
-								<span>Users</span>
-							</li>
-						
-							<li class="submenu">
-								<a href="#"><i class="fe fe-user"></i> <span> Users </span> <span class="menu-arrow"></span></a>
+								<a href="#"><i class="fe fe-user"></i> <span> Quản lý tài khoản </span> <span class="menu-arrow"></span></a>
 								<ul style="display: none;">
 									<li><a href="adminlist.php"> Admin </a></li>
-									<li><a href="userlist.php"> Users </a></li>
-									<li><a href="useragent.php"> Agent </a></li>
-									<li><a href="userbuilder.php"> Builder </a></li>
+									<li><a href="userlist.php"> Người dùng </a></li>
 								</ul>
 							</li>
 						
 							<li class="menu-title"> 
-								<span>Property</span>
+								<span>Căn hộ</span>
 							</li>
 							<li class="submenu">
-								<a href="#"><i class="fe fe-user"></i> <span> Property</span> <span class="menu-arrow"></span></a>
+								<a href="#"><i class="fe fe-home"></i> <span> Quản lý căn hộ</span> <span class="menu-arrow"></span></a>
 								<ul style="display: none;">
-									<li><a href="propertyadd.php"> Add Property</a></li>
-									<li><a href="propertyview.php"> View Property </a></li>
+									<li><a href="propertyadd.php"> Thêm căn hộ </a></li>
+									<li><a href="propertyview.php"> Quản lý </a></li>
 									
 								</ul>
 							</li>
-							
 							<li class="menu-title"> 
-								<span>State & City</span>
-							</li>
-						
-							<li class="submenu">
-								<a href="#"><i class="fe fe-user"></i> <span>State & City</span> <span class="menu-arrow"></span></a>
-								<ul style="display: none;">
-									<li><a href="stateadd.php"> State </a></li>
-									<li><a href="cityadd.php"> City </a></li>
-								</ul>
-							</li>
-							
-							<li class="menu-title"> 
-								<span>Query</span>
+								<span>Người dùng</span>
 							</li>
 							<li class="submenu">
-								<a href="#"><i class="fe fe-user"></i> <span> Query </span> <span class="menu-arrow"></span></a>
+								<a href="#"><i class="fe fe-phone"></i> <span> Liên hệ </span> <span class="menu-arrow"></span></a>
 								<ul style="display: none;">
-									<li><a href="contactview.php"> Contact </a></li>
+									<li><a href="contactview.php"> Tin nhắn </a></li>
 									<li><a href="feedbackview.php"> Feedback </a></li>
 								</ul>
 							</li>
-							<li class="menu-title"> 
-								<span>About</span>
-							</li>
-							<li class="submenu">
-								<a href="#"><i class="fe fe-user"></i> <span> About </span> <span class="menu-arrow"></span></a>
-								<ul style="display: none;">
-									<li><a href="aboutadd.php"> About </a></li>
-									<li><a href="aboutview.php"> View About </a></li>
-								</ul>
-							</li>
-							
 						</ul>
 					</div>
                 </div>

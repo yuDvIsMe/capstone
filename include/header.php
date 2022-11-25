@@ -24,7 +24,7 @@
 											</ul>
                                         </li>
 										<?php } else { ?>
-										<li class="nav-item"> <a class="nav-link" href="login.php">Đăng nhập/Đăng ký</a> </li>
+										<li class="nav-item"> <a class="nav-link" href="login.php">Đăng nhập</a> </li>
 										<?php } ?>
                                     </ul>
 									<a class="btn btn-primary d-none d-xl-block" href="submitproperty.php">Đăng tin</a> 

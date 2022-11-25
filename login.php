@@ -126,10 +126,9 @@ if(isset($_REQUEST['login']))
 								<!-- Social Login -->
 								<div class="social-login">
 									<span>Đăng nhập với</span>
-									<a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
-									<a href="#" class="google"><i class="fa fa-google"></i></a>
-									<a href="#" class="facebook"><i class="fa fa-twitter"></i></a>
-									<a href="#" class="google"><i class="fa fa-instagram"></i></a>
+									<a href="#" class="facebook"><i class="fab fa-facebook-f"></i></a>
+									<a href="#" class="google"><i class="fab fa-google-plus-g"></i></a>
+									<a href="#" class="facebook"><i class="fab fa-twitter"></i></a>
 								</div>
 								
 								

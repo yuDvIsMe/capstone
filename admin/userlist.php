@@ -14,10 +14,10 @@ if(!isset($_SESSION['auser']))
 <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-        <title>LM Homes | Admin</title>
+        <title>iHome | Tài khoản người dùng</title>
 		
 		<!-- Favicon -->
-        <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png">
+        <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
 		
 		<!-- Bootstrap CSS -->
         <link rel="stylesheet" href="assets/css/bootstrap.min.css">
@@ -59,7 +59,7 @@ if(!isset($_SESSION['auser']))
 					<div class="page-header">
 						<div class="row">
 							<div class="col">
-								<h3 class="page-title">User</h3>
+								<h3 class="page-title">Tài khoản người dùng</h3>
 								<ul class="breadcrumb">
 									<li class="breadcrumb-item"><a href="dashboard.php">Dashboard</a></li>
 									<li class="breadcrumb-item active">User</li>
@@ -73,7 +73,7 @@ if(!isset($_SESSION['auser']))
 						<div class="col-sm-12">
 							<div class="card">
 								<div class="card-header">
-									<h4 class="card-title">User List</h4>
+									<h4 class="card-title">Danh sách người dùng</h4>
 									<?php 
 										if(isset($_GET['msg']))	
 										echo $_GET['msg'];	
@@ -85,12 +85,11 @@ if(!isset($_SESSION['auser']))
                                             <thead>
                                                 <tr>
                                                     <th>ID</th>
-                                                    <th>Name</th>
+                                                    <th>Tên</th>
                                                     <th>Email</th>
-                                                    <th>Phone</th>
-                                                    <th>Utype</th>
-													<th>Image</th>
-                                                    <th>Delete</th>
+                                                    <th>SĐT</th>
+													<th>Hình ảnh</th>
+                                                    <th>Thao tác</th>
                                                 </tr>
                                             </thead>
                                         
@@ -98,7 +97,7 @@ if(!isset($_SESSION['auser']))
                                             <tbody>
 											<?php
 													
-												$query=mysqli_query($con,"select * from user where utype='user'");
+												$query=mysqli_query($con,"select * from user");
 												$cnt=1;
 												while($row=mysqli_fetch_row($query))
 													{
@@ -108,9 +107,8 @@ if(!isset($_SESSION['auser']))
                                                     <td><?php echo $row['1']; ?></td>
                                                     <td><?php echo $row['2']; ?></td>
                                                     <td><?php echo $row['3']; ?></td>
-                                                    <td><?php echo $row['5']; ?></td>
 													<td><img src="user/<?php echo $row['6']; ?>" height="50px" width="50px"></td>
-                                                    <td><a href="userdelete.php?id=<?php echo $row['0']; ?>">Delete</a></td>
+                                                    <td><a href="userdelete.php?id=<?php echo $row['0']; ?>">Xóa</a></td>
                                                 </tr>
                                                 <?php
 												$cnt=$cnt+1;

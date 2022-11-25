@@ -92,10 +92,6 @@ if(!isset($_SESSION['uemail']))
                         <thead>
                              <tr  class="bg-primary">
                                 <th class="text-white font-weight-bolder">Căn hộ</th>
-                                <th class="text-white font-weight-bolder">BHK</th>
-                                <th class="text-white font-weight-bolder">Sale/Rent</th>
-                                <th class="text-white font-weight-bolder">Ngày đăng</th>
-								<th class="text-white font-weight-bolder">Trạng thái</th>
                                 <th class="text-white font-weight-bolder">Chỉnh sửa</th>
 								<th class="text-white font-weight-bolder">Xóa</th>
                              </tr>
@@ -115,16 +111,12 @@ if(!isset($_SESSION['uemail']))
                                         <h5 class="text-secondary text-capitalize"><a href="propertydetail.php?pid=<?php echo $row['0'];?>"><?php echo $row['1'];?></a></h5>
                                         <span class="font-14 text-capitalize"><i class="fas fa-map-marker-alt text-primary font-13"></i>&nbsp; <?php echo $row['14'];?></span>
                                         <div class="price mt-3">
-											<span class="text-primary">$&nbsp;<?php echo $row['13'];?></span>
+											<span class="text-primary">&nbsp;<?php echo $row['13'];?> VNĐ</span>
 										</div>
                                     </div>
 								</td>
-                                <td><?php echo $row['4'];?></td>
-                                <td class="text-capitalize">For <?php echo $row['5'];?></td>
-                                <td><?php echo $row['29'];?></td>
-								<td class="text-capitalize"><?php echo $row['24'];?></td>
-                                <td><a class="btn btn-primary" href="submitpropertyupdate.php?id=<?php echo $row['0'];?>">Update</a></td>
-								<td><a class="btn btn-primary" href="submitpropertydelete.php?id=<?php echo $row['0'];?>">Delete</a></td>
+                                <td><a class="btn btn-primary" href="submitpropertyupdate.php?id=<?php echo $row['0'];?>">Sửa</a></td>
+								<td><a class="btn btn-primary" href="submitpropertydelete.php?id=<?php echo $row['0'];?>" onclick="return confirm('Bạn chắc chắn muốn xóa chứ?')">Xóa</a></td>
                             </tr>
 							<?php } ?>
 							

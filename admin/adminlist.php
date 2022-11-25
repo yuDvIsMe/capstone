@@ -14,10 +14,10 @@ if(!isset($_SESSION['auser']))
 <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-        <title>LM Homes | Admin</title>
+        <title>iHome | Danh sách Admin</title>
 		
 		<!-- Favicon -->
-        <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png">
+        <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
 		
 		<!-- Bootstrap CSS -->
         <link rel="stylesheet" href="assets/css/bootstrap.min.css">
@@ -59,10 +59,10 @@ if(!isset($_SESSION['auser']))
 					<div class="page-header">
 						<div class="row">
 							<div class="col">
-								<h3 class="page-title">Admin</h3>
+								<h3 class="page-title">Tài khoản admin</h3>
 								<ul class="breadcrumb">
 									<li class="breadcrumb-item"><a href="dashboard.php">Dashboard</a></li>
-									<li class="breadcrumb-item active">Admin</li>
+									<li class="breadcrumb-item active">Admin </li>
 								</ul>
 							</div>
 						</div>
@@ -73,7 +73,7 @@ if(!isset($_SESSION['auser']))
 						<div class="col-sm-12">
 							<div class="card">
 								<div class="card-header">
-									<h4 class="card-title">Admin List</h4>
+									<h4 class="card-title">Danh sách admin</h4>
 									<?php 
 											if(isset($_GET['msg']))	
 											echo $_GET['msg'];
@@ -86,11 +86,11 @@ if(!isset($_SESSION['auser']))
                                             <thead>
                                                 <tr>
                                                     <th>ID</th>
-                                                    <th>Name</th>
+                                                    <th>Tên</th>
                                                     <th>Email</th>
-                                                    <th>Date Of Birth</th>
-                                                    <th>Phone</th>
-                                                    <th>Delete</th>
+                                                    <th>Ngày sinh</th>
+                                                    <th>SĐT</th>
+                                                    <th>Xóa</th>
                                                 </tr>
                                             </thead>
                                         
@@ -109,7 +109,7 @@ if(!isset($_SESSION['auser']))
                                                     <td><?php echo $row['2']; ?></td>
                                                     <td><?php echo $row['4']; ?></td>
                                                     <td><?php echo $row['5']; ?></td>
-                                                    <td><a href="admindelete.php?id=<?php echo $row['0']; ?>">Delete</a></td>
+                                                    <td><a href="admindelete.php?id=<?php echo $row['0']; ?>">Xóa</a></td>
                                                 </tr>
                                                 <?php
 												$cnt=$cnt+1;

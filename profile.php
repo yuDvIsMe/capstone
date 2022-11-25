@@ -91,7 +91,7 @@ if(isset($_POST['insert']))
 		<?php include("include/header.php");?>
         <!--	Header end  -->
         
-        <!--	Banner   --->
+        	<!-- Banner   --->
         <div class="banner-full-row page-banner" style="background-image:url('images/breadcromb.jpg');">
             <div class="container">
                 <div class="row">
@@ -101,7 +101,7 @@ if(isset($_POST['insert']))
                 </div>
             </div>
         </div>
-         <!--	Banner   --->
+         <!--	Banner   - -->
 		 
 		 
 		<!--	Submit property   -->
@@ -114,7 +114,7 @@ if(isset($_POST['insert']))
 					</div>
                 <div class="dashboard-personal-info p-5 bg-white">
                     <form action="#" method="post">
-                        <h5 class="text-secondary border-bottom-on-white pb-3 mb-4">Feedback form</h5>
+                        <h5 class="text-secondary border-bottom-on-white pb-3 mb-4">Gửi feedback</h5>
 						<?php echo $msg; ?><?php echo $error; ?>
                         <div class="row">
                             <div class="col-lg-6 col-md-12">
