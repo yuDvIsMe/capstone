@@ -1,4 +1,6 @@
 <?php
+ini_set('session.cache_limiter', 'public');
+session_cache_limiter(false);
 session_start();
 require("config.php");
 ////code
@@ -376,6 +378,59 @@ if (isset($_POST['add'])) {
 
 	<!-- Custom JS -->
 	<script src="assets/js/script.js"></script>
+	<script>
+		const addressInput = document.getElementById("address")
+
+		const addressList = document.getElementById("address-list")
+		const addressLong = document.getElementById("address-long")
+		const addressLat = document.getElementById("address-lat")
+
+		const search = _.debounce(async (value) => {
+			const res = await axios.post('http://localhost/testcapstone1/admin/search-map.php', {
+				query: value
+			})
+
+			const resources = _.get(res, 'data.resourceSets.0.resources', []);
+
+			if (!_.isEmpty(resources)) {
+				addressList.classList.add("shown");
+
+				addressList.innerHTML = ""
+
+				const els = _.map(resources, (resource) => {
+					const a = document.createElement("a")
+
+					a.addEventListener("click", () => completeResult(resource));
+
+					a.innerText = resource.name
+
+					a.classList.add('dropdown-item')
+
+					a.href = '#'
+
+					addressList.appendChild(a)
+				});
+
+			} else {
+				addressList.classList.remove("shown");
+			}
+		}, 500)
+
+		const completeResult = (resource) => {
+			event.preventDefault();
+			addressInput.value = resource.name;
+			addressLat.value = resource.geocodePoints[0].coordinates[0];
+			addressLong.value = resource.geocodePoints[0].coordinates[1];
+			addressList.innerHTML = ""
+			addressList.classList.remove("shown");
+		}
+
+		addressInput.addEventListener("keyup", async (event) => {
+			const value = event.target.value;
+
+			await search(value)
+		})
+	</script>
 
 </body>
 

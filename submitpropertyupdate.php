@@ -310,92 +310,72 @@ if (isset($_POST['add'])) {
 											<div class="form-group row">
 												<label class="col-lg-3 col-form-label">Địa chỉ</label>
 												<div class="col-lg-9">
+													<input type="hidden" class="form-control" id="address-long" name="long">
+													<input type="hidden" class="form-control" id="address-lat" name="lat">
 													<input type="text" class="form-control" name="loc" required value="<?php echo $row['14']; ?>">
 												</div>
 											</div>
 
 										</div>
 									</div>
-									<h5 class="text-secondary">Image & Status</h5>
+									<h5 class="text-secondary">Hình ảnh</h5>
 									<hr>
 									<div class="row">
 										<div class="col-xl-6">
 
 											<div class="form-group row">
-												<label class="col-lg-3 col-form-label">Image</label>
+												<label class="col-lg-3 col-form-label">Hình ảnh</label>
 												<div class="col-lg-9">
-													<input class="form-control" name="aimage" type="file" required="">
-													<img src="property/<?php echo $row['18']; ?>" alt="pimage" height="150" width="180">
+													<input class="form-control" name="aimage" type="file">
 												</div>
 											</div>
 											<div class="form-group row">
-												<label class="col-lg-3 col-form-label">Image 2</label>
+												<label class="col-lg-3 col-form-label">Hình ảnh</label>
 												<div class="col-lg-9">
-													<input class="form-control" name="aimage2" type="file" required="">
-													<img src="property/<?php echo $row['20']; ?>" alt="pimage" height="150" width="180">
+													<input class="form-control" name="aimage2" type="file">
 												</div>
 											</div>
 											<div class="form-group row">
-												<label class="col-lg-3 col-form-label">Image 4</label>
+												<label class="col-lg-3 col-form-label">Hình ảnh</label>
 												<div class="col-lg-9">
-													<input class="form-control" name="aimage4" type="file" required="">
-													<img src="property/<?php echo $row['22']; ?>" alt="pimage" height="150" width="180">
+													<input class="form-control" name="aimage4" type="file">
 												</div>
 											</div>
 											<div class="form-group row">
-												<label class="col-lg-3 col-form-label">Status</label>
+												<label class="col-lg-3 col-form-label">Trạng thái</label>
 												<div class="col-lg-9">
 													<select class="form-control" required name="status">
-														<option value="">Select Status</option>
-														<option value="available">Available</option>
-														<option value="sold out">Sold Out</option>
+														<option value="">Chọn</option>
+														<option value="available">Khả dụng</option>
+														<option value="sold out">Đã bán</option>
 													</select>
-												</div>
-											</div>
-											<div class="form-group row">
-												<label class="col-lg-3 col-form-label">Basement Floor Plan Image</label>
-												<div class="col-lg-9">
-													<input class="form-control" name="fimage1" type="file">
-													<img src="property/<?php echo $row['26']; ?>" alt="pimage" height="150" width="180">
 												</div>
 											</div>
 										</div>
 										<div class="col-xl-6">
 
 											<div class="form-group row">
-												<label class="col-lg-3 col-form-label">Image 1</label>
+												<label class="col-lg-3 col-form-label">Hình ảnh</label>
 												<div class="col-lg-9">
-													<input class="form-control" name="aimage1" type="file" required="">
-													<img src="property/<?php echo $row['19']; ?>" alt="pimage" height="150" width="180">
+													<input class="form-control" name="aimage1" type="file">
 												</div>
 											</div>
 											<div class="form-group row">
-												<label class="col-lg-3 col-form-label">image 3</label>
+												<label class="col-lg-3 col-form-label">Hình ảnh</label>
 												<div class="col-lg-9">
-													<input class="form-control" name="aimage3" type="file" required="">
-													<img src="property/<?php echo $row['21']; ?>" alt="pimage" height="150" width="180">
+													<input class="form-control" name="aimage3" type="file">
 												</div>
 											</div>
 
 											<div class="form-group row">
-												<label class="col-lg-3 col-form-label">Floor Plan Image</label>
+												<label class="col-lg-3 col-form-label">Ảnh cắt</label>
 												<div class="col-lg-9">
 													<input class="form-control" name="fimage" type="file">
-													<img src="property/<?php echo $row['25']; ?>" alt="pimage" height="150" width="180">
-												</div>
-											</div>
-											<div class="form-group row">
-												<label class="col-lg-3 col-form-label">Ground Floor Plan Image</label>
-												<div class="col-lg-9">
-													<input class="form-control" name="fimage2" type="file">
-													<img src="property/<?php echo $row['27']; ?>" alt="pimage" height="150" width="180">
 												</div>
 											</div>
 										</div>
 									</div>
-
-
-									<input type="submit" value="Submit" class="btn btn-primary" name="add" style="margin-left:200px;">
+									<input type="submit" value="Đăng bài" class="btn btn-primary" name="add" style="margin-left:142px;">
 
 								</div>
 						</form>
@@ -439,6 +419,59 @@ if (isset($_POST['add'])) {
 	<script src="js/jquery.slider.js"></script>
 	<script src="js/wow.js"></script>
 	<script src="js/custom.js"></script>
+	<script>
+		const addressInput = document.getElementById("address")
+
+		const addressList = document.getElementById("address-list")
+		const addressLong = document.getElementById("address-long")
+		const addressLat = document.getElementById("address-lat")
+
+		const search = _.debounce(async (value) => {
+			const res = await axios.post('http://localhost/testcapstone1/search-map.php', {
+				query: value
+			})
+
+			const resources = _.get(res, 'data.resourceSets.0.resources', []);
+
+			if (!_.isEmpty(resources)) {
+				addressList.classList.add("shown");
+
+				addressList.innerHTML = ""
+
+				const els = _.map(resources, (resource) => {
+					const a = document.createElement("a")
+
+					a.addEventListener("click", () => completeResult(resource));
+
+					a.innerText = resource.name
+
+					a.classList.add('dropdown-item')
+
+					a.href = '#'
+
+					addressList.appendChild(a)
+				});
+
+			} else {
+				addressList.classList.remove("shown");
+			}
+		}, 500)
+
+		const completeResult = (resource) => {
+			event.preventDefault();
+			addressInput.value = resource.name;
+			addressLat.value = resource.geocodePoints[0].coordinates[0];
+			addressLong.value = resource.geocodePoints[0].coordinates[1];
+			addressList.innerHTML = ""
+			addressList.classList.remove("shown");
+		}
+
+		addressInput.addEventListener("keyup", async (event) => {
+			const value = event.target.value;
+
+			await search(value)
+		})
+	</script>
 </body>
 
 </html>

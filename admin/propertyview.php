@@ -14,7 +14,7 @@ if(!isset($_SESSION['auser']))
 <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-        <title>Ventura - Data Tables</title>
+        <title>iHome - Quản lý</title>
 		
 		<!-- Favicon -->
         <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png">
@@ -59,10 +59,10 @@ if(!isset($_SESSION['auser']))
 					<div class="page-header">
 						<div class="row">
 							<div class="col">
-								<h3 class="page-title">Property</h3>
+								<h3 class="page-title">Quản lý căn hộ</h3>
 								<ul class="breadcrumb">
 									<li class="breadcrumb-item"><a href="dashboard.php">Dashboard</a></li>
-									<li class="breadcrumb-item active">Property</li>
+									<li class="breadcrumb-item active">Căn hộ</li>
 								</ul>
 							</div>
 						</div>
@@ -77,7 +77,7 @@ if(!isset($_SESSION['auser']))
                                 <div class="card">
                                     <div class="card-body">
 
-                                        <h4 class="header-title mt-0 mb-4">Property View</h4>
+                                        <h4 class="header-title mt-0 mb-4">Danh sách căn hộ</h4>
 										<?php 
 											if(isset($_GET['msg']))	
 											echo $_GET['msg'];	
@@ -85,29 +85,27 @@ if(!isset($_SESSION['auser']))
                                         <table id="datatable-buttons" class="table table-striped dt-responsive nowrap">
                                             <thead>
                                                 <tr>
-                                                    <th>P ID</th>
-                                                    <th>Title</th>
-                                                    <th>Description</th>
-                                                    <th>Type</th>
-                                                    <th>BHK</th>
-                                                    <th>Selling Type</th>
-													<th>Bedroom</th>
-                                                    <th>Bathroom</th>
-                                                    <th>Balcony</th>
-                                                    <th>Kitchen</th>
-                                                    <th>Hall</th>
-                                                    <th>Floor</th>
-													<th>Area Size</th>
-                                                    <th>Price</th>
-                                                    <th>Location</th>
+                                                    <th>ID</th>
+                                                    <th>Tiêu đề</th>
+                                                    <th>Mô tả</th>
+                                                    <th>Loại nhà ở</th>
+                                                    <th>Hồ bơi</th>
+                                                    <th>Thuê/bán</th>
+													<th>Phòng ngủ</th>
+                                                    <th>Phòng tắm</th>
+                                                    <th>Hướng</th>
+                                                    <th>Phòng bếp</th>
+                                                    <th>Bãi đậu xe</th>
+                                                    <th>Số tầng</th>
+													<th>Diện tích</th>
+                                                    <th>Giá</th>
+                                                    <th>Địa chỉ</th>
                                                     <th>City</th>
-                                                    <th>State</th>
-                                                    <th>Feature</th>
-													<th>Image1</th>
-                                                    <th>Image2</th>
-                                                    <th>Image3</th>
-                                                    <th>Image4</th>
-                                                    <th>Image5</th>
+													<th>Hình 1</th>
+                                                    <th>Hình 2</th>
+                                                    <th>Hình 3</th>
+                                                    <th>Hình 4</th>
+                                                    <th>Hình 5</th>
                                                     <th>Uid</th>
 													<th>Status</th>
                                                     <th>Floor Plan</th>
@@ -147,14 +145,12 @@ if(!isset($_SESSION['auser']))
                                                     <td><?php echo $row['13']; ?></td>
                                                     <td><?php echo $row['14']; ?></td>
 													<td><?php echo $row['15']; ?></td>
-                                                    <td><?php echo $row['16']; ?></td>
-                                                    <td><?php echo $row['17']; ?></td>
                                                     <td><img src="property/<?php echo $row['18']; ?>" alt="pimage" height="70px"width="70px"></td>
                                                     <td><img src="property/<?php echo $row['19']; ?>" alt="pimage" height="70px"width="70px"></td>
 													<td><img src="property/<?php echo $row['20']; ?>" alt="pimage" height="70px"width="70px"></td>
                                                     <td><img src="property/<?php echo $row['21']; ?>" alt="pimage" height="70px"width="70px"></td>
                                                     <td><img src="property/<?php echo $row['22']; ?>" alt="pimage" height="70px"width="70px"></td>
-                                                    <td><?php echo $row['23']; ?></td>
+                                                    <td><?php echo $row['25']; ?></td>
                                                     <td><?php echo $row['24']; ?></td>
 													<td><img src="property/<?php echo $row['25']; ?>" alt="plan" height="70px"width="70px"></td>
                                                     <td><img src="property/<?php echo $row['26']; ?>" alt="plan" height="70px"width="70px"></td>

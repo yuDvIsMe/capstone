@@ -77,12 +77,12 @@ if (!isset($_SESSION['auser'])) {
 									<i class="fe fe-users"></i>
 								</span>
 							</div>
-							<div class="dash-widget-info">
-								<h3><?php
+							<div class="dash-widget-info fact-counter">
+								<h3 class="count wow" data-wow-duration="300ms"><?php
 									$query = mysqli_query($con, "SELECT count(uid) FROM user");
 									while ($row = mysqli_fetch_array($query)) {
 									?>
-										<div data-speed="300" data-stop="<?php
+										<div class="count-num" data-speed="300" data-stop="<?php
 																			$total = $row[0];
 																			echo $total; ?>">0</div>
 									<?php } ?>
@@ -103,13 +103,13 @@ if (!isset($_SESSION['auser'])) {
 									<i class="fe fe-home"></i>
 								</span>
 							</div>
-							<div class="dash-widget-info">
+							<div class="dash-widget-info fact-counter">
 
-								<h3><?php
+								<h3 class="count wow" data-wow-duration="300ms"><?php
 									$query = mysqli_query($con, "SELECT count(pid) FROM property where stype='rent'");
 									while ($row = mysqli_fetch_array($query)) {
 									?>
-										<div data-speed="300" data-stop="<?php
+										<div class="count-num" data-speed="300" data-stop="<?php
 											$total = $row[0];
 											echo $total; ?>">0</div>
 									<?php } ?>
@@ -132,13 +132,13 @@ if (!isset($_SESSION['auser'])) {
 								</span>
 
 							</div>
-							<div class="dash-widget-info">
+							<div class="dash-widget-info fact-counter">
 
-								<h3><?php
+								<h3 class="count wow" data-wow-duration="300ms"><?php
 									$query = mysqli_query($con, "SELECT count(pid) FROM property where stype='sale'");
 									while ($row = mysqli_fetch_array($query)) {
 									?>
-										<div data-speed="300" data-stop="<?php
+										<div class="count-num" data-speed="300" data-stop="<?php
 																			$total = $row[0];
 																			echo $total; ?>">0</div>
 									<?php } ?>
@@ -155,19 +155,19 @@ if (!isset($_SESSION['auser'])) {
 				<div class="col-xl-3 col-sm-6 col-12">
 					<div class="card">
 						<div class="card-body">
-							<div class="dash-widget-header">
+							<div class="dash-widget-header ">
 								<span class="dash-widget-icon bg-warning">
 									<i class="fe fe-check-circle"></i>
 								</span>
 
 							</div>
-							<div class="dash-widget-info">
+							<div class="dash-widget-info fact-counter">
 
-								<h3><?php
+								<h3 class="count wow" data-wow-duration="300ms"><?php
 									$query = mysqli_query($con, "SELECT count(pid) FROM property");
 									while ($row = mysqli_fetch_array($query)) {
 									?>
-										<div data-speed="300" data-stop="
+										<div class="count-num" data-speed="300" data-stop="
 										<?php
 										$total = $row[0];
 										echo $total; ?>">0</div>
@@ -234,9 +234,13 @@ if (!isset($_SESSION['auser'])) {
 	<script src="assets/plugins/raphael/raphael.min.js"></script>
 	<script src="assets/plugins/morris/morris.min.js"></script>
 	<script src="assets/js/chart.morris.js"></script>
+	<script src="../js/wow.js"></script> 
+
 
 	<!-- Custom JS -->
 	<script src="assets/js/script.js"></script>
+	<script src="assets/js/custom.js"></script>
+
 
 </body>
 

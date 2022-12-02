@@ -110,10 +110,10 @@ if(isset($_REQUEST['login']))
 								<!-- Form -->
 								<form method="post">
 									<div class="form-group">
-										<input type="email"  name="email" class="form-control" placeholder="Email">
+										<input type="email"  name="email" class="form-control" required placeholder="Email">
 									</div>
 									<div class="form-group">
-										<input type="password" name="pass"  class="form-control" placeholder="Mật khẩu">
+										<input type="password" name="pass"  class="form-control" required placeholder="Mật khẩu">
 									</div>
 									<p class="account-forgotpass"><a href="#" style="color: #000">Quên mật khẩu?</a></p>
 									<button class="btn btn-primary" name="login" value="Login" type="submit">Đăng nhập</button>

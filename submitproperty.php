@@ -335,6 +335,12 @@ if (isset($_POST['add'])) {
 											</div>
 										</div>
 										<div class="form-group row">
+											<label class="col-lg-3 col-form-label">Basement Floor Plan Image</label>
+											<div class="col-lg-9">
+												<input class="form-control" name="fimage1" type="file">
+											</div>
+										</div>
+										<div class="form-group row">
 											<label class="col-lg-3 col-form-label">Trạng thái</label>
 											<div class="col-lg-9">
 												<select class="form-control" required name="status">
@@ -364,6 +370,12 @@ if (isset($_POST['add'])) {
 											<label class="col-lg-3 col-form-label">Ảnh cắt</label>
 											<div class="col-lg-9">
 												<input class="form-control" name="fimage" type="file">
+											</div>
+										</div>
+										<div class="form-group row">
+											<label class="col-lg-3 col-form-label">Ground Floor Plan Image</label>
+											<div class="col-lg-9">
+												<input class="form-control" name="fimage2" type="file">
 											</div>
 										</div>
 									</div>
