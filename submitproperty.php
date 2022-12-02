@@ -43,8 +43,6 @@ if (isset($_POST['add'])) {
 	$aimage4 = $_FILES['aimage4']['name'];
 
 	$fimage = $_FILES['fimage']['name'];
-	$fimage1 = $_FILES['fimage1']['name'];
-	$fimage2 = $_FILES['fimage2']['name'];
 
 	$temp_name  = $_FILES['aimage']['tmp_name'];
 	$temp_name1 = $_FILES['aimage1']['tmp_name'];
@@ -53,8 +51,6 @@ if (isset($_POST['add'])) {
 	$temp_name4 = $_FILES['aimage4']['tmp_name'];
 
 	$temp_name5 = $_FILES['fimage']['tmp_name'];
-	$temp_name6 = $_FILES['fimage1']['tmp_name'];
-	$temp_name7 = $_FILES['fimage2']['tmp_name'];
 
 	move_uploaded_file($temp_name, "admin/property/$aimage");
 	move_uploaded_file($temp_name1, "admin/property/$aimage1");
@@ -63,14 +59,11 @@ if (isset($_POST['add'])) {
 	move_uploaded_file($temp_name4, "admin/property/$aimage4");
 
 	move_uploaded_file($temp_name5, "admin/property/$fimage");
-	move_uploaded_file($temp_name6, "admin/property/$fimage1");
-	move_uploaded_file($temp_name7, "admin/property/$fimage2");
 
-	var_dump([$lat, $long]);
 
-	$sql = "insert into property (title,pcontent,type,pool,stype,bedroom,bathroom,direction,kitchen,parkinglot,floor,size,price,location,city,pimage,pimage1,pimage2,pimage3,pimage4,uid,status,mapimage,topmapimage,groundmapimage,security,lat,`long`) 
+	$sql = "insert into property (title,pcontent,type,pool,stype,bedroom,bathroom,direction,kitchen,parkinglot,floor,size,price,location,city,pimage,pimage1,pimage2,pimage3,pimage4,uid,status,mapimage,security,lat,`long`) 
 	values('$title','$content','$ptype','$pool','$stype','$bed','$bath','$direction','$kitc','$parkinglot','$floor','$asize','$price',
-	'$loc','$city','$aimage','$aimage1','$aimage2','$aimage3','$aimage4','$uid','$status','$fimage','$fimage1','$fimage2','$security','$lat','$long')";
+	'$loc','$city','$aimage','$aimage1','$aimage2','$aimage3','$aimage4','$uid','$status','$fimage','$security','$lat','$long')";
 	$result = mysqli_query($con, $sql);
 	if ($result) {
 		$msg = "<p class='alert alert-success'>Thành công</p>";
@@ -197,8 +190,8 @@ if (isset($_POST['add'])) {
 											<div class="col-lg-9">
 												<select class="form-control" required name="stype">
 													<option value="">Chọn</option>
-													<option value="rent">Thuê</option>
-													<option value="sale">Bán</option>
+													<option value="Thuê">Thuê</option>
+													<option value="Bán">Bán</option>
 												</select>
 											</div>
 										</div>
@@ -335,12 +328,6 @@ if (isset($_POST['add'])) {
 											</div>
 										</div>
 										<div class="form-group row">
-											<label class="col-lg-3 col-form-label">Basement Floor Plan Image</label>
-											<div class="col-lg-9">
-												<input class="form-control" name="fimage1" type="file">
-											</div>
-										</div>
-										<div class="form-group row">
 											<label class="col-lg-3 col-form-label">Trạng thái</label>
 											<div class="col-lg-9">
 												<select class="form-control" required name="status">
@@ -370,12 +357,6 @@ if (isset($_POST['add'])) {
 											<label class="col-lg-3 col-form-label">Ảnh cắt</label>
 											<div class="col-lg-9">
 												<input class="form-control" name="fimage" type="file">
-											</div>
-										</div>
-										<div class="form-group row">
-											<label class="col-lg-3 col-form-label">Ground Floor Plan Image</label>
-											<div class="col-lg-9">
-												<input class="form-control" name="fimage2" type="file">
 											</div>
 										</div>
 									</div>

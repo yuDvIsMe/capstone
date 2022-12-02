@@ -43,8 +43,6 @@ if (isset($_POST['add'])) {
 	$aimage4 = $_FILES['aimage4']['name'];
 
 	$fimage = $_FILES['fimage']['name'];
-	$fimage1 = $_FILES['fimage1']['name'];
-	$fimage2 = $_FILES['fimage2']['name'];
 
 	$temp_name  = $_FILES['aimage']['tmp_name'];
 	$temp_name1 = $_FILES['aimage1']['tmp_name'];
@@ -53,8 +51,6 @@ if (isset($_POST['add'])) {
 	$temp_name4 = $_FILES['aimage4']['tmp_name'];
 
 	$temp_name5 = $_FILES['fimage']['tmp_name'];
-	$temp_name6 = $_FILES['fimage1']['tmp_name'];
-	$temp_name7 = $_FILES['fimage2']['tmp_name'];
 
 	move_uploaded_file($temp_name, "admin/property/$aimage");
 	move_uploaded_file($temp_name1, "admin/property/$aimage1");
@@ -63,15 +59,13 @@ if (isset($_POST['add'])) {
 	move_uploaded_file($temp_name4, "admin/property/$aimage4");
 
 	move_uploaded_file($temp_name5, "admin/property/$fimage");
-	move_uploaded_file($temp_name6, "admin/property/$fimage1");
-	move_uploaded_file($temp_name7, "admin/property/$fimage2");
 
 
 	$sql = "UPDATE property SET title= '{$title}', pcontent= '{$content}', type='{$ptype}', pool='{$pool}', stype='{$stype}',
 	bedroom='{$bed}', bathroom='{$bath}', direction='{$direction}', kitchen='{$kitc}', parkinglot='{$parkinglot}', floor='{$floor}', 
 	size='{$asize}', price='{$price}', location='{$loc}', city='{$city}',
 	pimage='{$aimage}', pimage1='{$aimage1}', pimage2='{$aimage2}', pimage3='{$aimage3}', pimage4='{$aimage4}',
-	uid='{$uid}', status='{$status}', mapimage='{$fimage}', topmapimage='{$fimage1}', groundmapimage='{$fimage2}', 
+	uid='{$uid}', status='{$status}', mapimage='{$fimage}', 
 	security='{$security}', lat = '{$lat}', long = '{$long}' WHERE pid = {$pid}";
 
 	$result = mysqli_query($con, $sql);
@@ -207,8 +201,8 @@ if (isset($_POST['add'])) {
 												<div class="col-lg-9">
 													<select class="form-control" required name="stype">
 														<option value="">Chọn</option>
-														<option value="rent">Thuê</option>
-														<option value="sale">Bán</option>
+														<option value="Thuê">Thuê</option>
+														<option value="Bán">Bán</option>
 													</select>
 												</div>
 											</div>

@@ -17,7 +17,7 @@ if(!isset($_SESSION['auser']))
         <title>iHome - Quản lý</title>
 		
 		<!-- Favicon -->
-        <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png">
+        <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
 		
 		<!-- Bootstrap CSS -->
         <link rel="stylesheet" href="assets/css/bootstrap.min.css">
@@ -87,7 +87,6 @@ if(!isset($_SESSION['auser']))
                                                 <tr>
                                                     <th>ID</th>
                                                     <th>Tiêu đề</th>
-                                                    <th>Mô tả</th>
                                                     <th>Loại nhà ở</th>
                                                     <th>Hồ bơi</th>
                                                     <th>Thuê/bán</th>
@@ -106,15 +105,13 @@ if(!isset($_SESSION['auser']))
                                                     <th>Hình 3</th>
                                                     <th>Hình 4</th>
                                                     <th>Hình 5</th>
-                                                    <th>Uid</th>
-													<th>Status</th>
+                                                    <th>UserID </th>
+													<th>Trạng thái</th>
                                                     <th>Floor Plan</th>
-                                                    <th>Basement Plan</th>
-													<th>Ground Floor Plan</th>
-                                                    <th>Total Floor</th>
-                                                    <th>Date</th>
-                                                    <th>Edit</th>
-                                                    <th>Delete</th>
+                                                    <th>An ninh</th>
+                                                    <th>Ngày đăng</th>
+                                                    <th>Chỉnh sửa</th>
+                                                    <th>Xóa</th>
                                                     
                                                 </tr>
                                             </thead>
@@ -131,7 +128,6 @@ if(!isset($_SESSION['auser']))
                                                 <tr>
                                                     <td><?php echo $row['0']; ?></td>
                                                     <td><?php echo $row['1']; ?></td>
-                                                    <td><?php echo "property description"; ?></td>
                                                     <td><?php echo $row['3']; ?></td>
                                                     <td><?php echo $row['4']; ?></td>
                                                     <td><?php echo $row['5']; ?></td>
@@ -153,12 +149,10 @@ if(!isset($_SESSION['auser']))
                                                     <td><?php echo $row['25']; ?></td>
                                                     <td><?php echo $row['24']; ?></td>
 													<td><img src="property/<?php echo $row['25']; ?>" alt="plan" height="70px"width="70px"></td>
-                                                    <td><img src="property/<?php echo $row['26']; ?>" alt="plan" height="70px"width="70px"></td>
-													<td><img src="property/<?php echo $row['27']; ?>" alt="plan" height="70px"width="70px"></td>
+                                                    <td><?php echo $row['27']; ?></td>
                                                     <td><?php echo $row['28']; ?></td>
-                                                    <td><?php echo $row['29']; ?></td>
-													<td><a href="propertyedit.php?id=<?php echo $row['0'];?>">Edit</a></td>
-                                                    <td><a href="propertydelete.php?id=<?php echo $row['0'];?>">Delete</a></td>
+													<td><a href="propertyedit.php?id=<?php echo $row['0'];?>">Sửa</a></td>
+                                                    <td><a href="propertydelete.php?id=<?php echo $row['0'];?>">Xóa</a></td>
                                                 </tr>
                                                <?php
 												} 

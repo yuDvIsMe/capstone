@@ -45,8 +45,6 @@ if(isset($_POST['add']))
 	$aimage4=$_FILES['aimage4']['name'];
 	
 	$fimage=$_FILES['fimage']['name'];
-	$fimage1=$_FILES['fimage1']['name'];
-	$fimage2=$_FILES['fimage2']['name'];
 	
 	$temp_name  =$_FILES['aimage']['tmp_name'];
 	$temp_name1 =$_FILES['aimage1']['tmp_name'];
@@ -55,8 +53,6 @@ if(isset($_POST['add']))
 	$temp_name4 =$_FILES['aimage4']['tmp_name'];
 	
 	$temp_name5 =$_FILES['fimage']['tmp_name'];
-	$temp_name6 =$_FILES['fimage1']['tmp_name'];
-	$temp_name7 =$_FILES['fimage2']['tmp_name'];
 	
 	move_uploaded_file($temp_name,"property/$aimage");
 	move_uploaded_file($temp_name1,"property/$aimage1");
@@ -65,16 +61,13 @@ if(isset($_POST['add']))
 	move_uploaded_file($temp_name4,"property/$aimage4");
 	
 	move_uploaded_file($temp_name5,"property/$fimage");
-	move_uploaded_file($temp_name6,"property/$fimage1");
-	move_uploaded_file($temp_name7,"property/$fimage2");
 	
 	
 	$sql = "UPDATE property SET title= '{$title}', pcontent= '{$content}', type='{$ptype}', bhk='{$bhk}', stype='{$stype}',
 	bedroom='{$bed}', bathroom='{$bath}', balcony='{$balc}', kitchen='{$kitc}', hall='{$hall}', floor='{$floor}', 
 	size='{$asize}', price='{$price}', location='{$loc}', city='{$city}', state='{$state}', feature='{$feature}',
 	pimage='{$aimage}', pimage1='{$aimage1}', pimage2='{$aimage2}', pimage3='{$aimage3}', pimage4='{$aimage4}',
-	uid='{$uid}', status='{$status}', mapimage='{$fimage}', topmapimage='{$fimage1}', groundmapimage='{$fimage2}', 
-	totalfloor='{$totalfloor}' WHERE pid = {$pid}";
+	uid='{$uid}', status='{$status}', mapimage='{$fimage}', totalfloor='{$totalfloor}' WHERE pid = {$pid}";
 	
 	$result=mysqli_query($con,$sql);
 	if($result == true)
@@ -196,8 +189,8 @@ if(isset($_POST['add']))
 													<div class="col-lg-9">
 														<select class="form-control" required name="stype">
 															<option value="">Select Status</option>
-															<option value="rent">Rent</option>
-															<option value="sale">Sale</option>
+															<option value="Thuê">Thuê</option>
+															<option value="Bán">Bán</option>
 														</select>
 													</div>
 												</div>
@@ -376,13 +369,6 @@ if(isset($_POST['add']))
 														</select>
 													</div>
 												</div>
-												<div class="form-group row">
-													<label class="col-lg-3 col-form-label">Basement Floor Plan Image</label>
-													<div class="col-lg-9">
-														<input class="form-control" name="fimage1" type="file">
-														<img src="property/<?php echo $row['26'];?>" alt="pimage" height="150" width="180">
-													</div>
-												</div>
 											</div>
 											<div class="col-xl-6">
 												
@@ -411,13 +397,6 @@ if(isset($_POST['add']))
 													<div class="col-lg-9">
 														<input class="form-control" name="fimage" type="file">
 														<img src="property/<?php echo $row['25'];?>" alt="pimage" height="150" width="180">
-													</div>
-												</div>
-												<div class="form-group row">
-													<label class="col-lg-3 col-form-label">Ground Floor Plan Image</label>
-													<div class="col-lg-9">
-														<input class="form-control" name="fimage2" type="file">
-														<img src="property/<?php echo $row['27'];?>" alt="pimage" height="150" width="180">
 													</div>
 												</div>
 											</div>

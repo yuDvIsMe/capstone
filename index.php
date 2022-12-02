@@ -74,14 +74,14 @@ include("config.php");
                                             <div class="form-group">
                                                 <select class="form-control" name="stype">
                                                     <option value="">Thuê/Mua</option>
-                                                    <option value="rent">Thuê</option>
-                                                    <option value="buy">Mua</option>
+                                                    <option value="Thuê">Thuê</option>
+                                                    <option value="Bán">Mua</option>
                                                 </select>
                                             </div>
                                         </div>
                                         <div class="col-md-8 col-lg-6">
                                             <div class="form-group">
-                                                <input type="text" class="form-control" name="city" placeholder="Nhập tên thành phố" required>
+                                                <input type="text" class="form-control" name="city" placeholder="Nhập tên thành phố">
                                             </div>
                                         </div>
                                         <div class="col-md-4 col-lg-2">
