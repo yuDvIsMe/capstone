@@ -147,7 +147,7 @@ include("config.php");
 												<p class="text-white"><i class="fas fa-quote-left mr-2 text-white"></i><?php echo $row['2']; ?>. <i class="fas fa-quote-right mr-2 text-white"></i></p>
 											</div>
 											<div class="p-2 mt-4">
-												<span class="text-primary d-table text-capitalize"><?php echo $row['uname']; ?></span> <span class="text-capitalize"><?php echo $row['utype']; ?></span>
+												<span class="text-primary d-table text-capitalize"><?php echo $row['uname']; ?></span>
 											</div>
 										</div>
 										<?php }  ?>

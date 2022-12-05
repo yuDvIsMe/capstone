@@ -99,7 +99,7 @@ if(!isset($_SESSION['auser']))
 													<th>Diện tích</th>
                                                     <th>Giá</th>
                                                     <th>Địa chỉ</th>
-                                                    <th>City</th>
+                                                    <th>Thành phố</th>
 													<th>Hình 1</th>
                                                     <th>Hình 2</th>
                                                     <th>Hình 3</th>
@@ -140,17 +140,17 @@ if(!isset($_SESSION['auser']))
                                                     <td><?php echo $row['12']; ?></td>
                                                     <td><?php echo $row['13']; ?></td>
                                                     <td><?php echo $row['14']; ?></td>
-													<td><?php echo $row['15']; ?></td>
+													<td><?php echo $row['16']; ?></td>
                                                     <td><img src="property/<?php echo $row['18']; ?>" alt="pimage" height="70px"width="70px"></td>
                                                     <td><img src="property/<?php echo $row['19']; ?>" alt="pimage" height="70px"width="70px"></td>
 													<td><img src="property/<?php echo $row['20']; ?>" alt="pimage" height="70px"width="70px"></td>
                                                     <td><img src="property/<?php echo $row['21']; ?>" alt="pimage" height="70px"width="70px"></td>
                                                     <td><img src="property/<?php echo $row['22']; ?>" alt="pimage" height="70px"width="70px"></td>
-                                                    <td><?php echo $row['25']; ?></td>
-                                                    <td><?php echo $row['24']; ?></td>
+                                                    <td><?php echo $row['22']; ?></td>
+                                                    <td><?php echo $row['23']; ?></td>
 													<td><img src="property/<?php echo $row['25']; ?>" alt="plan" height="70px"width="70px"></td>
-                                                    <td><?php echo $row['27']; ?></td>
-                                                    <td><?php echo $row['28']; ?></td>
+                                                    <td><?php echo $row['25']; ?></td>
+                                                    <td><?php echo $row['26']; ?></td>
 													<td><a href="propertyedit.php?id=<?php echo $row['0'];?>">Sửa</a></td>
                                                     <td><a href="propertydelete.php?id=<?php echo $row['0'];?>">Xóa</a></td>
                                                 </tr>

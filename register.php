@@ -7,6 +7,7 @@ if (isset($_REQUEST['reg'])) {
 	$email = $_REQUEST['email'];
 	$phone = $_REQUEST['phone'];
 	$pass = $_REQUEST['pass'];
+	$repass = $_REQUEST['repass'];
 
 	$uimage = $_FILES['uimage']['name'];
 	$temp_name1 = $_FILES['uimage']['tmp_name'];
@@ -24,12 +25,12 @@ if (isset($_REQUEST['reg'])) {
 
 		if (strlen($password) < 8 || !$number || !$uppercase || !$lowercase || !$specialChars) {
 			$msg = "<p class='alert alert-warning'>Mật khẩu phải có độ dài ít nhất 8 kí tự bao gồm số, chữ hoa, chữ thường và kí tự đặc biệt!";
-		}else {
+		} else {
 			if ($num == 1) {
 				$error = "<p class='alert alert-warning'>Email đã tồn tại</p> ";
 			} else {
-				if (!empty($name) && !empty($email) && !empty($phone) && !empty($pass) && !empty($uimage)) {
-	
+				if ($pass == $repass) {
+
 					$sql = "INSERT INTO user (uname,uemail,uphone,upass,uimage) VALUES ('$name','$email','$phone','$pass','$uimage')";
 					$result = mysqli_query($con, $sql);
 					// move_uploaded_file($temp_name1,"admin/user/$uimage");
@@ -39,11 +40,11 @@ if (isset($_REQUEST['reg'])) {
 						$error = "<p class='alert alert-warning'>Đăng ký thất bại</p> ";
 					}
 				} else {
-					$error = "<p class='alert alert-warning'>Vui lòng điền đẩy đủ thông tin</p>";
+					$error = "<p class='alert alert-warning'>Mật khẩu không trùng khớp</p>";
 				}
 			}
 		}
-	} 
+	}
 }
 ?>
 <!DOCTYPE html>
@@ -139,10 +140,12 @@ if (isset($_REQUEST['reg'])) {
 										<div class="form-group">
 											<input type="password" name="pass" class="form-control" required placeholder="Mật khẩu*">
 										</div>
-
+										<div class="form-group">
+											<input type="password" name="repass" class="form-control" required placeholder="Nhập lại mật khẩu*">
+										</div>
 										<div class="form-group">
 											<label class="col-form-label"><b>Ảnh đại diện</b></label>
-											<input class="form-control" name="uimage" required type="file" >
+											<input class="form-control" name="uimage" required type="file">
 										</div>
 
 										<button class="btn btn-primary" name="reg" value="Register" type="submit">Đăng ký</button>

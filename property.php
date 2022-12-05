@@ -83,7 +83,7 @@ include("config.php");
                         <div class="row">
 						
 							<?php 
-							$query=mysqli_query($con,"SELECT property.*, user.uname,user.utype,user.uimage FROM `property`,`user` WHERE property.uid=user.uid");
+							$query=mysqli_query($con,"SELECT property.*, user.uname,user.uimage FROM `property`,`user` WHERE property.uid=user.uid");
 								while($row=mysqli_fetch_array($query))
 								{
 							?>
