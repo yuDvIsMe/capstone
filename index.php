@@ -55,10 +55,15 @@ include("config.php");
                     <div class="row h-100 align-items-center">
                         <div class="col-lg-12">
                             <div class="text-white">
-                                <h1 class="mb-4"><span class="text-primary">Tìm kiếm</span><br></h1>
-                                <form method="post" action="propertygrid.php">
+                                <h1 class="mb-4" style="text-align: center;"><span class="text-primary">Tìm kiếm</span><br></h1>
+                                <form class="search-form" method="post" action="propertygrid.php">
                                     <div class="row">
-                                        <div class="col-md-6 col-lg-2">
+                                        <div class="col-md-6 col-lg-10">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" name="city" placeholder="Nhập tên thành phố">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-lg-5">
                                             <div class="form-group">
                                                 <select class="form-control" name="type">
                                                     <option value="">Loại</option>
@@ -70,7 +75,7 @@ include("config.php");
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class="col-md-6 col-lg-2">
+                                        <div class="col-md-6 col-lg-5">
                                             <div class="form-group">
                                                 <select class="form-control" name="stype">
                                                     <option value="">Thuê/Mua</option>
@@ -79,19 +84,7 @@ include("config.php");
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class="col-md-8 col-lg-6">
-                                            <div class="form-group">
-                                                <input type="text" class="form-control" name="city" placeholder="Nhập tên thành phố">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4 col-lg-2">
-                                            <div class="form-group">
-                                                <button type="submit" name="filter" class="btn btn-primary w-100">Tìm kiếm</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-6 col-lg-2">
+                                        <div class="col-md-6 col-lg-5">
                                             <div class="form-group">
                                                 <select class="form-control" name="area">
                                                     <option value="">Diện tích</option>
@@ -105,18 +98,21 @@ include("config.php");
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class="col-md-6 col-lg-2">
+                                        <div class="col-md-6 col-lg-5">
                                             <div class="form-group">
                                                 <select class="form-control" name="price">
                                                     <option value="">Giá</option>
-                                                    <option value="">
-                                                        < 30 m<sup>2
-                                                    </option>
-                                                    <option value="">30-60 m<sup>2</option>
-                                                    <option value="">60-90 m<sup>2</option>
-                                                    <option value="">90-120 m<sup>2</option>
-                                                    <option value="">>120 m<sup>2</option>
+                                                    <option value="">Dưới 500.000.000</option>
+                                                    <option value="">500.000.000 - 999.999.999</option>
+                                                    <option value="">1.000.000.000 - 1.499.000.000</option>
+                                                    <option value="">1.500.000.000 - 1.999.000.000</option>
+                                                    <option value="">Trên 2.000.000.000</option>
                                                 </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 col-lg-10">
+                                            <div class="form-group">
+                                                <button type="submit" name="filter" class="btn btn-primary w-100">Tìm kiếm</button>
                                             </div>
                                         </div>
                                     </div>
@@ -175,9 +171,6 @@ include("config.php");
 
                                     </div>
                                 </div>
-
-
-
                             </div>
                         </div>
                     </div>
@@ -290,7 +283,7 @@ include("config.php");
             </div>
 
             <!--	Popular Place -->
-            <div class="full-row bg-gray">
+            <div class="full-row bg-gray" style="padding: 50px 0 0 0 ">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-12">

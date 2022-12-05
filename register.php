@@ -33,9 +33,10 @@ if (isset($_REQUEST['reg'])) {
 
 					$sql = "INSERT INTO user (uname,uemail,uphone,upass,uimage) VALUES ('$name','$email','$phone','$pass','$uimage')";
 					$result = mysqli_query($con, $sql);
-					// move_uploaded_file($temp_name1,"admin/user/$uimage");
+					move_uploaded_file($temp_name1,"admin/user/$uimage");
 					if ($result) {
 						$msg = "<p class='alert alert-success'>Đăng ký thành công</p> ";
+						header("location:login.php");
 					} else {
 						$error = "<p class='alert alert-warning'>Đăng ký thất bại</p> ";
 					}
@@ -147,12 +148,8 @@ if (isset($_REQUEST['reg'])) {
 											<label class="col-form-label"><b>Ảnh đại diện</b></label>
 											<input class="form-control" name="uimage" required type="file">
 										</div>
-
 										<button class="btn btn-primary" name="reg" value="Register" type="submit">Đăng ký</button>
-
 									</form>
-
-
 
 									<div class="text-center dont-have">Bạn đã có tài khoản? <a href="login.php">Đăng nhập</a></div>
 

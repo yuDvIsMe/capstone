@@ -114,7 +114,7 @@ if(isset($_POST['insert']))
 					</div>
                 <div class="dashboard-personal-info p-5 bg-white">
                     <form action="#" method="post">
-                        <h5 class="text-secondary border-bottom-on-white pb-3 mb-4">Gửi feedback</h5>
+                        <h5 class="text-secondary border-bottom-on-white pb-3 mb-4">Hãy để lại feedback của bạn</h5>
 						<?php echo $msg; ?><?php echo $error; ?>
                         <div class="row">
                             <div class="col-lg-6 col-md-12">
@@ -143,9 +143,8 @@ if(isset($_POST['insert']))
 									while($row=mysqli_fetch_array($query))
 									{
 								?>
-                                <div class="user-info mt-md-50"> <img src="admin/user/<?php echo $row['6'];?>" alt="userimage">
+                                <div class="user-info mt-md-50"> <img src="admin/user/<?php echo $row['5'];?>" alt="userimage">
                                     <div class="mb-4 mt-3">
-                                        
                                     </div>
 									
                                     <div class="font-18">

@@ -3141,3 +3141,9 @@ form.subscribe {
 #address-list.shown {
 	display: block;
 }
+
+.search-form{
+	display: flex;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+}
