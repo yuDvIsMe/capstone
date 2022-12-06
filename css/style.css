@@ -3147,3 +3147,24 @@ form.subscribe {
     justify-content: space-between;
     flex-direction: row-reverse;
 }
+
+.showpsw span{
+	position: absolute;
+	right: 620px;
+	top: 50%;
+	transform: translateY(-210%);
+	font-size: 20px;
+	color: #17c788;
+	cursor: pointer;
+	display: none;
+}
+
+.showpsw input:valid ~ span{
+	display: block;
+  }
+
+.showpsw span i.hide-btn::before{
+	content: "\f070";
+}
+
+
