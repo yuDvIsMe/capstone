@@ -318,6 +318,7 @@ if (isset($_POST['add'])) {
 												<select class="form-control" required name="status">
 													<option value="">Chọn</option>
 													<option value="Khả dụng">Khả dụng</option>
+													<option value="Đang giao dịch">Đang giao dịch</option>
 													<option value="Đã bán">Đã bán</option>
 												</select>
 											</div>

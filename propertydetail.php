@@ -94,20 +94,14 @@ include("config.php");
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div id="single-property" style="width:1200px; height:700px; margin:30px auto 50px;">
-                                            <!-- Slide 1-->
-                                            <div class="ls-slide" data-ls="duration:7500; transition2d:5; kenburnszoom:in; kenburnsscale:1.2;"> <img width="1920" height="1080" src="admin/property/<?php echo $row['18']; ?>" class="ls-bg" alt="" /> </div>
-
-                                            <!-- Slide 2-->
-                                            <div class="ls-slide" data-ls="duration:7500; transition2d:5; kenburnszoom:in; kenburnsscale:1.2;"> <img width="1920" height="1080" src="admin/property/<?php echo $row['19']; ?>" class="ls-bg" alt="" /> </div>
-
-                                            <!-- Slide 3-->
-                                            <div class="ls-slide" data-ls="duration:7500; transition2d:5; kenburnszoom:in; kenburnsscale:1.2;"> <img width="1920" height="1080" src="admin/property/<?php echo $row['20']; ?>" class="ls-bg" alt="" /> </div>
-
-                                            <!-- Slide 4-->
-                                            <div class="ls-slide" data-ls="duration:7500; transition2d:5; kenburnszoom:in; kenburnsscale:1.2;"> <img width="1920" height="1080" src="admin/property/<?php echo $row['21']; ?>" class="ls-bg" alt="" /> </div>
-
-                                            <!-- Slide 5-->
-                                            <div class="ls-slide" data-ls="duration:7500; transition2d:5; kenburnszoom:in; kenburnsscale:1.2;"> <img width="1920" height="1080" src="admin/property/<?php echo $row['22']; ?>" class="ls-bg" alt="" /> </div>
+                                            <?php
+                                            for ($i = 17; $i <= 21; $i++) {
+                                                if (!empty($row[$i])) {
+                                            ?><div class="ls-slide" data-ls="duration:7500; transition2d:5; kenburnszoom:in; kenburnsscale:1.2;"> <img width="1920" height="1080" src="admin/property/<?php echo $row[$i]; ?>" class="ls-bg" alt="" /> </div>
+                                            <?php
+                                                }
+                                            }
+                                            ?>
                                         </div>
                                     </div>
                                 </div>
@@ -119,7 +113,6 @@ include("config.php");
                                     </div>
                                     <div class="col-md-6">
                                         <div class="text-primary text-left h5 my-2 text-md-right"><?php echo $row['13']; ?> VNĐ</div>
-                                        <div class="text-left text-md-right">Price</div>
                                     </div>
                                 </div>
                                 <div class="property-details">
@@ -248,98 +241,98 @@ include("config.php");
                                     </div>
                                 </div>
                             </div>
-                            <?php } ?>
-                            <div class="col-lg-4">
-                                <div class="sidebar-widget mt-5">
-                                    <h4 class="double-down-line-left text-secondary position-relative pb-4 mb-4">Đã thêm gần đây</h4>
-                                    <ul class="property_list_widget">
+                        <?php } ?>
+                        <div class="col-lg-4">
+                            <div class="sidebar-widget mt-5">
+                                <h4 class="double-down-line-left text-secondary position-relative pb-4 mb-4">Đã thêm gần đây</h4>
+                                <ul class="property_list_widget">
 
-                                        <?php
-                                        $query = mysqli_query($con, "SELECT * FROM `property` ORDER BY date DESC LIMIT 6");
-                                        while ($row = mysqli_fetch_array($query)) {
-                                        ?>
-                                            <li> <img src="admin/property/<?php echo $row['18']; ?>" alt="pimage">
-                                                <h6 class="text-secondary hover-text-primary text-capitalize"><a href="propertydetail.php?pid=<?php echo $row['0']; ?>"><?php echo $row['1']; ?></a></h6>
-                                                <span class="font-14"><i class="fas fa-map-marker-alt icon-primary icon-small"></i> <?php echo $row['14']; ?></span>
+                                    <?php
+                                    $query = mysqli_query($con, "SELECT * FROM `property` ORDER BY date DESC LIMIT 6");
+                                    while ($row = mysqli_fetch_array($query)) {
+                                    ?>
+                                        <li> <img src="admin/property/<?php echo $row['17']; ?>" alt="pimage">
+                                            <h6 class="text-secondary hover-text-primary text-capitalize"><a href="propertydetail.php?pid=<?php echo $row['0']; ?>"><?php echo $row['1']; ?></a></h6>
+                                            <span class="font-14"><i class="fas fa-map-marker-alt icon-primary icon-small"></i> <?php echo $row['14']; ?></span>
 
-                                            </li>
-                                        <?php } ?>
+                                        </li>
+                                    <?php } ?>
 
-                                    </ul>
-                                </div>
+                                </ul>
                             </div>
                         </div>
                     </div>
                 </div>
-
-                <!--	Footer   start-->
-                <?php include("include/footer.php"); ?>
-                <!--	Footer   start-->
-
-
-                <!-- Scroll to top -->
-                <a href="#" class="bg-secondary text-white hover-text-secondary" id="scroll"><i class="fas fa-angle-up"></i></a>
-                <!-- End Scroll To top -->
             </div>
 
+            <!--	Footer   start-->
+            <?php include("include/footer.php"); ?>
+            <!--	Footer   start-->
+
+
+            <!-- Scroll to top -->
+            <a href="#" class="bg-secondary text-white hover-text-secondary" id="scroll"><i class="fas fa-angle-up"></i></a>
+            <!-- End Scroll To top -->
         </div>
-        <!-- Wrapper End -->
 
-        <!--	Js Link
+    </div>
+    <!-- Wrapper End -->
+
+    <!--	Js Link
 ============================================================-->
-        <script src="js/jquery.min.js"></script>
-        <!--jQuery Layer Slider -->
-        <script src="js/greensock.js"></script>
-        <script src="js/layerslider.transitions.js"></script>
-        <script src="js/layerslider.kreaturamedia.jquery.js"></script>
-        <!--jQuery Layer Slider -->
-        <script src="js/popper.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-        <script src="js/owl.carousel.min.js"></script>
-        <script src="js/tmpl.js"></script>
-        <script src="js/jquery.dependClass-0.1.js"></script>
-        <script src="js/draggable-0.1.js"></script>
-        <script src="js/jquery.slider.js"></script>
-        <script src="js/wow.js"></script>
-        <script src="js/custom.js"></script>
-        <script>
-            var map, infobox, currentPushpin;
+    <script src="js/jquery.min.js"></script>
+    <!--jQuery Layer Slider -->
+    <script src="js/greensock.js"></script>
+    <script src="js/layerslider.transitions.js"></script>
+    <script src="js/layerslider.kreaturamedia.jquery.js"></script>
+    <!--jQuery Layer Slider -->
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/tmpl.js"></script>
+    <script src="js/jquery.dependClass-0.1.js"></script>
+    <script src="js/draggable-0.1.js"></script>
+    <script src="js/jquery.slider.js"></script>
+    <script src="js/wow.js"></script>
+    <script src="js/custom.js"></script>
+    <script>
+        var map, infobox, currentPushpin;
 
-            function GetMap() {
-                map = new Microsoft.Maps.Map('#myMap', {});
+        function GetMap() {
+            map = new Microsoft.Maps.Map('#myMap', {});
 
-                var layer = new Microsoft.Maps.Layer();
+            var layer = new Microsoft.Maps.Layer();
 
-                const long = document.getElementById("myMap").getAttribute("long")
-                const lat = document.getElementById("myMap").getAttribute("lat")
+            const long = document.getElementById("myMap").getAttribute("long")
+            const lat = document.getElementById("myMap").getAttribute("lat")
 
-                var pinLocation = new Microsoft.Maps.Location(lat, long);
+            var pinLocation = new Microsoft.Maps.Location(lat, long);
 
-                const pin = new Microsoft.Maps.Pushpin(pinLocation);
+            const pin = new Microsoft.Maps.Pushpin(pinLocation);
 
-                layer.add(pin)
+            layer.add(pin)
 
-                map.layers.insert(layer);
+            map.layers.insert(layer);
 
-                map.setView({
-                    center: pinLocation,
-                    zoom: 18
-                });
-            }
-        </script>
+            map.setView({
+                center: pinLocation,
+                zoom: 18
+            });
+        }
+    </script>
 
-        <script>
-            // Dynamic load the Bing Maps Key and Script
-            // Get your own Bing Maps key at https://www.microsoft.com/maps
-            (async () => {
-                let script = document.createElement("script");
-                let bingKey = 'AlmIeyDzBddgg5hMt7sF9PROmNTOdcynd_uNAY1MfNqqg5UbI4guFUk6YqzkyGoI'
-                script.setAttribute("src", `https://www.bing.com/api/maps/mapcontrol?callback=GetMap&key=${bingKey}`);
-                document.body.appendChild(script);
-            })();
-        </script>
+    <script>
+        // Dynamic load the Bing Maps Key and Script
+        // Get your own Bing Maps key at https://www.microsoft.com/maps
+        (async () => {
+            let script = document.createElement("script");
+            let bingKey = 'AlmIeyDzBddgg5hMt7sF9PROmNTOdcynd_uNAY1MfNqqg5UbI4guFUk6YqzkyGoI'
+            script.setAttribute("src", `https://www.bing.com/api/maps/mapcontrol?callback=GetMap&key=${bingKey}`);
+            document.body.appendChild(script);
+        })();
+    </script>
 
-        <script src="https://js.radar.com/v3/radar.min.js"></script>
+    <script src="https://js.radar.com/v3/radar.min.js"></script>
 
 </body>
 

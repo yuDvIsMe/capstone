@@ -141,11 +141,11 @@ if(!isset($_SESSION['auser']))
                                                     <td><?php echo $row['13']; ?></td>
                                                     <td><?php echo $row['14']; ?></td>
 													<td><?php echo $row['16']; ?></td>
+                                                    <td><img src="property/<?php echo $row['17']; ?>" alt="pimage" height="70px"width="70px"></td>
                                                     <td><img src="property/<?php echo $row['18']; ?>" alt="pimage" height="70px"width="70px"></td>
-                                                    <td><img src="property/<?php echo $row['19']; ?>" alt="pimage" height="70px"width="70px"></td>
-													<td><img src="property/<?php echo $row['20']; ?>" alt="pimage" height="70px"width="70px"></td>
+													<td><img src="property/<?php echo $row['19']; ?>" alt="pimage" height="70px"width="70px"></td>
+                                                    <td><img src="property/<?php echo $row['20']; ?>" alt="pimage" height="70px"width="70px"></td>
                                                     <td><img src="property/<?php echo $row['21']; ?>" alt="pimage" height="70px"width="70px"></td>
-                                                    <td><img src="property/<?php echo $row['22']; ?>" alt="pimage" height="70px"width="70px"></td>
                                                     <td><?php echo $row['22']; ?></td>
                                                     <td><?php echo $row['23']; ?></td>
 													<td><img src="property/<?php echo $row['25']; ?>" alt="plan" height="70px"width="70px"></td>

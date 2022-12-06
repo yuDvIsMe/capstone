@@ -90,7 +90,7 @@ include("config.php");
                                 ?>
                                                 <div class="col-md-6">
                                                     <div class="featured-thumb hover-zoomer mb-4">
-                                                        <div class="overlay-black overflow-hidden position-relative"> <img src="admin/property/<?php echo $row['18']; ?>" alt="pimage">
+                                                        <div class="overlay-black overflow-hidden position-relative"> <img src="admin/property/<?php echo $row['17']; ?>" alt="pimage">
                                                             <div class="sale bg-secondary text-white text-capitalize"><?php echo $row['5']; ?></div>
                                                             <div class="price text-primary"><b><?php echo $row['13']; ?> VNĐ</b></div>
                                                         </div>
@@ -132,7 +132,7 @@ include("config.php");
                                     $query = mysqli_query($con, "SELECT * FROM `property` ORDER BY date DESC LIMIT 6");
                                     while ($row = mysqli_fetch_array($query)) {
                                     ?>
-                                        <li> <img src="admin/property/<?php echo $row['18']; ?>" alt="pimage">
+                                        <li> <img src="admin/property/<?php echo $row['17']; ?>" alt="pimage">
                                             <h6 class="text-secondary hover-text-primary text-capitalize"><a href="propertydetail.php?pid=<?php echo $row['0']; ?>"><?php echo $row['1']; ?></a></h6>
                                             <span class="font-14"><i class="fas fa-map-marker-alt icon-primary icon-small"></i> <?php echo $row['14']; ?></span>
 

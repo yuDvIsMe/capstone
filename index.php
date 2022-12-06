@@ -55,7 +55,7 @@ include("config.php");
                     <div class="row h-100 align-items-center">
                         <div class="col-lg-12">
                             <div class="text-white">
-                                <h1 class="mb-4" style="text-align: center;"><span class="text-primary">Tìm kiếm</span><br></h1>
+                                <h1 class="mb-4" style="text-align:center"><span class="text-primary">Tìm kiếm</span><br></h1>
                                 <form class="search-form" method="post" action="propertygrid.php">
                                     <div class="row">
                                         <div class="col-md-6 col-lg-10">
@@ -86,12 +86,12 @@ include("config.php");
                                         </div>
                                         <div class="col-md-6 col-lg-5">
                                             <div class="form-group">
-                                                <select class="form-control" name="area">
-                                                    <option value="">Diện tích</option>
+                                                <select class="form-control" name="price">
+                                                    <option value="">Giá</option>
                                                     <option value="">
-                                                        < 30 m<sup>2
+                                                        Dưới 500.000.000
                                                     </option>
-                                                    <option value="">30-60 m<sup>2</option>
+                                                    <option value="">chịu</option>
                                                     <option value="">60-90 m<sup>2</option>
                                                     <option value="">90-120 m<sup>2</option>
                                                     <option value="">>120 m<sup>2</option>
@@ -100,13 +100,15 @@ include("config.php");
                                         </div>
                                         <div class="col-md-6 col-lg-5">
                                             <div class="form-group">
-                                                <select class="form-control" name="price">
-                                                    <option value="">Giá</option>
-                                                    <option value="">Dưới 500.000.000</option>
-                                                    <option value="">500.000.000 - 999.999.999</option>
-                                                    <option value="">1.000.000.000 - 1.499.000.000</option>
-                                                    <option value="">1.500.000.000 - 1.999.000.000</option>
-                                                    <option value="">Trên 2.000.000.000</option>
+                                                <select class="form-control" name="area" >
+                                                    <option value="">Diện tích</option>
+                                                    <option value="">
+                                                        < 30 m<sup>2
+                                                    </option>
+                                                    <option value="">30-60 m<sup>2</option>
+                                                    <option value="">60-90 m<sup>2</option>
+                                                    <option value="">90-120 m<sup>2</option>
+                                                    <option value="">>120 m<sup>2</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -142,7 +144,7 @@ include("config.php");
 
                                             <div class="col-md-6 col-lg-4">
                                                 <div class="featured-thumb hover-zoomer mb-4">
-                                                    <div class="overlay-black overflow-hidden position-relative"> <img src="admin/property/<?php echo $row['18']; ?>" alt="pimage">
+                                                    <div class="overlay-black overflow-hidden position-relative"> <img src="admin/property/<?php echo $row['17']; ?>" alt="pimage">
                                                         <div class="featured bg-primary text-white">Mới</div>
                                                         <div class="sale bg-secondary text-white text-capitalize"><?php echo $row['5']; ?></div>
                                                         <div class="price text-primary"><b><?php echo $row['13']; ?> VNĐ</b></div>
@@ -283,7 +285,7 @@ include("config.php");
             </div>
 
             <!--	Popular Place -->
-            <div class="full-row bg-gray" style="padding: 50px 0 0 0 ">
+            <div class="full-row bg-gray" style="padding: 50px 0 0 0">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-12">

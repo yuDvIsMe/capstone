@@ -331,9 +331,7 @@ if (isset($_POST['add'])) {
 											<label class="col-lg-3 col-form-label">Trạng thái</label>
 											<div class="col-lg-9">
 												<select class="form-control" required name="status">
-													<option value="">Chọn</option>
 													<option value="Khả dụng">Khả dụng</option>
-													<option value="Đã bán">Đã bán</option>
 												</select>
 											</div>
 										</div>
