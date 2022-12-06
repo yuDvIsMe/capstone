@@ -113,7 +113,7 @@ if (isset($_REQUEST['login'])) {
 											<input type="password" name="pass" class="form-control psw" placeholder="Mật khẩu">
 											<span class="show-btn"><i class="fas fa-eye"></i></span>
 										</div>
-										<p class="account-forgotpass"><a href="#" style="color: #000">Quên mật khẩu?</a></p>
+										<p class="account-forgotpass"><a href="#" data-target="#pwdModal" data-toggle="modal" style="color: #000">Quên mật khẩu?</a></p>
 										<button class="btn btn-primary" name="login" value="Login" type="submit">Đăng nhập</button>
 									</form>
 									<div class="login-or">
@@ -130,6 +130,41 @@ if (isset($_REQUEST['login'])) {
 									</div>
 									<div class="text-center dont-have">Bạn chưa có tài khoản? <a href="register.php" style="color: #000">Đăng kí ngay!</a></div>
 
+								</div>
+							</div>
+						</div>
+						
+						<div id="pwdModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+							<div class="modal-dialog">
+								<div class="modal-content">
+									<div class="modal-header">
+										<h1 class="text-center">Quên mật khẩu</h1>
+										<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+									</div>
+									<div class="modal-body">
+										<div class="col-md-12">
+											<div class="panel panel-default">
+												<div class="panel-body">
+													<div class="text-center">
+														<p>Hãy nhập email để nhận lại mật khẩu</p>
+														<div class="panel-body">
+															<form action="" method="POST">
+																<div class="form-group">
+																	<input class="form-control input-lg" placeholder="Địa chỉ email" name="re-email" type="email">
+																</div>
+																<input class="btn btn-primary btn-block" name="repass" value="Xác nhận" type="submit">
+															</form>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="modal-footer">
+										<div class="col-md-12">
+											<button class="btn btn-fgp" data-dismiss="modal" aria-hidden="true">Quay lại</button>
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>

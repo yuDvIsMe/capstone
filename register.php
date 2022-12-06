@@ -130,13 +130,13 @@ if (isset($_REQUEST['reg'])) {
 									<!-- Form -->
 									<form method="post" enctype="multipart/form-data">
 										<div class="form-group">
-											<input type="text" name="name" class="form-control" required placeholder="Họ và tên*">
+											<input type="text" name="name" class="form-control" required placeholder="Họ và tên*" value="<?php if(!empty($name)) echo $name?>">
 										</div>
 										<div class="form-group">
-											<input type="email" name="email" class="form-control" required placeholder="Địa chỉ email*">
+											<input type="email" name="email" class="form-control" required placeholder="Địa chỉ email*" value="<?php if(!empty($email)) echo $email?>">
 										</div>
 										<div class="form-group">
-											<input type="text" name="phone" class="form-control" required placeholder="Số điện thoại*" maxlength="10">
+											<input type="text" name="phone" class="form-control" required placeholder="Số điện thoại*" maxlength="10" value="<?php if(!empty($phone)) echo $phone?>">
 										</div>
 										<div class="form-group">
 											<input type="password" name="pass" class="form-control" required placeholder="Mật khẩu*">

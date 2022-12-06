@@ -3168,3 +3168,14 @@ form.subscribe {
 }
 
 
+.modal-footer {
+	border-top: 0px;
+}
+
+.btn-fgp{
+	float: right;
+	border: 1px solid;
+	margin-top: -16px;
+
+}
+

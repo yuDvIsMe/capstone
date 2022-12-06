@@ -160,7 +160,7 @@ if (isset($_POST['add'])) {
 										<div class="form-group row">
 											<label class="col-lg-2 col-form-label">Tiêu đề</label>
 											<div class="col-lg-9">
-												<input type="text" class="form-control" name="title" required placeholder="Nhập tiêu đề">
+												<input type="text" class="form-control" value="<?php if(!empty($title)) echo $title?>" name="title" required placeholder="Nhập tiêu đề">
 											</div>
 										</div>
 										<div class="form-group row">
@@ -177,11 +177,11 @@ if (isset($_POST['add'])) {
 											<div class="col-lg-9">
 												<select class="form-control" required name="ptype">
 													<option value="">Loại</option>
-													<option value="house">Nhà phố</option>
-													<option value="Apartment">Chung cư</option>
-													<option value="penhouse">Penhouse</option>
-													<option value="villa">Villa</option>
-													<option value="office">Văn phòng</option>
+													<option <?php if(!empty($ptype)&& $ptype=='house') echo "selected ='selected" ?>value="house">Nhà phố</option>
+													<option <?php if(!empty($ptype)&& $ptype=='apartment') echo "selected ='selected" ?>value="apartment">Chung cư</option>
+													<option <?php if(!empty($ptype)&& $ptype=='penhouse') echo "selected ='selected" ?>value="penhouse">Penhouse</option>
+													<option <?php if(!empty($ptype)&& $ptype=='villa') echo "selected ='selected" ?>value="villa">Villa</option>
+													<option <?php if(!empty($ptype)&& $ptype=='office') echo "selected ='selected" ?>value="office">Văn phòng</option>
 												</select>
 											</div>
 										</div>
@@ -190,21 +190,21 @@ if (isset($_POST['add'])) {
 											<div class="col-lg-9">
 												<select class="form-control" required name="stype">
 													<option value="">Chọn</option>
-													<option value="Thuê">Thuê</option>
-													<option value="Bán">Bán</option>
+													<option <?php if(!empty($stype)&& $stype=='Thuê') echo "selected ='selected" ?> value="Thuê">Thuê</option>
+													<option <?php if(!empty($stype)&& $stype=='Bán') echo "selected ='selected" ?> value="Bán">Bán</option>
 												</select>
 											</div>
 										</div>
 										<div class="form-group row">
 											<label class="col-lg-3 col-form-label">Phòng tắm</label>
 											<div class="col-lg-9">
-												<input type="text" class="form-control" name="bath" required placeholder="Nhập số phòng">
+												<input type="text" class="form-control" name="bath" value="<?php if(!empty($bath)) echo $bath?>" required placeholder="Nhập số phòng">
 											</div>
 										</div>
 										<div class="form-group row">
 											<label class="col-lg-3 col-form-label">Bếp</label>
 											<div class="col-lg-9">
-												<input type="text" class="form-control" name="kitc" required placeholder="Nhập số phòng">
+												<input type="text" class="form-control" name="kitc" value="<?php if(!empty($kitc)) echo $kitc?>" required placeholder="Nhập số phòng">
 											</div>
 										</div>
 
@@ -214,9 +214,9 @@ if (isset($_POST['add'])) {
 											<label class="col-lg-3 col-form-label">Hồ bơi</label>
 											<div class="col-lg-9">
 												<select class="form-control" required name="pool">
-													<option value="">Chọn</option>
-													<option value="yes">Có</option>
-													<option value="no">Không</option>
+													<option  value="">Chọn</option>
+													<option <?php if(!empty($pool)&& $pool=='yes') echo "selected ='selected" ?> value="yes">Có</option>
+													<option <?php if(!empty($pool)&& $pool=='no') echo "selected ='selected" ?> value="no">Không</option>
 												</select>
 											</div>
 										</div>
@@ -225,15 +225,15 @@ if (isset($_POST['add'])) {
 											<div class="col-lg-9">
 												<select class="form-control" required name="parkinglot">
 													<option value="">Chọn</option>
-													<option value="yes">Có</option>
-													<option value="no">Không</option>
+													<option <?php if(!empty($parkinglot)&& $parkinglot=='yes') echo "selected ='selected" ?> value="yes">Có</option>
+													<option <?php if(!empty($parkinglot)&& $parkinglot=='no') echo "selected ='selected" ?> value="no">Không</option>
 												</select>
 											</div>
 										</div>
 										<div class="form-group row">
 											<label class="col-lg-3 col-form-label">Phòng ngủ</label>
 											<div class="col-lg-9">
-												<input type="text" class="form-control" name="bed" required placeholder="Nhập số phòng">
+												<input type="text" class="form-control" name="bed" value="<?php if(!empty($bed)) echo $bed?>" required placeholder="Nhập số phòng">
 											</div>
 										</div>
 										<div class="form-group row">
@@ -241,10 +241,10 @@ if (isset($_POST['add'])) {
 											<div class="col-lg-9">
 												<select class="form-control" required name="direction">
 													<option value="">Chọn</option>
-													<option value="Đông">Đông</option>
-													<option value="Tây">Tây</option>
-													<option value="Nam">Nam</option>
-													<option value="Bắc">Bắc</option>
+													<option <?php if(!empty($direction)&& $direction=='Đông') echo "selected ='selected" ?> value="Đông">Đông</option>
+													<option <?php if(!empty($direction)&& $direction=='Tây') echo "selected ='selected" ?> value="Tây">Tây</option>
+													<option <?php if(!empty($direction)&& $direction=='Nam') echo "selected ='selected" ?> value="Nam">Nam</option>
+													<option <?php if(!empty($direction)&& $direction=='Bắc') echo "selected ='selected" ?>value="Bắc">Bắc</option>
 												</select>
 											</div>
 										</div>
@@ -257,19 +257,19 @@ if (isset($_POST['add'])) {
 										<div class="form-group row">
 											<label class="col-lg-3 col-form-label">Số tầng</label>
 											<div class="col-lg-9">
-												<input type="text" class="form-control" name="floor" required placeholder="Nhập số tầng">
+												<input type="text" class="form-control" name="floor" value="<?php if(!empty($floor)) echo $floor?>" required placeholder="Nhập số tầng">
 											</div>
 										</div>
 										<div class="form-group row">
 											<label class="col-lg-3 col-form-label">Giá</label>
 											<div class="col-lg-9">
-												<input type="text" class="form-control" name="price" required placeholder="Nhập giá">
+												<input type="text" class="form-control" name="price" value="<?php if(!empty($price)) echo $price?>" required placeholder="Nhập giá">
 											</div>
 										</div>
 										<div class="form-group row">
 											<label class="col-lg-3 col-form-label">Thành phố</label>
 											<div class="col-lg-9">
-												<input type="text" class="form-control" name="city" required placeholder="Nhập tên thành phố">
+												<input type="text" class="form-control" name="city" value="<?php if(!empty($city)) echo $city?>" required placeholder="Nhập tên thành phố">
 											</div>
 										</div>
 									</div>
@@ -279,15 +279,15 @@ if (isset($_POST['add'])) {
 											<div class="col-lg-9">
 												<select class="form-control" required name="security">
 													<option value="">Chọn</option>
-													<option value="yes">Có</option>
-													<option value="no">Không</option>
+													<option <?php if(!empty($security)&& $security=='yes') echo "selected ='selected" ?> value="yes">Có</option>
+													<option <?php if(!empty($security)&& $security=='no') echo "selected ='selected" ?> value="no">Không</option>
 												</select>
 											</div>
 										</div>
 										<div class="form-group row">
 											<label class="col-lg-3 col-form-label">Diện tích</label>
 											<div class="col-lg-9">
-												<input type="text" class="form-control" name="asize" required placeholder="Nhập diện tích">
+												<input type="text" class="form-control" name="asize" value="<?php if(!empty($asize)) echo $asize?>" required placeholder="Nhập diện tích">
 											</div>
 										</div>
 										<div class="form-group row">
