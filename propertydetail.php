@@ -3,7 +3,31 @@ ini_set('session.cache_limiter', 'public');
 session_cache_limiter(false);
 session_start();
 include("config.php");
-
+$error="";
+$msg="";
+if(isset($_POST['send']))
+{
+	$name=$_POST['name'];
+	$email=$_POST['email'];
+	$phone=$_POST['phone'];
+	$subject=$_POST['subject'];
+	$message=$_POST['message'];
+	
+	if(!empty($name) && !empty($email) && !empty($phone) && !empty($subject) && !empty($message))
+	{
+		
+		$sql="INSERT INTO contact (name,email,phone,subject,message) VALUES ('$name','$email','$phone','$subject','$message')";
+		   $result=mysqli_query($con, $sql);
+		   if($result){
+			   $msg = "<p class='alert alert-success'>Tin nhắn của bạn đã được gửi, nhân viên hỗ trợ sẽ liên hệ trực tiếp một cách nhanh nhất</p> ";
+		   }
+		   else{
+			   $error = "<p class='alert alert-warning'>Gửi không thành công</p> ";
+		   }
+	}else{
+		$error = "<p class='alert alert-warning'>Vui lòng điền đầy đủ thông tin</p>";
+	}
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -206,21 +230,26 @@ include("config.php");
                                                                 <div class="row">
                                                                     <div class="col-md-12">
                                                                         <div class="form-group">
-                                                                            <input class="form-control bg-gray" id="name" name="firstname" placeholder="Tên" type="text">
+                                                                            <input class="form-control bg-gray" id="name" name="name" value="<?php if(!empty($name)) echo $name?>" placeholder="Tên" type="text">
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-md-12">
                                                                         <div class="form-group">
-                                                                            <input class="form-control bg-gray" id="email" name="email" placeholder="Địa chỉ email" type="text">
+                                                                            <input class="form-control bg-gray" id="email" name="email" value="<?php if(!empty($email)) echo $email?>" placeholder="Địa chỉ email" type="text">
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-md-12">
                                                                         <div class="form-group">
-                                                                            <input class="form-control bg-gray" id="phone" name="phone" placeholder="Số điện thoại" type="text">
+                                                                            <input class="form-control bg-gray" id="phone" name="phone" value="<?php if(!empty($phone)) echo $phone?>" placeholder="Số điện thoại" type="text">
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-md-12">
-                                                                        <button type="submit" id="send" value="submit" class="btn btn-primary">Gửi tin nhắn</button>
+                                                                        <div class="form-group">
+                                                                            <input class="form-control bg-gray" id="subject" name="subject" value="<?php if(!empty($subject)) echo $subject?>" placeholder="Tiêu đề" type="text">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-12">
+                                                                        <button type="submit" id="send" name="send" value="submit" class="btn btn-primary">Gửi tin nhắn</button>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -228,7 +257,7 @@ include("config.php");
                                                                 <div class="row">
                                                                     <div class="col-md-12 col-lg-12">
                                                                         <div class="form-group">
-                                                                            <textarea class="form-control bg-gray mt-sm-20" style="height: 182px;" id="massage" name="massage" cols="30" rows="7" placeholder="Gửi tin nhắn"></textarea>
+                                                                            <textarea class="form-control bg-gray mt-sm-20" style="height: 182px;" id="message" name="message" cols="30" rows="7" placeholder="Gửi tin nhắn"></textarea>
                                                                         </div>
                                                                     </div>
                                                                 </div>

@@ -340,7 +340,7 @@ include("config.php");
                                 </div>
                             </div>
                             <div class="col-md-6 col-lg-3 pb-1">
-                                <div class="overflow-hidden position-relative overlay-secondary hover-zoomer mx-n13 z-index-9"> <img src="images/thumbnail4/saigon_tn.jpg" alt="">
+                                <div class="overflow-hidden position-relative overlay-secondary hover-zoomer mx-n13 z-index-9"> <img src="images/thumbnail4/hue_tn.jpg" alt="">
                                     <div class="text-white xy-center z-index-9 position-absolute text-center w-100">
                                         <?php
                                         $query = mysqli_query($con, "SELECT count(city), property.* FROM property where city='Huế'");

@@ -3179,3 +3179,8 @@ form.subscribe {
 
 }
 
+#pwdModal{
+	z-index: 99999;
+	top: 64px;
+}
+

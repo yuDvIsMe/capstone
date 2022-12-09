@@ -37,6 +37,75 @@ if (isset($_REQUEST['login'])) {
 		}
 	}
 }
+
+function randomPassword($length = 8)
+{
+	$chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_-=+;:,.?";
+	$length = rand(10, 16);
+	$password = substr(str_shuffle(sha1(rand() . time()) . $chars), 0, $length);
+	return $password;
+}
+
+$errorRe_pass = "";
+
+function newPassSend($mail,$psw){
+	require "PHPMailer-master/src/PHPMailer.php"; 
+    require "PHPMailer-master/src/SMTP.php"; 
+    require 'PHPMailer-master/src/Exception.php'; 
+    $mail = new PHPMailer\PHPMailer\PHPMailer(true);//true:enables exceptions
+    try {
+        $mail->SMTPDebug = 0; //0,1,2: chế độ debug
+        $mail->isSMTP();  
+        $mail->CharSet  = "utf-8";
+        $mail->Host = 'smtp.gmail.com';  //SMTP servers
+        $mail->SMTPAuth = true; // Enable authentication
+        $mail->Username = 'ihome.contact.dn@gmail.com'; // SMTP username
+        $mail->Password = 'ihome123456';   // SMTP password
+        $mail->SMTPSecure = 'ssl';  // encryption TLS/SSL 
+        $mail->Port = 465;  // port to connect to                
+        $mail->setFrom('ihome.contact.dn@gmail.com', 'iHome Support' ); 
+        $mail->addAddress($mail); 
+        $mail->isHTML(true);  // Set email format to HTML
+        $mail->Subject = 'Thư gửi lại mật khẩu từ iHome';
+        $noidungthu = "<p>Bạn nhận được email này từ đội ngũ support của iHome do bạn hoặc một ai đó đã yêu cầu reset mật khẩu từ website của iHome</p>
+			Mật khẩu của bạn là: {$psw}"; 
+        $mail->Body = $noidungthu;
+        $mail->smtpConnect( array(
+            "ssl" => array(
+                "verify_peer" => false,
+                "verify_peer_name" => false,
+                "allow_self_signed" => true
+            )
+        ));
+        $mail->send();
+        echo 'Đã gửi mail xong';
+    } catch (Exception $e) {
+        echo 'Error: ', $mail->ErrorInfo;
+    }
+}
+
+if (isset($_POST['repass'])) {
+	$re_email = $_POST['re_email'];
+	$conn = new PDO("mysql:host=localhost;dbname=ihome;charset=utf8", "root", "");
+	$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+	$sql = "SELECT * FROM user where uemail = ?";
+	$stmt = $conn->prepare($sql);
+	$stmt->execute([$re_email]);
+	$count = $stmt->rowCount();
+	if ($count == 0) {
+		$errorRe_pass = "<p class='alert alert-warning'>Email của bạn chưa đăng ký thành viên với chúng tôi.</p> ";
+	} else {
+		$new_pass = randomPassword();
+		$sql = "UPDATE user SET upass = ? where uemail = ?";
+		$stmt = $conn->prepare($sql);
+		$stmt->execute([$new_pass, $re_email]);
+		newPassSend($re_email,$new_pass);
+	}
+}
+
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -107,7 +176,7 @@ if (isset($_REQUEST['login'])) {
 									<!-- Form -->
 									<form method="post">
 										<div class="form-group">
-											<input type="email" name="email" class="form-control" required placeholder="Email">
+											<input type="email" name="email" class="form-control" value="<?php if (!empty($email)) echo $email ?>" required placeholder="Email">
 										</div>
 										<div class="form-group showpsw">
 											<input type="password" name="pass" class="form-control psw" placeholder="Mật khẩu">
@@ -133,7 +202,7 @@ if (isset($_REQUEST['login'])) {
 								</div>
 							</div>
 						</div>
-						
+
 						<div id="pwdModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
 							<div class="modal-dialog">
 								<div class="modal-content">
@@ -146,11 +215,11 @@ if (isset($_REQUEST['login'])) {
 											<div class="panel panel-default">
 												<div class="panel-body">
 													<div class="text-center">
-														<p>Hãy nhập email để nhận lại mật khẩu</p>
+														<?php echo $errorRe_pass; ?>
 														<div class="panel-body">
 															<form action="" method="POST">
 																<div class="form-group">
-																	<input class="form-control input-lg" placeholder="Địa chỉ email" name="re-email" type="email">
+																	<input class="form-control input-lg" placeholder="Hãy nhập email để nhận lại mật khẩu" name="re_email" type="email">
 																</div>
 																<input class="btn btn-primary btn-block" name="repass" value="Xác nhận" type="submit">
 															</form>
@@ -171,6 +240,9 @@ if (isset($_REQUEST['login'])) {
 					</div>
 				</div>
 			</div>
+			<?php
+				
+			?>
 			<!--	login  -->
 
 

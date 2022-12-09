@@ -16,7 +16,7 @@ if(isset($_POST['send']))
 		$sql="INSERT INTO contact (name,email,phone,subject,message) VALUES ('$name','$email','$phone','$subject','$message')";
 		   $result=mysqli_query($con, $sql);
 		   if($result){
-			   $msg = "<p class='alert alert-success'>Gửi thành công</p> ";
+			   $msg = "<p class='alert alert-success'>Tin nhắn của bạn đã được gửi, nhân viên hỗ trợ sẽ liên hệ trực tiếp một cách nhanh nhất</p> ";
 		   }
 		   else{
 			   $error = "<p class='alert alert-warning'>Gửi không thành công</p> ";
@@ -138,20 +138,20 @@ if(isset($_POST['send']))
 									<div class="row">
 										<div class="row mb-4">
 											<div class="form-group col-lg-6">
-												<input type="text"  name="name" class="form-control" placeholder="Tên đầy đủ*">
+												<input type="text"  name="name" class="form-control" value="<?php if(!empty($name)) echo $name?>" placeholder="Tên đầy đủ*">
 											</div>
 											<div class="form-group col-lg-6">
-												<input type="text"  name="email" class="form-control" placeholder="Địa chỉ email*">
+												<input type="text"  name="email" class="form-control" value="<?php if(!empty($email)) echo $email?>" placeholder="Địa chỉ email*">
 											</div>
 											<div class="form-group col-lg-6">
-												<input type="text"  name="phone" class="form-control" placeholder="Số điện thoại" maxlength="10">
+												<input type="text"  name="phone" class="form-control" value="<?php if(!empty($phone)) echo $phone?>" placeholder="Số điện thoại" maxlength="10">
 											</div>
 											<div class="form-group col-lg-6">
-												<input type="text" name="subject"  class="form-control" placeholder="Tiêu đề">
+												<input type="text" name="subject"  class="form-control" value="<?php if(!empty($subject)) echo $subject?>" placeholder="Tiêu đề">
 											</div>
 											<div class="col-lg-12">
 												<div class="form-group">
-													<textarea name="message" class="form-control" rows="5" placeholder="Nội dung..."></textarea>
+													<textarea name="message" class="form-control" rows="5" required placeholder="Nội dung..."></textarea>
 												</div>
 											</div>
 										</div>

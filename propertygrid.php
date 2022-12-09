@@ -81,43 +81,79 @@ include("config.php");
                                     $stype = $_REQUEST['stype'];
                                     $city = $_REQUEST['city'];
 
-                                    $sql = "SELECT * FROM property WHERE type='{$type}' or stype='{$stype}' or city='{$city}'";
+                                    $sql = "SELECT * FROM property WHERE type='{$type}' and stype='{$stype}' and city='{$city}'";
                                     $result = mysqli_query($con, $sql);
 
-                                    if (mysqli_num_rows($result) > 0) {
-                                        if ($result == true) {
-                                            while ($row = mysqli_fetch_array($result)) {
+                                    $sql1 = "SELECT * FROM property";
+                                    $result1 = mysqli_query($con, $sql1);
+
+                                    if (empty($type) && empty($stype) && empty($city)) {
+                                        while ($row = mysqli_fetch_array($result1)) {
                                 ?>
-                                                <div class="col-md-6">
-                                                    <div class="featured-thumb hover-zoomer mb-4">
-                                                        <div class="overlay-black overflow-hidden position-relative"> <img src="admin/property/<?php echo $row['17']; ?>" alt="pimage">
-                                                            <div class="sale bg-secondary text-white text-capitalize"><?php echo $row['5']; ?></div>
-                                                            <div class="price text-primary"><b><?php echo $row['13']; ?> VNĐ</b></div>
+                                            <div class="col-md-6">
+                                                <div class="featured-thumb hover-zoomer mb-4">
+                                                    <div class="overlay-black overflow-hidden position-relative"> <img src="admin/property/<?php echo $row['17']; ?>" alt="pimage">
+                                                        <div class="sale bg-secondary text-white text-capitalize"><?php echo $row['5']; ?></div>
+                                                        <div class="price text-primary"><b><?php echo $row['13']; ?> VNĐ</b></div>
+                                                    </div>
+                                                    <div class="featured-thumb-data shadow-one">
+                                                        <div class="p-3">
+                                                            <h5 class="text-secondary hover-text-primary mb-2 text-capitalize"><a href="propertydetail.php?pid=<?php echo $row['0']; ?>"><?php echo $row['1']; ?></a></h5>
+                                                            <span class="location text-capitalize"><i class="fas fa-map-marker-alt text-primary"></i> <?php echo $row['14']; ?></span>
                                                         </div>
-                                                        <div class="featured-thumb-data shadow-one">
-                                                            <div class="p-3">
-                                                                <h5 class="text-secondary hover-text-primary mb-2 text-capitalize"><a href="propertydetail.php?pid=<?php echo $row['0']; ?>"><?php echo $row['1']; ?></a></h5>
-                                                                <span class="location text-capitalize"><i class="fas fa-map-marker-alt text-primary"></i> <?php echo $row['14']; ?></span>
-                                                            </div>
-                                                            <div class="bg-gray quantity px-4 pt-4">
-                                                                <ul>
-                                                                    <li>Loại nhà ở: <?php echo $row['3']; ?></li>
-                                                                    <li>Phòng ngủ: <?php echo $row['6']; ?></li>
-                                                                    <li>Phòng tắm: <?php echo $row['7']; ?></li>
-                                                                    <li>Bếp: <?php echo $row['9']; ?></li>
-                                                                    <li>Diện tích: <?php echo $row['12']; ?> m<sup>2</li>
-                                                                </ul>
-                                                            </div>
+                                                        <div class="bg-gray quantity px-4 pt-4">
+                                                            <ul>
+                                                                <li>Loại nhà ở: <?php echo $row['3']; ?></li>
+                                                                <li>Phòng ngủ: <?php echo $row['6']; ?></li>
+                                                                <li>Phòng tắm: <?php echo $row['7']; ?></li>
+                                                                <li>Bếp: <?php echo $row['9']; ?></li>
+                                                                <li>Diện tích: <?php echo $row['12']; ?> m<sup>2</li>
+                                                            </ul>
                                                         </div>
                                                     </div>
                                                 </div>
-                                <?php
-                                            }
+                                            </div>
+                                            <?php
                                         }
-                                    } else {
-
-                                        echo "<h1 class='mb-5'><center>Không có căn hộ phù hợp</center></h1>";
+                                    }else{
+                                        if (mysqli_num_rows($result) > 0) {
+                                            if ($result == true) {
+                                                while ($row = mysqli_fetch_array($result)) {
+                                                ?>
+                                                    <div class="col-md-6">
+                                                        <div class="featured-thumb hover-zoomer mb-4">
+                                                            <div class="overlay-black overflow-hidden position-relative"> <img src="admin/property/<?php echo $row['17']; ?>" alt="pimage">
+                                                                <div class="sale bg-secondary text-white text-capitalize"><?php echo $row['5']; ?></div>
+                                                                <div class="price text-primary"><b><?php echo $row['13']; ?> VNĐ</b></div>
+                                                            </div>
+                                                            <div class="featured-thumb-data shadow-one">
+                                                                <div class="p-3">
+                                                                    <h5 class="text-secondary hover-text-primary mb-2 text-capitalize"><a href="propertydetail.php?pid=<?php echo $row['0']; ?>"><?php echo $row['1']; ?></a></h5>
+                                                                    <span class="location text-capitalize"><i class="fas fa-map-marker-alt text-primary"></i> <?php echo $row['14']; ?></span>
+                                                                </div>
+                                                                <div class="bg-gray quantity px-4 pt-4">
+                                                                    <ul>
+                                                                        <li>Loại nhà ở: <?php echo $row['3']; ?></li>
+                                                                        <li>Phòng ngủ: <?php echo $row['6']; ?></li>
+                                                                        <li>Phòng tắm: <?php echo $row['7']; ?></li>
+                                                                        <li>Bếp: <?php echo $row['9']; ?></li>
+                                                                        <li>Diện tích: <?php echo $row['12']; ?> m<sup>2</li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                    <?php
+                                                }
+                                            }
+                                        } else {
+    
+                                            echo "<h1 class='mb-5'><center>Không có căn hộ phù hợp</center></h1>";
+                                        }
                                     }
+
+
+                                    
                                 }
                                 ?>
                             </div>
