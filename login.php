@@ -1,4 +1,13 @@
 <?php
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+require './PHPMailer/src/Exception.php';
+require './PHPMailer/src/SMTP.php';
+require './PHPMailer/src/PHPMailer.php';
+
+
 session_start();
 include("config.php");
 $error = "";
@@ -48,41 +57,37 @@ function randomPassword($length = 8)
 
 $errorRe_pass = "";
 
-function newPassSend($mail,$psw){
-	require "PHPMailer-master/src/PHPMailer.php"; 
-    require "PHPMailer-master/src/SMTP.php"; 
-    require 'PHPMailer-master/src/Exception.php'; 
-    $mail = new PHPMailer\PHPMailer\PHPMailer(true);//true:enables exceptions
-    try {
-        $mail->SMTPDebug = 0; //0,1,2: chế độ debug
-        $mail->isSMTP();  
-        $mail->CharSet  = "utf-8";
-        $mail->Host = 'smtp.gmail.com';  //SMTP servers
-        $mail->SMTPAuth = true; // Enable authentication
-        $mail->Username = 'ihome.contact.dn@gmail.com'; // SMTP username
-        $mail->Password = 'ihome123456';   // SMTP password
-        $mail->SMTPSecure = 'ssl';  // encryption TLS/SSL 
-        $mail->Port = 465;  // port to connect to                
-        $mail->setFrom('ihome.contact.dn@gmail.com', 'iHome Support' ); 
-        $mail->addAddress($mail); 
-        $mail->isHTML(true);  // Set email format to HTML
-        $mail->Subject = 'Thư gửi lại mật khẩu từ iHome';
-        $noidungthu = "<p>Bạn nhận được email này từ đội ngũ support của iHome do bạn hoặc một ai đó đã yêu cầu reset mật khẩu từ website của iHome</p>
-			Mật khẩu của bạn là: {$psw}"; 
-        $mail->Body = $noidungthu;
-        $mail->smtpConnect( array(
-            "ssl" => array(
-                "verify_peer" => false,
-                "verify_peer_name" => false,
-                "allow_self_signed" => true
-            )
-        ));
-        $mail->send();
-        echo 'Đã gửi mail xong';
-    } catch (Exception $e) {
-        echo 'Error: ', $mail->ErrorInfo;
-    }
+
+function newPassSend($mail, $psw)
+{
+	$mail = new PHPMailer(true); //true:enables exceptions
+	$mail->SMTPDebug = 0; //0,1,2: chế độ debug
+	$mail->isSMTP();
+	$mail->CharSet  = "utf-8";
+	$mail->Host = 'smtp.gmail.com';  //SMTP servers
+	$mail->SMTPAuth = true; // Enable authentication
+	$mail->Username = 'ihome.contact.dn@gmail.com'; // SMTP username
+	$mail->Password = 'cqsacnnopgxmxdqx';   // SMTP password
+	$mail->SMTPSecure = 'ssl';  // encryption TLS/SSL 
+	$mail->Port = 465;  // port to connect to                
+	$mail->setFrom('ihome.contact.dn@gmail.com', 'iHome Support');
+	$mail->addAddress($mail);
+	$mail->isHTML(true);  // Set email format to HTML
+	$mail->Subject = 'Thư gửi lại mật khẩu từ iHome';
+	$noidungthu = "<p>Bạn nhận được email này từ đội ngũ support của iHome do bạn hoặc một ai đó đã yêu cầu reset mật khẩu từ website của iHome</p>
+			Mật khẩu của bạn là: {$psw}";
+	$mail->Body = $noidungthu;
+	$mail->smtpConnect(array(
+		"ssl" => array(
+			"verify_peer" => false,
+			"verify_peer_name" => false,
+			"allow_self_signed" => true
+		)
+	));
+	$mail->send();
+	echo 'Message has been sent';
 }
+
 
 if (isset($_POST['repass'])) {
 	$re_email = $_POST['re_email'];
@@ -100,7 +105,7 @@ if (isset($_POST['repass'])) {
 		$sql = "UPDATE user SET upass = ? where uemail = ?";
 		$stmt = $conn->prepare($sql);
 		$stmt->execute([$new_pass, $re_email]);
-		newPassSend($re_email,$new_pass);
+		newPassSend($re_email, $new_pass);
 	}
 }
 
@@ -240,9 +245,6 @@ if (isset($_POST['repass'])) {
 					</div>
 				</div>
 			</div>
-			<?php
-				
-			?>
 			<!--	login  -->
 
 
