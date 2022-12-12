@@ -1,13 +1,4 @@
 <?php
-
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
-
-require './PHPMailer/src/Exception.php';
-require './PHPMailer/src/SMTP.php';
-require './PHPMailer/src/PHPMailer.php';
-
-
 session_start();
 include("config.php");
 $error = "";
@@ -56,36 +47,41 @@ function randomPassword($length = 8)
 }
 
 $errorRe_pass = "";
-
-
-function newPassSend($mail, $psw)
+function newPassSend($mail_address, $psw)
 {
-	$mail = new PHPMailer(true); //true:enables exceptions
-	$mail->SMTPDebug = 0; //0,1,2: chế độ debug
-	$mail->isSMTP();
-	$mail->CharSet  = "utf-8";
-	$mail->Host = 'smtp.gmail.com';  //SMTP servers
-	$mail->SMTPAuth = true; // Enable authentication
-	$mail->Username = 'ihome.contact.dn@gmail.com'; // SMTP username
-	$mail->Password = 'cqsacnnopgxmxdqx';   // SMTP password
-	$mail->SMTPSecure = 'ssl';  // encryption TLS/SSL 
-	$mail->Port = 465;  // port to connect to                
-	$mail->setFrom('ihome.contact.dn@gmail.com', 'iHome Support');
-	$mail->addAddress($mail);
-	$mail->isHTML(true);  // Set email format to HTML
-	$mail->Subject = 'Thư gửi lại mật khẩu từ iHome';
-	$noidungthu = "<p>Bạn nhận được email này từ đội ngũ support của iHome do bạn hoặc một ai đó đã yêu cầu reset mật khẩu từ website của iHome</p>
-			Mật khẩu của bạn là: {$psw}";
-	$mail->Body = $noidungthu;
-	$mail->smtpConnect(array(
-		"ssl" => array(
-			"verify_peer" => false,
-			"verify_peer_name" => false,
-			"allow_self_signed" => true
-		)
-	));
-	$mail->send();
-	echo 'Message has been sent';
+	require "PHPMailer/src/PHPMailer.php"; 
+    require "PHPMailer/src/SMTP.php"; 
+    require 'PHPMailer/src/Exception.php'; 
+    $mail = new PHPMailer\PHPMailer\PHPMailer(true);//true:enables exceptions
+    try {
+        $mail->SMTPDebug = 0; //0,1,2: chế độ debug
+        $mail->isSMTP();  
+        $mail->CharSet  = "utf-8";
+        $mail->Host = 'smtp.gmail.com';  //SMTP servers
+        $mail->SMTPAuth = true; // Enable authentication
+        $mail->Username = 'ihome.contact.dn@gmail.com'; // SMTP username
+        $mail->Password = 'cqsacnnopgxmxdqx';   // SMTP password
+        $mail->SMTPSecure = 'ssl';  // encryption TLS/SSL 
+        $mail->Port = 465;  // port to connect to                
+        $mail->setFrom('ihome.contact.dn@gmail.com', 'iHome Support' ); 
+        $mail->addAddress($mail_address); 
+        $mail->isHTML(true);  // Set email format to HTML
+		$mail->Subject = 'Thư gửi lại mật khẩu từ iHome';
+		$noidungthu = "<p>Bạn nhận được email này từ đội ngũ support của iHome do bạn hoặc một ai đó đã yêu cầu reset mật khẩu từ website của iHome</p>
+				Mật khẩu của bạn là: {$psw}";
+		$mail->Body = $noidungthu;	
+        $mail->smtpConnect( array(
+            "ssl" => array(
+                "verify_peer" => false,
+                "verify_peer_name" => false,
+                "allow_self_signed" => true
+            )
+        ));
+        $mail->send();
+		echo '<script language="javascript">alert("Mật khẩu mới đã được gửi vào địa chỉ email của bạn, vui lòng kiểm tra hộp thư đến và nhận lại mật khẩu."); window.location="login.php";</script>';
+    } catch (Exception $e) {
+        echo 'Error: ', $mail->ErrorInfo;
+    }
 }
 
 
@@ -99,7 +95,7 @@ if (isset($_POST['repass'])) {
 	$stmt->execute([$re_email]);
 	$count = $stmt->rowCount();
 	if ($count == 0) {
-		$errorRe_pass = "<p class='alert alert-warning'>Email của bạn chưa đăng ký thành viên với chúng tôi.</p> ";
+		echo '<script language="javascript">alert("Email của bạn chưa đăng ký thành viên tại iHome, vui lòng kiểm tra lại địa chỉ email, hoặc đăng ký thành viên để tiếp tục."); window.location="login.php";</script>';
 	} else {
 		$new_pass = randomPassword();
 		$sql = "UPDATE user SET upass = ? where uemail = ?";
@@ -215,18 +211,18 @@ if (isset($_POST['repass'])) {
 										<h1 class="text-center">Quên mật khẩu</h1>
 										<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
 									</div>
+
 									<div class="modal-body">
 										<div class="col-md-12">
 											<div class="panel panel-default">
 												<div class="panel-body">
 													<div class="text-center">
-														<?php echo $errorRe_pass; ?>
 														<div class="panel-body">
 															<form action="" method="POST">
 																<div class="form-group">
 																	<input class="form-control input-lg" placeholder="Hãy nhập email để nhận lại mật khẩu" name="re_email" type="email">
 																</div>
-																<input class="btn btn-primary btn-block" name="repass" value="Xác nhận" type="submit">
+																<button class="btn btn-primary btn-block" name="repass" value="Xác nhận" type="submit">Xác nhận</button>
 															</form>
 														</div>
 													</div>
@@ -236,7 +232,7 @@ if (isset($_POST['repass'])) {
 									</div>
 									<div class="modal-footer">
 										<div class="col-md-12">
-											<button class="btn btn-fgp" data-dismiss="modal" aria-hidden="true">Quay lại</button>
+											<button class="btn btn-fgp"  data-dismiss="modal" aria-hidden="true">Quay lại</button>
 										</div>
 									</div>
 								</div>
@@ -245,17 +241,18 @@ if (isset($_POST['repass'])) {
 					</div>
 				</div>
 			</div>
-			<!--	login  -->
-
-
-			<!--	Footer   start-->
-			<?php include("include/footer.php"); ?>
-			<!--	Footer   start-->
-
-			<!-- Scroll to top -->
-			<a href="#" class="bg-primary text-white hover-text-secondary" id="scroll"><i class="fas fa-angle-up"></i></a>
-			<!-- End Scroll To top -->
 		</div>
+		<!--	login  -->
+
+
+
+		<!--	Footer   start-->
+		<?php include("include/footer.php"); ?>
+		<!--	Footer   start-->
+
+		<!-- Scroll to top -->
+		<a href="#" class="bg-primary text-white hover-text-secondary" id="scroll"><i class="fas fa-angle-up"></i></a>
+		<!-- End Scroll To top -->
 	</div>
 	<!-- Wrapper End -->
 

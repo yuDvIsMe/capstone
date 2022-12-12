@@ -17,12 +17,12 @@ $sql = "DELETE FROM user WHERE uid = {$uid}";
 $result = mysqli_query($con, $sql);
 if($result == true)
 {
-	$msg="<p class='alert alert-success'>User Deleted</p>";
+	$msg="<p class='alert alert-success'>Đã xóa thành công</p>";
 	header("Location:userlist.php?msg=$msg");
 }
 else
 {
-	$msg="<p class='alert alert-warning'>User not Deleted</p>";
+	$msg="<p class='alert alert-warning'>Vui lòng thử lại</p>";
 		header("Location:userlist.php?msg=$msg");
 }
 

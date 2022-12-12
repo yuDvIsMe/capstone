@@ -35,10 +35,9 @@ if (isset($_REQUEST['reg'])) {
 					$result = mysqli_query($con, $sql);
 					move_uploaded_file($temp_name1,"admin/user/$uimage");
 					if ($result) {
-						$msg = "<p class='alert alert-success'>Đăng ký thành công</p> ";
-						header("location:login.php");
+						echo '<script language="javascript">alert("Đăng ký thành công"); window.location="login.php";</script>';
 					} else {
-						$error = "<p class='alert alert-warning'>Đăng ký thất bại</p> ";
+						echo '<script language="javascript">alert("Có vấn đề gì đó, vui lòng thử lại"); window.location="register.php";</script>';
 					}
 				} else {
 					$error = "<p class='alert alert-warning'>Mật khẩu không trùng khớp</p>";
@@ -190,6 +189,10 @@ if (isset($_REQUEST['reg'])) {
 	<script src="js/jquery.slider.js"></script>
 	<script src="js/wow.js"></script>
 	<script src="js/custom.js"></script>
+	<div class="modal" tabindex="-1" role="dialog">
+
+</div>
 </body>
+
 
 </html>

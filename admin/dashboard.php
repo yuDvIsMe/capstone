@@ -106,7 +106,7 @@ if (!isset($_SESSION['auser'])) {
 							<div class="dash-widget-info fact-counter">
 
 								<h3 class="count wow" data-wow-duration="300ms"><?php
-									$query = mysqli_query($con, "SELECT count(pid) FROM property where stype='rent'");
+									$query = mysqli_query($con, "SELECT count(pid) FROM property where stype='Thuê'");
 									while ($row = mysqli_fetch_array($query)) {
 									?>
 										<div class="count-num" data-speed="300" data-stop="<?php
@@ -135,7 +135,7 @@ if (!isset($_SESSION['auser'])) {
 							<div class="dash-widget-info fact-counter">
 
 								<h3 class="count wow" data-wow-duration="300ms"><?php
-									$query = mysqli_query($con, "SELECT count(pid) FROM property where stype='sale'");
+									$query = mysqli_query($con, "SELECT count(pid) FROM property where stype='Bán'");
 									while ($row = mysqli_fetch_array($query)) {
 									?>
 										<div class="count-num" data-speed="300" data-stop="<?php
