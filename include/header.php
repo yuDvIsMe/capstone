@@ -18,8 +18,8 @@
 											<a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Tài khoản</a>
 											<ul class="dropdown-menu">
 												<li class="nav-item"> <a class="nav-link" href="profile.php">Thông tin</a> </li>
-												
 												<li class="nav-item"> <a class="nav-link" href="feature.php">Căn hộ của tôi</a> </li>
+												<li class="nav-item"> <a class="nav-link" href="changepass.php">Đổi mật khẩu</a> </li>
 												<li class="nav-item"> <a class="nav-link" href="logout.php">Đăng xuất</a> </li>	
 											</ul>
                                         </li>

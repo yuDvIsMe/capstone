@@ -49,39 +49,39 @@ function randomPassword($length = 8)
 $errorRe_pass = "";
 function newPassSend($mail_address, $psw)
 {
-	require "PHPMailer/src/PHPMailer.php"; 
-    require "PHPMailer/src/SMTP.php"; 
-    require 'PHPMailer/src/Exception.php'; 
-    $mail = new PHPMailer\PHPMailer\PHPMailer(true);//true:enables exceptions
-    try {
-        $mail->SMTPDebug = 0; //0,1,2: chế độ debug
-        $mail->isSMTP();  
-        $mail->CharSet  = "utf-8";
-        $mail->Host = 'smtp.gmail.com';  //SMTP servers
-        $mail->SMTPAuth = true; // Enable authentication
-        $mail->Username = 'ihome.contact.dn@gmail.com'; // SMTP username
-        $mail->Password = 'cqsacnnopgxmxdqx';   // SMTP password
-        $mail->SMTPSecure = 'ssl';  // encryption TLS/SSL 
-        $mail->Port = 465;  // port to connect to                
-        $mail->setFrom('ihome.contact.dn@gmail.com', 'iHome Support' ); 
-        $mail->addAddress($mail_address); 
-        $mail->isHTML(true);  // Set email format to HTML
+	require "PHPMailer/src/PHPMailer.php";
+	require "PHPMailer/src/SMTP.php";
+	require 'PHPMailer/src/Exception.php';
+	$mail = new PHPMailer\PHPMailer\PHPMailer(true); //true:enables exceptions
+	try {
+		$mail->SMTPDebug = 0; //0,1,2: chế độ debug
+		$mail->isSMTP();
+		$mail->CharSet  = "utf-8";
+		$mail->Host = 'smtp.gmail.com';  //SMTP servers
+		$mail->SMTPAuth = true; // Enable authentication
+		$mail->Username = 'ihome.contact.dn@gmail.com'; // SMTP username
+		$mail->Password = 'cqsacnnopgxmxdqx';   // SMTP password
+		$mail->SMTPSecure = 'ssl';  // encryption TLS/SSL 
+		$mail->Port = 465;  // port to connect to                
+		$mail->setFrom('ihome.contact.dn@gmail.com', 'iHome Support');
+		$mail->addAddress($mail_address);
+		$mail->isHTML(true);  // Set email format to HTML
 		$mail->Subject = 'Thư gửi lại mật khẩu từ iHome';
 		$noidungthu = "<p>Bạn nhận được email này từ đội ngũ support của iHome do bạn hoặc một ai đó đã yêu cầu reset mật khẩu từ website của iHome</p>
 				Mật khẩu của bạn là: {$psw}";
-		$mail->Body = $noidungthu;	
-        $mail->smtpConnect( array(
-            "ssl" => array(
-                "verify_peer" => false,
-                "verify_peer_name" => false,
-                "allow_self_signed" => true
-            )
-        ));
-        $mail->send();
+		$mail->Body = $noidungthu;
+		$mail->smtpConnect(array(
+			"ssl" => array(
+				"verify_peer" => false,
+				"verify_peer_name" => false,
+				"allow_self_signed" => true
+			)
+		));
+		$mail->send();
 		echo '<script language="javascript">alert("Mật khẩu mới đã được gửi vào địa chỉ email của bạn, vui lòng kiểm tra hộp thư đến và nhận lại mật khẩu."); window.location="login.php";</script>';
-    } catch (Exception $e) {
-        echo 'Error: ', $mail->ErrorInfo;
-    }
+	} catch (Exception $e) {
+		echo 'Error: ', $mail->ErrorInfo;
+	}
 }
 
 
@@ -232,7 +232,7 @@ if (isset($_POST['repass'])) {
 									</div>
 									<div class="modal-footer">
 										<div class="col-md-12">
-											<button class="btn btn-fgp"  data-dismiss="modal" aria-hidden="true">Quay lại</button>
+											<button class="btn btn-fgp" data-dismiss="modal" aria-hidden="true">Quay lại</button>
 										</div>
 									</div>
 								</div>
@@ -241,18 +241,18 @@ if (isset($_POST['repass'])) {
 					</div>
 				</div>
 			</div>
+			<!--	login  -->
+
+
+
+			<!--	Footer   start-->
+			<?php include("include/footer.php"); ?>
+			<!--	Footer   start-->
+
+			<!-- Scroll to top -->
+			<a href="#" class="bg-primary text-white hover-text-secondary" id="scroll"><i class="fas fa-angle-up"></i></a>
+			<!-- End Scroll To top -->
 		</div>
-		<!--	login  -->
-
-
-
-		<!--	Footer   start-->
-		<?php include("include/footer.php"); ?>
-		<!--	Footer   start-->
-
-		<!-- Scroll to top -->
-		<a href="#" class="bg-primary text-white hover-text-secondary" id="scroll"><i class="fas fa-angle-up"></i></a>
-		<!-- End Scroll To top -->
 	</div>
 	<!-- Wrapper End -->
 
