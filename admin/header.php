@@ -36,10 +36,9 @@ if(!isset($_SESSION['auser']))
 				<!-- Header Right Menu -->
 				<ul class="nav user-menu">
 					<!-- User Menu -->
-					<h4 style="color:#23b14d;margin-top:13px;text-transform:capitalize;"><?php echo $_SESSION['auser'];?></h4>
 					<li class="nav-item dropdown app-dropdown">
 						<a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
-							<span class="user-img"><img class="rounded-circle" src="assets/img/profiles/avatar-01.png" width="31" alt="Ryan Taylor"></span>
+							<span class="user-img"><img class="rounded-circle" src="assets/img/profiles/avatar-01.png" width="31" alt=""></span>
 						</a>
 						
 						<div class="dropdown-menu">

@@ -9,7 +9,8 @@
 		
 		if(!empty($user) && !empty($pass))
 		{
-			$query = "SELECT auser, apass FROM admin WHERE auser='$user' AND apass='$pass'";
+			$checkpass = md5($pass);
+			$query = "SELECT uemail, upass FROM user WHERE uemail='$user' AND upass='$checkpass' and role='admin'";
 			$result = mysqli_query($con,$query)or die(mysqli_error());
 			$num_row = mysqli_num_rows($result);
 			$row=mysqli_fetch_array($result);

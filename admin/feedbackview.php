@@ -73,7 +73,7 @@ if(!isset($_SESSION['auser']))
 						<div class="col-sm-12">
 							<div class="card">
 								<div class="card-header">
-									<h4 class="card-title">Feedback List</h4>
+									<h4 class="card-title">Danh sách Feedback</h4>
 									<?php 
 											if(isset($_GET['msg']))	
 											echo $_GET['msg'];
@@ -86,12 +86,11 @@ if(!isset($_SESSION['auser']))
                                             <thead>
                                                 <tr>
                                                     <th>ID</th>
-                                                    <th>Name</th>
+                                                    <th>Tên</th>
                                                     <th>Email</th>
                                                     <th>Feedback</th>
-													<th>Status</th>
-                                                    <th>Edit</th>
-                                                    <th>Delete</th>
+													<th>Trạng thái</th>
+                                                    <th>Xóa</th>
                                                 </tr>
                                             </thead>
                                         
@@ -110,8 +109,7 @@ if(!isset($_SESSION['auser']))
                                                     <td><?php echo $row['uemail']; ?></td>
                                                     <td><?php echo $row['2']; ?></td>
                                                     <td><?php echo $row['3']; ?></td>
-													<td><a href="feedbackedit.php?id=<?php echo $row['0']; ?>">Edit</a></td>
-                                                    <td><a href="feedbackdelete.php?id=<?php echo $row['0']; ?>">Delete</a></td>
+                                                    <td><a href="feedbackdelete.php?id=<?php echo $row['0']; ?>">Xóa</a></td>
                                                 </tr>
                                                 <?php
 												$cnt=$cnt+1;

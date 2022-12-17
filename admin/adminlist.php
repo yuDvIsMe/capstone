@@ -98,7 +98,7 @@ if(!isset($_SESSION['auser']))
                                             <tbody>
 											<?php
 													
-												$query=mysqli_query($con,"select * from admin");
+												$query=mysqli_query($con,"select * from user where role='admin'");
 												$cnt=1;
 												while($row=mysqli_fetch_row($query))
 													{

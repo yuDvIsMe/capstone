@@ -1,7 +1,7 @@
 <?php
 include("config.php");
-$aid = $_GET['id'];
-$sql = "DELETE FROM admin WHERE aid = {$aid}";
+$uid = $_GET['id'];
+$sql = "DELETE FROM user WHERE uid = {$uid} && role='admin'";
 $result = mysqli_query($con, $sql);
 if($result == true)
 {

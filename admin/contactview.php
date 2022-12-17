@@ -14,10 +14,10 @@ if(!isset($_SESSION['auser']))
 <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-        <title>LM Homes | Admin</title>
+        <title>Tin nhắn | Admin</title>
 		
 		<!-- Favicon -->
-        <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png">
+        <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
 		
 		<!-- Bootstrap CSS -->
         <link rel="stylesheet" href="assets/css/bootstrap.min.css">
@@ -59,10 +59,10 @@ if(!isset($_SESSION['auser']))
 					<div class="page-header">
 						<div class="row">
 							<div class="col">
-								<h3 class="page-title">Contact</h3>
+								<h3 class="page-title">Quản lý tin nhắn của người dùng</h3>
 								<ul class="breadcrumb">
 									<li class="breadcrumb-item"><a href="dashboard.php">Dashboard</a></li>
-									<li class="breadcrumb-item active">Contact</li>
+									<li class="breadcrumb-item active">Tin nhắn</li>
 								</ul>
 							</div>
 						</div>
@@ -73,7 +73,7 @@ if(!isset($_SESSION['auser']))
 						<div class="col-sm-12">
 							<div class="card">
 								<div class="card-header">
-									<h4 class="card-title">Contact List</h4>
+									<h4 class="card-title">Danh sách</h4>
 									<?php 
 											if(isset($_GET['msg']))	
 											echo $_GET['msg'];
@@ -86,12 +86,12 @@ if(!isset($_SESSION['auser']))
                                             <thead>
                                                 <tr>
                                                     <th>ID</th>
-                                                    <th>Name</th>
+                                                    <th>Tên</th>
                                                     <th>Email</th>
-                                                    <th>Phone</th>
-													<th>Subject</th>
-                                                    <th>Message</th>
-                                                    <th>Delete</th>
+                                                    <th>SĐT</th>
+													<th>Tiêu đề</th>
+                                                    <th>Nội dung</th>
+                                                    <th>Xóa</th>
                                                 </tr>
                                             </thead>
                                         
@@ -111,7 +111,7 @@ if(!isset($_SESSION['auser']))
                                                     <td><?php echo $row['3']; ?></td>
                                                     <td><?php echo $row['4']; ?></td>
 													<td><?php echo $row['5']; ?></td>
-                                                    <td><a href="contactdelete.php?id=<?php echo $row['0']; ?>">Delete</a></td>
+                                                    <td><a href="contactdelete.php?id=<?php echo $row['0'];?>" onclick="return confirm('Bạn chắc chắn muốn xóa chứ?')">Xóa</a></td>
                                                 </tr>
                                                 <?php
 												$cnt=$cnt+1;

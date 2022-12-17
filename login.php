@@ -21,17 +21,17 @@ if (isset($_REQUEST['login'])) {
 		} else {
 			if (!empty($email) && !empty($pass)) {
 				$checkpass = md5($pass);
-				$sql = "SELECT * FROM user where uemail='$email' && upass='$checkpass'";
+				$sql = "SELECT * FROM user where uemail='$email' && upass='$checkpass' && role ='user'";
 				$result = mysqli_query($con, $sql);
 				$row = mysqli_fetch_array($result);
 				if ($row) {
-
 					$_SESSION['uid'] = $row['uid'];
 					$_SESSION['uemail'] = $email;
 					header("location:index.php");
-				} else {
+				}else {
 					$error = "<p class='alert alert-warning'>Email hoặc mật khẩu không chính xác.</p> ";
 				}
+
 			} else {
 				$error = "<p class='alert alert-warning'>Vui lòng điền đẩy đủ thông tin</p>";
 			}

@@ -14,10 +14,10 @@ if(!isset($_SESSION['auser']))
 <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-        <title>LM HOMES | Profile</title>
+        <title>iHome | Profile</title>
 		
 		<!-- Favicon -->
-        <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png">
+        <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
 		
 		<!-- Bootstrap CSS -->
         <link rel="stylesheet" href="assets/css/bootstrap.min.css">
@@ -53,7 +53,7 @@ if(!isset($_SESSION['auser']))
 					<div class="page-header">
 						<div class="row">
 							<div class="col">
-								<h3 class="page-title">Profile</h3>
+								<h3 class="page-title">Trang cá nhân</h3>
 								<ul class="breadcrumb">
 									<li class="breadcrumb-item"><a href="dashboard.php">Dashboard</a></li>
 									<li class="breadcrumb-item active">Profile</li>
@@ -67,7 +67,7 @@ if(!isset($_SESSION['auser']))
 						<?php
 						
 						$id=$_SESSION['auser'];
-						$sql="select * from admin where auser='$id'";
+						$sql="select * from user where uemail='$id'";
 						$result=mysqli_query($con,$sql);
 						while($row=mysqli_fetch_array($result))
 						{
@@ -77,29 +77,17 @@ if(!isset($_SESSION['auser']))
 								<div class="row align-items-center">
 									<div class="col-auto profile-image">
 										<a href="#">
-											<img class="rounded-circle" alt="User Image" src="assets/img/profiles/avatar-01.png">
+											<img class="rounded-circle" alt="User Image" src="./user/6.jpg">
 										</a>
 									</div>
 									<div class="col ml-md-n2 profile-user-info">
 										<h4 class="user-name mb-2 text-uppercase"><?php echo $row['1']; ?></h4>
 										<h6 class="text-muted"><?php echo $row['2']; ?></h6>
-										<div class="user-Location"><i class="fa fa-id-badge" aria-hidden="true"></i>
-											<?php echo $row['4']; ?></div>
-										<div class="about-text"></div>
 									</div>
 
 								</div>
 							</div>
-							<div class="profile-menu">
-								<ul class="nav nav-tabs nav-tabs-solid">
-									<li class="nav-item">
-										<a class="nav-link active" data-toggle="tab" href="#per_details_tab">About</a>
-									</li>
-								<!--	<li class="nav-item">
-										<a class="nav-link" data-toggle="tab" href="#password_tab">Password</a>
-									</li>  -->
-								</ul>
-							</div>	
+								
 							<div class="tab-content profile-tab-cont">
 								
 								<!-- Personal Details Tab -->
@@ -111,27 +99,20 @@ if(!isset($_SESSION['auser']))
 											<div class="card">
 												<div class="card-body">
 													<div class="row">
-														<p class="col-sm-3 text-muted text-sm-right mb-0 mb-sm-3">Name</p>
+														<p class="col-sm-3 text-muted text-sm-right mb-0 mb-sm-3">Tên</p>
 														<p class="col-sm-9"><?php echo $row['1']; ?></p>
 													</div>
 													<div class="row">
-														<p class="col-sm-3 text-muted text-sm-right mb-0 mb-sm-3">Date of Birth</p>
-														<p class="col-sm-9"><?php echo $row['4']; ?></p>
+														<p class="col-sm-3 text-muted text-sm-right mb-0 mb-sm-3">Admin ID</p>
+														<p class="col-sm-9"><?php echo $row['0']; ?></p>
 													</div>
 													<div class="row">
-														<p class="col-sm-3 text-muted text-sm-right mb-0 mb-sm-3">Email ID</p>
+														<p class="col-sm-3 text-muted text-sm-right mb-0 mb-sm-3">Địa chỉ email</p>
 														<p class="col-sm-9"><a href="#"><?php echo $row['2']; ?></a></p>
 													</div>
 													<div class="row">
-														<p class="col-sm-3 text-muted text-sm-right mb-0 mb-sm-3">Mobile</p>
-														<p class="col-sm-9"><?php echo $row['5']; ?></p>
-													</div>
-													<div class="row">
-														<p class="col-sm-3 text-muted text-sm-right mb-0">Address</p>
-														<p class="col-sm-9 mb-0">4663  Agriculture Lane,<br>
-														Miami,<br>
-														Gujarat - 33165,<br>
-														India.</p>
+														<p class="col-sm-3 text-muted text-sm-right mb-0 mb-sm-3">SĐT</p>
+														<p class="col-sm-9"><?php echo $row['3']; ?></p>
 													</div>
 												</div>
 											</div>
@@ -150,28 +131,6 @@ if(!isset($_SESSION['auser']))
 												</div>
 											</div>
 											<!-- /Account Status -->
-
-											<!-- Skills -->
-											<div class="card">
-												<div class="card-body">
-													<h5 class="card-title d-flex justify-content-between">
-														<span>Skills </span> 
-														
-													</h5>
-													<div class="skill-tags">
-														<span>Html5</span>
-														<span>CSS3</span>
-														<span>Bootstrap</span>
-														<span>Javascript</span>
-														<span>Jquery</span>
-														<span>PHP</span>
-														<span>Mysql</span>
-														<span>ASP</span>
-													</div>
-												</div>
-											</div>
-											<!-- /Skills -->
-
 										</div>
 									</div>
 									<!-- /Personal Details -->
