@@ -12,7 +12,7 @@ $user_email = $_SESSION['uemail'];
 $error = "";
 
 if (isset($_POST['changepw'])) {
-    $old_pass = $_POST['pass_old'];
+    $old_pass = md5($_POST['pass_old']);
     $new_pass = $_POST['pass_new1'];
     $re_new_pass = $_POST['pass_new2'];
     $conn = new PDO("mysql:host=localhost;dbname=ihome;charset=utf8", "root", "");
@@ -35,7 +35,7 @@ if (isset($_POST['changepw'])) {
         } else {
             $sql = "UPDATE user SET upass =? where uemail = ? ";
             $stmt = $conn->prepare($sql);
-            $stmt->execute([$new_pass, $user_email]);
+            $stmt->execute([md5($new_pass), $user_email]);
             $_SESSION = array();
             session_destroy();
             echo '<script language="javascript">alert("Đổi mật khẩu thành công, vui lòng đăng nhập lại."); window.location="login.php";</script>';

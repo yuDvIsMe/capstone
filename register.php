@@ -30,8 +30,8 @@ if (isset($_REQUEST['reg'])) {
 				$error = "<p class='alert alert-warning'>Email đã tồn tại</p> ";
 			} else {
 				if ($pass == $repass) {
-
-					$sql = "INSERT INTO user (uname,uemail,uphone,upass,uimage) VALUES ('$name','$email','$phone','$pass','$uimage')";
+					$hashedpass = md5($pass);
+					$sql = "INSERT INTO user (uname,uemail,uphone,upass,uimage) VALUES ('$name','$email','$phone','$hashedpass','$uimage')";
 					$result = mysqli_query($con, $sql);
 					move_uploaded_file($temp_name1,"admin/user/$uimage");
 					if ($result) {
@@ -135,7 +135,7 @@ if (isset($_REQUEST['reg'])) {
 											<input type="email" name="email" class="form-control" required placeholder="Địa chỉ email*" value="<?php if(!empty($email)) echo $email?>">
 										</div>
 										<div class="form-group">
-											<input type="text" name="phone" class="form-control" required placeholder="Số điện thoại*" maxlength="10" value="<?php if(!empty($phone)) echo $phone?>">
+											<input type="tel" name="phone" class="form-control" required placeholder="Số điện thoại*" maxlength="10" value="<?php if(!empty($phone)) echo $phone?>">
 										</div>
 										<div class="form-group">
 											<input type="password" name="pass" class="form-control" required placeholder="Mật khẩu*">
@@ -145,7 +145,7 @@ if (isset($_REQUEST['reg'])) {
 										</div>
 										<div class="form-group">
 											<label class="col-form-label"><b>Ảnh đại diện</b></label>
-											<input class="form-control" name="uimage" required type="file">
+											<input class="form-control" name="uimage" required type="file" accept="image/png, image/gif, image/jpeg">
 										</div>
 										<button class="btn btn-primary" name="reg" value="Register" type="submit">Đăng ký</button>
 									</form>

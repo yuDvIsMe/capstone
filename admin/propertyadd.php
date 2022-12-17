@@ -162,11 +162,11 @@ if (isset($_POST['add'])) {
 											<div class="col-lg-9">
 												<select class="form-control" required name="ptype">
 													<option value="">Loại</option>
-													<option value="house">Nhà phố</option>
-													<option value="Apartment">Chung cư</option>
-													<option value="penhouse">Penhouse</option>
-													<option value="villa">Villa</option>
-													<option value="office">Văn phòng</option>
+													<option value="Nhà phố">Nhà phố</option>
+													<option value="Chung cư">Chung cư</option>
+													<option value="Penhouse">Penhouse</option>
+													<option value="Villa">Villa</option>
+													<option value="Văn phòng">Văn phòng</option>
 												</select>
 											</div>
 										</div>
@@ -200,8 +200,8 @@ if (isset($_POST['add'])) {
 											<div class="col-lg-9">
 												<select class="form-control" required name="pool">
 													<option value="">Chọn</option>
-													<option value="yes">Có</option>
-													<option value="no">Không</option>
+													<option value="Có">Có</option>
+													<option value="Không">Không</option>
 												</select>
 											</div>
 										</div>
@@ -210,8 +210,8 @@ if (isset($_POST['add'])) {
 											<div class="col-lg-9">
 												<select class="form-control" required name="parkinglot">
 													<option value="">Chọn</option>
-													<option value="yes">Có</option>
-													<option value="no">Không</option>
+													<option value="Có">Có</option>
+													<option value="Không">Không</option>
 												</select>
 											</div>
 										</div>
@@ -264,8 +264,8 @@ if (isset($_POST['add'])) {
 											<div class="col-lg-9">
 												<select class="form-control" required name="security">
 													<option value="">Chọn</option>
-													<option value="yes">Có</option>
-													<option value="no">Không</option>
+													<option value="Có">Có</option>
+													<option value="Không">Không</option>
 												</select>
 											</div>
 										</div>

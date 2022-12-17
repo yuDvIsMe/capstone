@@ -190,7 +190,7 @@ if(isset($_POST['send']))
                                         <div class="accordion" id="accordionExample">
                                             <button class="bg-gray hover-bg-primary hover-text-white text-ordinary py-3 px-4 mb-1 w-100 text-left rounded position-relative" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Sơ đồ</button>
                                             <div id="collapseOne" class="collapse show p-4" aria-labelledby="headingOne" data-parent="#accordionExample">
-                                                <img src="admin/property/<?php echo $row['25']; ?>" alt="Not Available">
+                                                <img src="admin/property/<?php echo $row['24']; ?>" alt="Not Available">
                                             </div>
                                             <button class="bg-gray hover-bg-primary hover-text-white text-ordinary py-3 px-4 mb-1 w-100 text-left rounded position-relative collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">Địa chỉ cụ thể trên Google Map</button>
                                             <div id="collapseTwo" class="collapse show p-4" aria-labelledby="headingOne" data-parent="#accordionExample">

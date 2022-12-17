@@ -67,20 +67,20 @@ include("config.php");
                                             <div class="form-group">
                                                 <select class="form-control" name="type">
                                                     <option value="">Loại</option>
-                                                    <option value="house">Nhà phố</option>
-                                                    <option value="Apartment">Chung cư</option>
-                                                    <option value="penhouse">Penhouse</option>
-                                                    <option value="villa">Villa</option>
-                                                    <option value="office">Văn phòng</option>
+                                                    <option value="Nhà phố">Nhà phố</option>
+                                                    <option value="Chung cư">Chung cư</option>
+                                                    <option value="Penhouse">Penhouse</option>
+                                                    <option value="Villa">Villa</option>
+                                                    <option value="Văn phòng">Văn phòng</option>
                                                 </select>
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-lg-5">
                                             <div class="form-group">
                                                 <select class="form-control" name="stype">
-                                                    <option value="">Thuê/Mua</option>
+                                                    <option value="">Thuê/Bán</option>
                                                     <option value="Thuê">Thuê</option>
-                                                    <option value="Bán">Mua</option>
+                                                    <option value="Bán">Bán</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -144,14 +144,14 @@ include("config.php");
 
                                             <div class="col-md-6 col-lg-4">
                                                 <div class="featured-thumb hover-zoomer mb-4">
-                                                    <div class="overlay-black overflow-hidden position-relative"> <img src="admin/property/<?php echo $row['17']; ?>" alt="pimage">
+                                                    <div class="overlay-black overflow-hidden position-relative"> <img class="property-img" src="admin/property/<?php echo $row['17']; ?>" alt="pimage">
                                                         <div class="featured bg-primary text-white">Mới</div>
-                                                        <div class="sale bg-secondary text-white text-capitalize"><?php echo $row['5']; ?></div>
+                                                        <div class="sale text-white text-capitalize" style="background-color: #17c788"><?php echo $row['5']; ?></div>
                                                         <div class="price text-primary"><b><?php echo $row['13']; ?> VNĐ</b></div>
                                                     </div>
                                                     <div class="featured-thumb-data shadow-one">
                                                         <div class="p-3">
-                                                            <h5 class="text-secondary hover-text-primary mb-2 text-capitalize"><a href="propertydetail.php?pid=<?php echo $row['0']; ?>"><?php echo $row['1']; ?></a></h5>
+                                                            <h5 class="text-secondary hover-text-primary mb-2 text-capitalize" style="width: 340px;height:60px"><a href="propertydetail.php?pid=<?php echo $row['0']; ?>"><?php echo $row['1']; ?></a></h5>
                                                             <span class="location text-capitalize"><i class="fas fa-map-marker-alt text-primary"></i> <?php echo $row['14']; ?></span>
                                                         </div>
                                                         <div class="bg-gray quantity px-4 pt-4">
@@ -241,7 +241,7 @@ include("config.php");
                             <div class="col-md-3">
                                 <div class="count wow text-center  mb-sm-50" data-wow-duration="300ms"> <i class="flaticon-house flat-large text-white" aria-hidden="true"></i>
                                     <?php
-                                    $query = mysqli_query($con, "SELECT count(pid) FROM property where stype='sale'");
+                                    $query = mysqli_query($con, "SELECT count(pid) FROM property where stype='Bán'");
                                     while ($row = mysqli_fetch_array($query)) {
                                     ?>
                                         <div class="count-num text-primary my-4" data-speed="300" data-stop="<?php
@@ -254,7 +254,7 @@ include("config.php");
                             <div class="col-md-3">
                                 <div class="count wow text-center  mb-sm-50" data-wow-duration="300ms"> <i class="flaticon-house flat-large text-white" aria-hidden="true"></i>
                                     <?php
-                                    $query = mysqli_query($con, "SELECT count(pid) FROM property where stype='rent'");
+                                    $query = mysqli_query($con, "SELECT count(pid) FROM property where stype='Thuê'");
                                     while ($row = mysqli_fetch_array($query)) {
                                     ?>
                                         <div class="count-num text-primary my-4" data-speed="300" data-stop="<?php

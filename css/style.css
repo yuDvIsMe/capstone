@@ -3147,12 +3147,19 @@ form.subscribe {
     justify-content: space-between;
     flex-direction: row-reverse;
 }
+/* .showpsw{
+	position: relative;
+	height: 55px;
+	width: 320px;
+	border-radius: 5px;
+	box-shadow: 0px 3px 3px rgba(0,0,0,0.1);
+} */
 
-.showpsw span{
+.show-btn{
 	position: absolute;
 	right: 620px;
-	top: 50%;
-	transform: translateY(-210%);
+	/* top: 50%; */
+	transform: translateY(-144%);
 	font-size: 20px;
 	color: #17c788;
 	cursor: pointer;
@@ -3184,3 +3191,8 @@ form.subscribe {
 	top: 64px;
 }
 
+
+.property-img{
+	width: 370px;
+	height: 230px;
+}

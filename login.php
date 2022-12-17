@@ -20,7 +20,8 @@ if (isset($_REQUEST['login'])) {
 			$msg = "<p class='alert alert-warning'>Mật khẩu phải có độ dài ít nhất 8 kí tự bao gồm số, chữ hoa, chữ thường và kí tự đặc biệt!";
 		} else {
 			if (!empty($email) && !empty($pass)) {
-				$sql = "SELECT * FROM user where uemail='$email' && upass='$pass'";
+				$checkpass = md5($pass);
+				$sql = "SELECT * FROM user where uemail='$email' && upass='$checkpass'";
 				$result = mysqli_query($con, $sql);
 				$row = mysqli_fetch_array($result);
 				if ($row) {
@@ -38,10 +39,10 @@ if (isset($_REQUEST['login'])) {
 	}
 }
 
-function randomPassword($length = 8)
+function randomPassword($size = 8)
 {
 	$chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_-=+;:,.?";
-	$length = rand(10, 16);
+	$length = rand(16, 22);
 	$password = substr(str_shuffle(sha1(rand() . time()) . $chars), 0, $length);
 	return $password;
 }
@@ -98,9 +99,10 @@ if (isset($_POST['repass'])) {
 		echo '<script language="javascript">alert("Email của bạn chưa đăng ký thành viên tại iHome, vui lòng kiểm tra lại địa chỉ email, hoặc đăng ký thành viên để tiếp tục."); window.location="login.php";</script>';
 	} else {
 		$new_pass = randomPassword();
+		$hashNewPass = md5($new_pass);
 		$sql = "UPDATE user SET upass = ? where uemail = ?";
 		$stmt = $conn->prepare($sql);
-		$stmt->execute([$new_pass, $re_email]);
+		$stmt->execute([$hashNewPass, $re_email]);
 		newPassSend($re_email, $new_pass);
 	}
 }
