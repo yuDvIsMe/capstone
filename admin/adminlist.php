@@ -88,7 +88,6 @@ if(!isset($_SESSION['auser']))
                                                     <th>ID</th>
                                                     <th>Tên</th>
                                                     <th>Email</th>
-                                                    <th>Ngày sinh</th>
                                                     <th>SĐT</th>
                                                     <th>Xóa</th>
                                                 </tr>
@@ -103,13 +102,12 @@ if(!isset($_SESSION['auser']))
 												while($row=mysqli_fetch_row($query))
 													{
 											?>
-                                                <tr>
+                                                <tr style="line-height: 38px;">
                                                     <td><?php echo $cnt; ?></td>
                                                     <td><?php echo $row['1']; ?></td>
                                                     <td><?php echo $row['2']; ?></td>
-                                                    <td><?php echo $row['4']; ?></td>
-                                                    <td><?php echo $row['5']; ?></td>
-                                                    <td><a href="admindelete.php?id=<?php echo $row['0']; ?>">Xóa</a></td>
+                                                    <td><?php echo $row['3']; ?></td>
+                                                    <td><a class="btn btn-primary" href="admindelete.php?id=<?php echo $row['0']; ?>">Xóa</a></td>
                                                 </tr>
                                                 <?php
 												$cnt=$cnt+1;

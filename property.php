@@ -3,6 +3,7 @@ ini_set('session.cache_limiter', 'public');
 session_cache_limiter(false);
 session_start();
 include("config.php");
+$fmt = numfmt_create( 'vi_VN', NumberFormatter::CURRENCY );
 ///code								
 ?>
 <!DOCTYPE html>
@@ -83,9 +84,8 @@ include("config.php");
 
                         <div class="col-lg-8">
                             <div class="row">
-
                                 <?php
-                                $query = mysqli_query($con, "SELECT property.*, user.uname,user.uimage FROM `property`,`user` WHERE property.uid=user.uid");
+                                $query = mysqli_query($con, "SELECT property.*, user.uname,user.uimage FROM `property`,`user` WHERE property.uid=user.uid &&property.status='Khả dụng'");
                                 while ($row = mysqli_fetch_array($query)) {
                                 ?>
 
@@ -93,7 +93,7 @@ include("config.php");
                                         <div class="featured-thumb hover-zoomer mb-4">
                                             <div class="overlay-black overflow-hidden position-relative"> <img class="property-img" src="admin/property/<?php echo $row['17']; ?>" alt="pimage">
                                                 <div class="sale text-white" style="background-color: #17c788;"><?php echo $row['5']; ?></div>
-                                                <div class="price text-primary text-capitalize"><?php echo $row['13']; ?> VNĐ</div>
+                                                <div class="price text-primary text-capitalize"><?php echo numfmt_format_currency($fmt, $row['13'], "VND");?></div>
                                             </div>
                                             <div class="featured-thumb-data shadow-one">
                                                 <div class="p-3">

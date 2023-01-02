@@ -3,7 +3,7 @@ ini_set('session.cache_limiter', 'public');
 session_cache_limiter(false);
 session_start();
 include("config.php");
-
+$fmt = numfmt_create('vi_VN', NumberFormatter::CURRENCY);
 ///search code
 
 ?>
@@ -81,119 +81,119 @@ include("config.php");
                                     $stype = $_REQUEST['stype'];
                                     $city = $_REQUEST['city'];
 
-                                    $sql = "SELECT * FROM property WHERE type='{$type}' and stype='{$stype}' and city='{$city}'";
+                                    $sql = "SELECT * FROM property WHERE type='{$type}' and stype='{$stype}' and city='{$city}'&&status='Khả dụng'";
                                     $result = mysqli_query($con, $sql);
 
-                                    $sql1 = "SELECT * FROM property";
+                                    $sql1 = "SELECT * FROM property where status='Khả dụng'";
                                     $result1 = mysqli_query($con, $sql1);
 
-                                    $sql2 = "SELECT * FROM property where city='{$city}'";
+                                    $sql2 = "SELECT * FROM property where city='{$city}'&&status='Khả dụng'";
                                     $result2 = mysqli_query($con, $sql2);
 
-                                    $sql3 = "SELECT * FROM property where type='{$type}'";
+                                    $sql3 = "SELECT * FROM property where type='{$type}'&&status='Khả dụng'";
                                     $result3 = mysqli_query($con, $sql3);
 
-                                    $sql4 = "SELECT * FROM property where stype='{$stype}'";
+                                    $sql4 = "SELECT * FROM property where stype='{$stype}'&&status='Khả dụng'";
                                     $result4 = mysqli_query($con, $sql4);
 
-                                    if(!empty($stype)&&empty($type)&&empty($city)){
+                                    if (!empty($stype) && empty($type) && empty($city)) {
                                         while ($row = mysqli_fetch_array($result4)) {
-                                            ?>
-                                                        <div class="col-md-6">
-                                                            <div class="featured-thumb hover-zoomer mb-4">
-                                                                <div class="overlay-black overflow-hidden position-relative"> <img src="admin/property/<?php echo $row['17']; ?>" alt="pimage">
-                                                                    <div class="sale bg-secondary text-white text-capitalize"><?php echo $row['5']; ?></div>
-                                                                    <div class="price text-primary"><b><?php echo $row['13']; ?> VNĐ</b></div>
-                                                                </div>
-                                                                <div class="featured-thumb-data shadow-one">
-                                                                    <div class="p-3">
-                                                                        <h5 class="text-secondary hover-text-primary mb-2 text-capitalize"><a href="propertydetail.php?pid=<?php echo $row['0']; ?>"><?php echo $row['1']; ?></a></h5>
-                                                                        <span class="location text-capitalize"><i class="fas fa-map-marker-alt text-primary"></i> <?php echo $row['14']; ?></span>
-                                                                    </div>
-                                                                    <div class="bg-gray quantity px-4 pt-4">
-                                                                        <ul>
-                                                                            <li>Loại nhà ở: <?php echo $row['3']; ?></li>
-                                                                            <li>Phòng ngủ: <?php echo $row['6']; ?></li>
-                                                                            <li>Phòng tắm: <?php echo $row['7']; ?></li>
-                                                                            <li>Bếp: <?php echo $row['9']; ?></li>
-                                                                            <li>Diện tích: <?php echo $row['12']; ?> m<sup>2</li>
-                                                                        </ul>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <?php
-                                                    }
-                                    }elseif(empty($stype)&&!empty($type)&&empty($city)){
-                                        while ($row = mysqli_fetch_array($result3)) {
-                                            ?>
-                                                        <div class="col-md-6">
-                                                            <div class="featured-thumb hover-zoomer mb-4">
-                                                                <div class="overlay-black overflow-hidden position-relative"> <img src="admin/property/<?php echo $row['17']; ?>" alt="pimage">
-                                                                    <div class="sale bg-secondary text-white text-capitalize"><?php echo $row['5']; ?></div>
-                                                                    <div class="price text-primary"><b><?php echo $row['13']; ?> VNĐ</b></div>
-                                                                </div>
-                                                                <div class="featured-thumb-data shadow-one">
-                                                                    <div class="p-3">
-                                                                        <h5 class="text-secondary hover-text-primary mb-2 text-capitalize"><a href="propertydetail.php?pid=<?php echo $row['0']; ?>"><?php echo $row['1']; ?></a></h5>
-                                                                        <span class="location text-capitalize"><i class="fas fa-map-marker-alt text-primary"></i> <?php echo $row['14']; ?></span>
-                                                                    </div>
-                                                                    <div class="bg-gray quantity px-4 pt-4">
-                                                                        <ul>
-                                                                            <li>Loại nhà ở: <?php echo $row['3']; ?></li>
-                                                                            <li>Phòng ngủ: <?php echo $row['6']; ?></li>
-                                                                            <li>Phòng tắm: <?php echo $row['7']; ?></li>
-                                                                            <li>Bếp: <?php echo $row['9']; ?></li>
-                                                                            <li>Diện tích: <?php echo $row['12']; ?> m<sup>2</li>
-                                                                        </ul>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <?php
-                                                    }
-                                    }
-                                    elseif(empty($stype)&&empty($type)&&!empty($city)){
-                                        while ($row = mysqli_fetch_array($result2)) {
-                                            ?>
-                                                        <div class="col-md-6">
-                                                            <div class="featured-thumb hover-zoomer mb-4">
-                                                                <div class="overlay-black overflow-hidden position-relative"> <img src="admin/property/<?php echo $row['17']; ?>" alt="pimage">
-                                                                    <div class="sale bg-secondary text-white text-capitalize"><?php echo $row['5']; ?></div>
-                                                                    <div class="price text-primary"><b><?php echo $row['13']; ?> VNĐ</b></div>
-                                                                </div>
-                                                                <div class="featured-thumb-data shadow-one">
-                                                                    <div class="p-3">
-                                                                        <h5 class="text-secondary hover-text-primary mb-2 text-capitalize"><a href="propertydetail.php?pid=<?php echo $row['0']; ?>"><?php echo $row['1']; ?></a></h5>
-                                                                        <span class="location text-capitalize"><i class="fas fa-map-marker-alt text-primary"></i> <?php echo $row['14']; ?></span>
-                                                                    </div>
-                                                                    <div class="bg-gray quantity px-4 pt-4">
-                                                                        <ul>
-                                                                            <li>Loại nhà ở: <?php echo $row['3']; ?></li>
-                                                                            <li>Phòng ngủ: <?php echo $row['6']; ?></li>
-                                                                            <li>Phòng tắm: <?php echo $row['7']; ?></li>
-                                                                            <li>Bếp: <?php echo $row['9']; ?></li>
-                                                                            <li>Diện tích: <?php echo $row['12']; ?> m<sup>2</li>
-                                                                        </ul>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <?php
-                                                    }
-                                    }
-                                    elseif (empty($type) && empty($stype) && empty($city)) {
-                                        while ($row = mysqli_fetch_array($result1)) {
                                 ?>
                                             <div class="col-md-6">
                                                 <div class="featured-thumb hover-zoomer mb-4">
-                                                    <div class="overlay-black overflow-hidden position-relative"> <img src="admin/property/<?php echo $row['17']; ?>" alt="pimage">
+                                                    <div class="overlay-black overflow-hidden position-relative"> <img class="property-img" src="admin/property/<?php echo $row['17']; ?>" alt="pimage">
                                                         <div class="sale bg-secondary text-white text-capitalize"><?php echo $row['5']; ?></div>
-                                                        <div class="price text-primary"><b><?php echo $row['13']; ?> VNĐ</b></div>
+                                                        <div class="price text-primary"><b><?php echo numfmt_format_currency($fmt, $row['13'], "VND"); ?></b></div>
                                                     </div>
                                                     <div class="featured-thumb-data shadow-one">
                                                         <div class="p-3">
-                                                            <h5 class="text-secondary hover-text-primary mb-2 text-capitalize"><a href="propertydetail.php?pid=<?php echo $row['0']; ?>"><?php echo $row['1']; ?></a></h5>
+                                                            <h5 class="text-secondary hover-text-primary mb-2 text-capitalize title-pro"><a href="propertydetail.php?pid=<?php echo $row['0']; ?>"><?php echo $row['1']; ?></a></h5>
+                                                            <div class="address-pro">
+                                                                <span class="location text-capitalize"><i class="fas fa-map-marker-alt text-primary"></i> <?php echo $row['14']; ?></span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="bg-gray quantity px-4 pt-4">
+                                                            <ul>
+                                                                <li>Loại nhà ở: <?php echo $row['3']; ?></li>
+                                                                <li>Phòng ngủ: <?php echo $row['6']; ?></li>
+                                                                <li>Phòng tắm: <?php echo $row['7']; ?></li>
+                                                                <li>Bếp: <?php echo $row['9']; ?></li>
+                                                                <li>Diện tích: <?php echo $row['12']; ?> m<sup>2</li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        <?php
+                                        }
+                                    } elseif (empty($stype) && !empty($type) && empty($city)) {
+                                        while ($row = mysqli_fetch_array($result3)) {
+                                        ?>
+                                            <div class="col-md-6">
+                                                <div class="featured-thumb hover-zoomer mb-4">
+                                                    <div class="overlay-black overflow-hidden position-relative"> <img class="property-img" src="admin/property/<?php echo $row['17']; ?>" alt="pimage">
+                                                        <div class="sale bg-secondary text-white text-capitalize"><?php echo $row['5']; ?></div>
+                                                        <div class="price text-primary"><b><?php echo numfmt_format_currency($fmt, $row['13'], "VND"); ?></b></div>
+                                                    </div>
+                                                    <div class="featured-thumb-data shadow-one">
+                                                        <div class="p-3">
+                                                            <h5 class="text-secondary hover-text-primary mb-2 text-capitalize title-pro"><a href="propertydetail.php?pid=<?php echo $row['0']; ?>"><?php echo $row['1']; ?></a></h5>
+                                                            <span class="location text-capitalize"><i class="fas fa-map-marker-alt text-primary"></i> <?php echo $row['14']; ?></span>
+                                                        </div>
+                                                        <div class="bg-gray quantity px-4 pt-4">
+                                                            <ul>
+                                                                <li>Loại nhà ở: <?php echo $row['3']; ?></li>
+                                                                <li>Phòng ngủ: <?php echo $row['6']; ?></li>
+                                                                <li>Phòng tắm: <?php echo $row['7']; ?></li>
+                                                                <li>Bếp: <?php echo $row['9']; ?></li>
+                                                                <li>Diện tích: <?php echo $row['12']; ?> m<sup>2</li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        <?php
+                                        }
+                                    } elseif (empty($stype) && empty($type) && !empty($city)) {
+                                        while ($row = mysqli_fetch_array($result2)) {
+                                        ?>
+                                            <div class="col-md-6">
+                                                <div class="featured-thumb hover-zoomer mb-4">
+                                                    <div class="overlay-black overflow-hidden position-relative"> <img class="property-img" src="admin/property/<?php echo $row['17']; ?>" alt="pimage">
+                                                        <div class="sale bg-secondary text-white text-capitalize"><?php echo $row['5']; ?></div>
+                                                        <div class="price text-primary"><b><?php echo numfmt_format_currency($fmt, $row['13'], "VND"); ?></b></div>
+                                                    </div>
+                                                    <div class="featured-thumb-data shadow-one">
+                                                        <div class="p-3">
+                                                            <h5 class="text-secondary hover-text-primary mb-2 text-capitalize title-pro"><a href="propertydetail.php?pid=<?php echo $row['0']; ?>"><?php echo $row['1']; ?></a></h5>
+                                                            <span class="location text-capitalize"><i class="fas fa-map-marker-alt text-primary"></i> <?php echo $row['14']; ?></span>
+                                                        </div>
+                                                        <div class="bg-gray quantity px-4 pt-4">
+                                                            <ul>
+                                                                <li>Loại nhà ở: <?php echo $row['3']; ?></li>
+                                                                <li>Phòng ngủ: <?php echo $row['6']; ?></li>
+                                                                <li>Phòng tắm: <?php echo $row['7']; ?></li>
+                                                                <li>Bếp: <?php echo $row['9']; ?></li>
+                                                                <li>Diện tích: <?php echo $row['12']; ?> m<sup>2</li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        <?php
+                                        }
+                                    } elseif (empty($type) && empty($stype) && empty($city)) {
+                                        while ($row = mysqli_fetch_array($result1)) {
+                                        ?>
+                                            <div class="col-md-6">
+                                                <div class="featured-thumb hover-zoomer mb-4">
+                                                    <div class="overlay-black overflow-hidden position-relative"> <img class="property-img" src="admin/property/<?php echo $row['17']; ?>" alt="pimage">
+                                                        <div class="sale bg-secondary text-white text-capitalize"><?php echo $row['5']; ?></div>
+                                                        <div class="price text-primary"><b><?php echo numfmt_format_currency($fmt, $row['13'], "VND"); ?></b></div>
+                                                    </div>
+                                                    <div class="featured-thumb-data shadow-one">
+                                                        <div class="p-3">
+                                                            <h5 class="text-secondary hover-text-primary mb-2 text-capitalize title-pro"><a href="propertydetail.php?pid=<?php echo $row['0']; ?>"><?php echo $row['1']; ?></a></h5>
                                                             <span class="location text-capitalize"><i class="fas fa-map-marker-alt text-primary"></i> <?php echo $row['14']; ?></span>
                                                         </div>
                                                         <div class="bg-gray quantity px-4 pt-4">
@@ -210,44 +210,40 @@ include("config.php");
                                             </div>
                                             <?php
                                         }
-                                    }elseif (mysqli_num_rows($result) > 0) {
-                                            if ($result == true) {
-                                                while ($row = mysqli_fetch_array($result)) {
-                                                ?>
-                                                    <div class="col-md-6">
-                                                        <div class="featured-thumb hover-zoomer mb-4">
-                                                            <div class="overlay-black overflow-hidden position-relative"> <img src="admin/property/<?php echo $row['17']; ?>" alt="pimage">
-                                                                <div class="sale bg-secondary text-white text-capitalize"><?php echo $row['5']; ?></div>
-                                                                <div class="price text-primary"><b><?php echo $row['13']; ?> VNĐ</b></div>
+                                    } elseif (mysqli_num_rows($result) > 0) {
+                                        if ($result == true) {
+                                            while ($row = mysqli_fetch_array($result)) {
+                                            ?>
+                                                <div class="col-md-6">
+                                                    <div class="featured-thumb hover-zoomer mb-4">
+                                                        <div class="overlay-black overflow-hidden position-relative"> <img class="property-img" src="admin/property/<?php echo $row['17']; ?>" alt="pimage">
+                                                            <div class="sale bg-secondary text-white text-capitalize"><?php echo $row['5']; ?></div>
+                                                            <div class="price text-primary"><b><?php echo numfmt_format_currency($fmt, $row['13'], "VND"); ?></b></div>
+                                                        </div>
+                                                        <div class="featured-thumb-data shadow-one">
+                                                            <div class="p-3">
+                                                                <h5 class="text-secondary hover-text-primary mb-2 text-capitalize title-pro"><a href="propertydetail.php?pid=<?php echo $row['0']; ?>"><?php echo $row['1']; ?></a></h5>
+                                                                <span class="location text-capitalize"><i class="fas fa-map-marker-alt text-primary"></i> <?php echo $row['14']; ?></span>
                                                             </div>
-                                                            <div class="featured-thumb-data shadow-one">
-                                                                <div class="p-3">
-                                                                    <h5 class="text-secondary hover-text-primary mb-2 text-capitalize"><a href="propertydetail.php?pid=<?php echo $row['0']; ?>"><?php echo $row['1']; ?></a></h5>
-                                                                    <span class="location text-capitalize"><i class="fas fa-map-marker-alt text-primary"></i> <?php echo $row['14']; ?></span>
-                                                                </div>
-                                                                <div class="bg-gray quantity px-4 pt-4">
-                                                                    <ul>
-                                                                        <li>Loại nhà ở: <?php echo $row['3']; ?></li>
-                                                                        <li>Phòng ngủ: <?php echo $row['6']; ?></li>
-                                                                        <li>Phòng tắm: <?php echo $row['7']; ?></li>
-                                                                        <li>Bếp: <?php echo $row['9']; ?></li>
-                                                                        <li>Diện tích: <?php echo $row['12']; ?> m<sup>2</li>
-                                                                    </ul>
-                                                                </div>
+                                                            <div class="bg-gray quantity px-4 pt-4">
+                                                                <ul>
+                                                                    <li>Loại nhà ở: <?php echo $row['3']; ?></li>
+                                                                    <li>Phòng ngủ: <?php echo $row['6']; ?></li>
+                                                                    <li>Phòng tắm: <?php echo $row['7']; ?></li>
+                                                                    <li>Bếp: <?php echo $row['9']; ?></li>
+                                                                    <li>Diện tích: <?php echo $row['12']; ?> m<sup>2</li>
+                                                                </ul>
                                                             </div>
                                                         </div>
                                                     </div>
-                                    <?php
-                                                }
+                                                </div>
+                                <?php
                                             }
-                                        } else {
-    
-                                            echo "<h1 class='mb-5'><center>Không có căn hộ phù hợp</center></h1>";
                                         }
-                                    
+                                    } else {
 
-
-                                    
+                                        echo "<h1 class='mb-5'><center>Không có căn hộ phù hợp</center></h1>";
+                                    }
                                 }
                                 ?>
                             </div>
@@ -262,7 +258,7 @@ include("config.php");
                                     $query = mysqli_query($con, "SELECT * FROM `property` ORDER BY date DESC LIMIT 6");
                                     while ($row = mysqli_fetch_array($query)) {
                                     ?>
-                                        <li> <img src="admin/property/<?php echo $row['17']; ?>" alt="pimage">
+                                        <li> <img class="property-img" src="admin/property/<?php echo $row['17']; ?>" alt="pimage">
                                             <h6 class="text-secondary hover-text-primary text-capitalize"><a href="propertydetail.php?pid=<?php echo $row['0']; ?>"><?php echo $row['1']; ?></a></h6>
                                             <span class="font-14"><i class="fas fa-map-marker-alt icon-primary icon-small"></i> <?php echo $row['14']; ?></span>
 

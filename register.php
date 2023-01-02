@@ -9,9 +9,6 @@ if (isset($_REQUEST['reg'])) {
 	$pass = $_REQUEST['pass'];
 	$repass = $_REQUEST['repass'];
 
-	$uimage = $_FILES['uimage']['name'];
-	$temp_name1 = $_FILES['uimage']['tmp_name'];
-
 	$query = "SELECT * FROM user where uemail='$email'";
 	$res = mysqli_query($con, $query);
 	$num = mysqli_num_rows($res);
@@ -31,9 +28,8 @@ if (isset($_REQUEST['reg'])) {
 			} else {
 				if ($pass == $repass) {
 					$hashedpass = md5($pass);
-					$sql = "INSERT INTO user (uname,uemail,uphone,upass,uimage) VALUES ('$name','$email','$phone','$hashedpass','$uimage')";
+					$sql = "INSERT INTO user (uname,uemail,uphone,upass) VALUES ('$name','$email','$phone','$hashedpass')";
 					$result = mysqli_query($con, $sql);
-					move_uploaded_file($temp_name1,"admin/user/$uimage");
 					if ($result) {
 						echo '<script language="javascript">alert("Đăng ký thành công"); window.location="login.php";</script>';
 					} else {
@@ -129,23 +125,21 @@ if (isset($_REQUEST['reg'])) {
 									<!-- Form -->
 									<form method="post" enctype="multipart/form-data">
 										<div class="form-group">
-											<input type="text" name="name" class="form-control" required placeholder="Họ và tên*" value="<?php if(!empty($name)) echo $name?>">
+											<input type="text" name="name" class="form-control" required placeholder="Họ và tên" value="<?php if(!empty($name)) echo $name?>">
 										</div>
 										<div class="form-group">
-											<input type="email" name="email" class="form-control" required placeholder="Địa chỉ email*" value="<?php if(!empty($email)) echo $email?>">
+											<input onblur="checkun(this)" id="email" type="email" name="email" class="form-control" required placeholder="Địa chỉ email" value="<?php if(!empty($email)) echo $email?>">
+											<em id="username-error" class="form-text text-danger pl-2"></em>
 										</div>
 										<div class="form-group">
-											<input type="tel" name="phone" class="form-control" required placeholder="Số điện thoại*" maxlength="10" value="<?php if(!empty($phone)) echo $phone?>">
+											<input type="tel" name="phone" class="form-control" required placeholder="Số điện thoại" maxlength="10" value="<?php if(!empty($phone)) echo $phone?>">
 										</div>
-										<div class="form-group">
-											<input type="password" name="pass" class="form-control" required placeholder="Mật khẩu*">
+										<div class="form-group showpsw">
+											<input type="password" name="pass" class="form-control psw" required placeholder="Mật khẩu">
+											<span class="show-btn"><i class="fas fa-eye"></i></span>
 										</div>
-										<div class="form-group">
-											<input type="password" name="repass" class="form-control" required placeholder="Nhập lại mật khẩu*">
-										</div>
-										<div class="form-group">
-											<label class="col-form-label"><b>Ảnh đại diện</b></label>
-											<input class="form-control" name="uimage" required type="file" accept="image/png, image/gif, image/jpeg">
+										<div class="form-group showpsw">
+											<input type="password" name="repass" class="form-control psw" required placeholder="Nhập lại mật khẩu">
 										</div>
 										<button class="btn btn-primary" name="reg" value="Register" type="submit">Đăng ký</button>
 									</form>
@@ -190,6 +184,36 @@ if (isset($_REQUEST['reg'])) {
 	<script src="js/wow.js"></script>
 	<script src="js/custom.js"></script>
 	<div class="modal" tabindex="-1" role="dialog">
+	<script>
+		const passField = document.querySelector(".psw");
+		const showBtn = document.querySelector("span i");
+		showBtn.onclick = (() => {
+			if (passField.type === "password") {
+				passField.type = "text";
+				showBtn.classList.add("hide-btn");
+			} else {
+				passField.type = "password";
+				showBtn.classList.remove("hide-btn");
+			}
+		});
+	</script>
+	<script>
+		function checkun(obj){
+			var email = obj.value;
+			var url = "http://localhost/C1SE.41_REEW.SourceCode/register_checkun.php?email=" + email;
+			fetch(url)
+			.then(d=>d.json())
+			.then(data=>{
+				if(data.count>0){
+					document.getElementById('username-error').innerText = "Email này đã được sử dụng rồi"
+				}else{
+					document.getElementById('username-error').innerText = "";
+				} 
+					
+			})
+		}
+		
+	</script>
 
 </div>
 </body>

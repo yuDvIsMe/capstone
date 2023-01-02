@@ -3,30 +3,30 @@ ini_set('session.cache_limiter', 'public');
 session_cache_limiter(false);
 session_start();
 include("config.php");
-$error="";
-$msg="";
-if(isset($_POST['send']))
-{
-	$name=$_POST['name'];
-	$email=$_POST['email'];
-	$phone=$_POST['phone'];
-	$subject=$_POST['subject'];
-	$message=$_POST['message'];
-	
-	if(!empty($name) && !empty($email) && !empty($phone) && !empty($subject) && !empty($message))
-	{
-		
-		$sql="INSERT INTO contact (name,email,phone,subject,message) VALUES ('$name','$email','$phone','$subject','$message')";
-		   $result=mysqli_query($con, $sql);
-		   if($result){
-			   $msg = "<p class='alert alert-success'>Tin nhắn của bạn đã được gửi, nhân viên hỗ trợ sẽ liên hệ trực tiếp một cách nhanh nhất</p> ";
-		   }
-		   else{
-			   $error = "<p class='alert alert-warning'>Gửi không thành công</p> ";
-		   }
-	}else{
-		$error = "<p class='alert alert-warning'>Vui lòng điền đầy đủ thông tin</p>";
-	}
+$fmt = numfmt_create('vi_VN', NumberFormatter::CURRENCY);
+$error = "";
+$msg = "";
+if (isset($_POST['send'])) {
+    $subject = $_POST['subject'];
+    $message = $_POST['message'];
+    $uid = $_SESSION['uid'];
+    if (isset($_GET['pid'])) {
+        $pid = $_GET['pid'];
+    }
+
+
+    if (!empty($subject) && !empty($message)) {
+
+        $sql = "INSERT INTO message (message_subject,message_content,uid,pid) VALUES ('$subject','$message','$uid','$pid')";
+        $result = mysqli_query($con, $sql);
+        if ($result) {
+            echo '<script language="javascript">alert("Tin nhắn của bạn đã được gửi, nhân viên hỗ trợ sẽ liên hệ trực tiếp một cách nhanh nhất");</script>';
+        } else {
+            $error = "<p class='alert alert-warning'>Gửi không thành công</p> ";
+        }
+    } else {
+        $error = "<p class='alert alert-warning'>Vui lòng điền đầy đủ thông tin</p>";
+    }
 }
 ?>
 <!DOCTYPE html>
@@ -136,7 +136,7 @@ if(isset($_POST['send']))
                                         <span class="mb-sm-20 d-block text-capitalize"><i class="fas fa-map-marker-alt text-primary font-12"></i> &nbsp;<?php echo $row['14']; ?></span>
                                     </div>
                                     <div class="col-md-6">
-                                        <div class="text-primary text-left h5 my-2 text-md-right"><?php echo $row['13']; ?> VNĐ</div>
+                                        <div class="text-primary text-left h5 my-2 text-md-right"><?php echo numfmt_format_currency($fmt, $row['13'], "VND"); ?></div>
                                     </div>
                                 </div>
                                 <div class="property-details">
@@ -203,13 +203,13 @@ if(isset($_POST['send']))
                                         <h4 class="mt-5 mb-4 text-secondary double-down-line-left position-relative">Liên hệ</h4>
                                         <div class="agent-contact pt-60">
                                             <div class="row">
-                                                <div class="col-sm-4 col-lg-3"> <img src="admin/user/<?php echo $row['uimage']; ?>" alt="" height="200" width="170"> </div>
+                                                <div class="col-sm-4 col-lg-3"> <img src="admin/user/1.jpg ?>" alt="" height="200" width="170"> </div>
                                                 <div class="col-sm-8 col-lg-9">
                                                     <div class="agent-data text-ordinary mt-sm-20">
-                                                        <h6 class="text-primary text-capitalize"><?php echo $row['uname']; ?></h6>
+                                                        <h6 class="text-primary text-capitalize"><?php echo "iHome CM"; ?></h6>
                                                         <ul class="mb-3">
-                                                            <li><?php echo $row['uphone']; ?></li>
-                                                            <li><?php echo $row['uemail']; ?></li>
+                                                            <li><?php echo "+84 795797593"; ?></li>
+                                                            <li><?php echo "contact.ihome@gmail.com"; ?></li>
                                                         </ul>
 
                                                         <div class="mt-3 text-secondary hover-text-primary">
@@ -223,48 +223,38 @@ if(isset($_POST['send']))
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-12 col-lg-12">
+                                                <?php if (isset($_SESSION['uemail'])) { ?>
+                                                    <div class="col-md-12 col-lg-12">
                                                     <form class="bg-gray-form mt-5" action="#" method="post">
                                                         <div class="row">
                                                             <div class="col-md-5">
                                                                 <div class="row">
+
                                                                     <div class="col-md-12">
                                                                         <div class="form-group">
-                                                                            <input class="form-control bg-gray" id="name" name="name" value="<?php if(!empty($name)) echo $name?>" placeholder="Tên" type="text">
+                                                                            <input class="form-control bg-gray" id="subject" name="subject" value="<?php if (!empty($subject)) echo $subject ?>" placeholder="Tiêu đề" type="text">
                                                                         </div>
                                                                     </div>
-                                                                    <div class="col-md-12">
-                                                                        <div class="form-group">
-                                                                            <input class="form-control bg-gray" id="email" name="email" value="<?php if(!empty($email)) echo $email?>" placeholder="Địa chỉ email" type="text">
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-md-12">
-                                                                        <div class="form-group">
-                                                                            <input class="form-control bg-gray" id="phone" name="phone" value="<?php if(!empty($phone)) echo $phone?>" placeholder="Số điện thoại" type="text">
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-md-12">
-                                                                        <div class="form-group">
-                                                                            <input class="form-control bg-gray" id="subject" name="subject" value="<?php if(!empty($subject)) echo $subject?>" placeholder="Tiêu đề" type="text">
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-md-12">
-                                                                        <button type="submit" id="send" name="send" value="submit" class="btn btn-primary">Gửi tin nhắn</button>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-7">
-                                                                <div class="row">
                                                                     <div class="col-md-12 col-lg-12">
                                                                         <div class="form-group">
                                                                             <textarea class="form-control bg-gray mt-sm-20" style="height: 182px;" id="message" name="message" cols="30" rows="7" placeholder="Gửi tin nhắn"></textarea>
                                                                         </div>
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-7">
+                                                                <div class="row">
+                                                                    <div class="col-md-12">
+                                                                        <button type="submit" id="send" name="send" value="submit" class="btn btn-primary">Gửi tin nhắn</button>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </form>
                                                 </div>
+                                                <?php }?>
+                                                
                                             </div>
                                         </div>
                                     </div>
@@ -275,7 +265,6 @@ if(isset($_POST['send']))
                             <div class="sidebar-widget mt-5">
                                 <h4 class="double-down-line-left text-secondary position-relative pb-4 mb-4">Đã thêm gần đây</h4>
                                 <ul class="property_list_widget">
-
                                     <?php
                                     $query = mysqli_query($con, "SELECT * FROM `property` ORDER BY date DESC LIMIT 6");
                                     while ($row = mysqli_fetch_array($query)) {
@@ -286,7 +275,6 @@ if(isset($_POST['send']))
 
                                         </li>
                                     <?php } ?>
-
                                 </ul>
                             </div>
                         </div>

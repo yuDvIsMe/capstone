@@ -106,7 +106,7 @@ if (!isset($_SESSION['auser'])) {
 							<div class="dash-widget-info fact-counter">
 
 								<h3 class="count wow" data-wow-duration="300ms"><?php
-									$query = mysqli_query($con, "SELECT count(pid) FROM property where stype='Thuê'");
+									$query = mysqli_query($con, "SELECT count(pid) FROM property  where status='Khả dụng' && stype='Thuê'");
 									while ($row = mysqli_fetch_array($query)) {
 									?>
 										<div class="count-num" data-speed="300" data-stop="<?php
@@ -115,7 +115,7 @@ if (!isset($_SESSION['auser'])) {
 									<?php } ?>
 								</h3>
 
-								<h6 class="text-muted">Nhà thuê</h6>
+								<h6 class="text-muted">Nhà thuê khả dụng</h6>
 								<div class="progress progress-sm">
 									<div class="progress-bar bg-success w-50"></div>
 								</div>
@@ -135,7 +135,7 @@ if (!isset($_SESSION['auser'])) {
 							<div class="dash-widget-info fact-counter">
 
 								<h3 class="count wow" data-wow-duration="300ms"><?php
-									$query = mysqli_query($con, "SELECT count(pid) FROM property where stype='Bán'");
+									$query = mysqli_query($con, "SELECT count(pid) FROM property where status='Khả dụng' && stype='Bán'");
 									while ($row = mysqli_fetch_array($query)) {
 									?>
 										<div class="count-num" data-speed="300" data-stop="<?php
@@ -144,7 +144,7 @@ if (!isset($_SESSION['auser'])) {
 									<?php } ?>
 								</h3>
 
-								<h6 class="text-muted">Nhà bán</h6>
+								<h6 class="text-muted">Nhà bán khả dụng</h6>
 								<div class="progress progress-sm">
 									<div class="progress-bar bg-danger w-50"></div>
 								</div>
@@ -164,7 +164,7 @@ if (!isset($_SESSION['auser'])) {
 							<div class="dash-widget-info fact-counter">
 
 								<h3 class="count wow" data-wow-duration="300ms"><?php
-									$query = mysqli_query($con, "SELECT count(pid) FROM property");
+									$query = mysqli_query($con, "SELECT count(pid) FROM property where status ='Đã bán'");
 									while ($row = mysqli_fetch_array($query)) {
 									?>
 										<div class="count-num" data-speed="300" data-stop="
@@ -174,7 +174,7 @@ if (!isset($_SESSION['auser'])) {
 									<?php } ?>
 								</h3>
 
-								<h6 class="text-muted">Số lượng khả thi</h6>
+								<h6 class="text-muted">Nhà đã bán</h6>
 								<div class="progress progress-sm">
 									<div class="progress-bar bg-warning w-50"></div>
 								</div>
@@ -182,6 +182,7 @@ if (!isset($_SESSION['auser'])) {
 						</div>
 					</div>
 				</div>
+				
 			</div>
 
 			<div class="row">

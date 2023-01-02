@@ -9,6 +9,8 @@ if (!isset($_SESSION['uemail'])) {
 
 //// code insert
 //// add code
+$file_type_allow = array('png','jpg','gif','jpeg');
+
 $error = "";
 $msg = "";
 if (isset($_POST['add'])) {
@@ -57,8 +59,8 @@ if (isset($_POST['add'])) {
 	move_uploaded_file($temp_name2, "admin/property/$aimage2");
 	move_uploaded_file($temp_name3, "admin/property/$aimage3");
 	move_uploaded_file($temp_name4, "admin/property/$aimage4");
-
 	move_uploaded_file($temp_name5, "admin/property/$fimage");
+	
 
 
 	$sql = "insert into property (title,pcontent,type,pool,stype,bedroom,bathroom,direction,kitchen,parkinglot,floor,size,price,location,city,pimage,pimage1,pimage2,pimage3,pimage4,uid,status,mapimage,security,lat,`long`) 

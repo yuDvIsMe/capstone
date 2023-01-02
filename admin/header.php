@@ -107,7 +107,8 @@ if(!isset($_SESSION['auser']))
 							<li class="submenu">
 								<a href="#"><i class="fe fe-phone"></i> <span> Liên hệ </span> <span class="menu-arrow"></span></a>
 								<ul style="display: none;">
-									<li><a href="contactview.php"> Tin nhắn </a></li>
+									<li><a href="contactview.php"> Liên hệ </a></li>
+									<li><a href="messageview.php"> Tin nhắn </a></li>
 									<li><a href="feedbackview.php"> Feedback </a></li>
 								</ul>
 							</li>

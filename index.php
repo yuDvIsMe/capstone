@@ -4,6 +4,7 @@ session_cache_limiter(false);
 session_start();
 include("config.php");
 
+$fmt = numfmt_create('vi_VN', NumberFormatter::CURRENCY);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -50,7 +51,7 @@ include("config.php");
             <!--	Header end  -->
 
             <!--	Banner Start   -->
-            <div class="overlay-black w-100 slider-banner1 position-relative" style="background-image: url('images/banner/04.jpg'); background-size: cover; background-position: center center; background-repeat: no-repeat;">
+            <div class="overlay-black w-100 slider-banner1 position-relative" style="background-image: url('images/banner/01.jpg'); background-size: cover; background-position: center center; background-repeat: no-repeat;">
                 <div class="container h-100">
                     <div class="row h-100 align-items-center">
                         <div class="col-lg-12">
@@ -91,16 +92,12 @@ include("config.php");
                                                     <option value="">
                                                         Dưới 500.000.000
                                                     </option>
-                                                    <option value="">chịu</option>
-                                                    <option value="">60-90 m<sup>2</option>
-                                                    <option value="">90-120 m<sup>2</option>
-                                                    <option value="">>120 m<sup>2</option>
                                                 </select>
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-lg-5">
                                             <div class="form-group">
-                                                <select class="form-control" name="area" >
+                                                <select class="form-control" name="area">
                                                     <option value="">Diện tích</option>
                                                     <option value="">
                                                         < 30 m<sup>2
@@ -127,7 +124,7 @@ include("config.php");
             <!--	Banner End  -->
 
             <!--	Recent Properties  -->
-            <div class="full-row">
+            <div class="full-row ">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
@@ -138,7 +135,7 @@ include("config.php");
                                 <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home">
                                     <div class="row">
 
-                                        <?php $query = mysqli_query($con, "SELECT property.*, user.uname,user.uimage FROM `property`,`user` WHERE property.uid=user.uid ORDER BY date DESC LIMIT 9");
+                                        <?php $query = mysqli_query($con, "SELECT property.*, user.uname,user.uimage FROM `property`,`user` WHERE property.uid=user.uid && property.status='Khả dụng' ORDER BY date DESC LIMIT 9");
                                         while ($row = mysqli_fetch_array($query)) {
                                         ?>
 
@@ -147,12 +144,14 @@ include("config.php");
                                                     <div class="overlay-black overflow-hidden position-relative"> <img class="property-img" src="admin/property/<?php echo $row['17']; ?>" alt="pimage">
                                                         <div class="featured bg-primary text-white">Mới</div>
                                                         <div class="sale text-white text-capitalize" style="background-color: #17c788"><?php echo $row['5']; ?></div>
-                                                        <div class="price text-primary"><b><?php echo $row['13']; ?> VNĐ</b></div>
+                                                        <div class="price text-primary"><b><?php echo numfmt_format_currency($fmt, $row['13'], "VND"); ?> </b></div>
                                                     </div>
                                                     <div class="featured-thumb-data shadow-one">
                                                         <div class="p-3">
-                                                            <h5 class="text-secondary hover-text-primary mb-2 text-capitalize" style="width: 340px;height:60px"><a href="propertydetail.php?pid=<?php echo $row['0']; ?>"><?php echo $row['1']; ?></a></h5>
-                                                            <span class="location text-capitalize"><i class="fas fa-map-marker-alt text-primary"></i> <?php echo $row['14']; ?></span>
+                                                            <h5 class="text-secondary hover-text-primary mb-2 text-capitalize title-pro"><a href="propertydetail.php?pid=<?php echo $row['0']; ?>"><?php echo $row['1']; ?></a></h5>
+                                                            <div class="address-pro">
+                                                                <span class="location text-capitalize"><i class="fas fa-map-marker-alt text-primary"></i> <?php echo $row['14']; ?></span>
+                                                            </div>
                                                         </div>
                                                         <div class="bg-gray quantity px-4 pt-4">
                                                             <ul>
@@ -181,111 +180,49 @@ include("config.php");
             <!--	Recent Properties  -->
 
             <!--	How it work -->
-            <div class="full-row">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <h2 class="text-secondary double-down-line text-center mb-5">Quy trình hoạt động</h2>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="icon-thumb-one text-center mb-5">
-                                <div class="bg-primary text-white rounded-circle position-absolute z-index-9">1</div>
-                                <div class="left-arrow"><i class="flaticon-investor flat-medium icon-primary" aria-hidden="true"></i></div>
-                                <h5 class="text-secondary mt-5 mb-4">Thảo luận</h5>
-                                <p>Việc thương lượng sẽ giúp đôi bên hiểu rõ sự mong muốn của bên còn lại, nhằm đi đến một mục đích có lợi cho cả đôi bên.</p>
+                <div class="full-row bg-gray">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <h2 class="text-secondary double-down-line text-center mb-5">Quy trình hoạt động</h2>
                             </div>
                         </div>
-                        <div class="col-md-4">
-                            <div class="icon-thumb-one text-center mb-5">
-                                <div class="bg-primary text-white rounded-circle position-absolute z-index-9">2</div>
-                                <div class="left-arrow"><i class="flaticon-search flat-medium icon-primary" aria-hidden="true"></i></div>
-                                <h5 class="text-secondary mt-5 mb-4">Thủ tục</h5>
-                                <p>Sau khi đã có tiếng nói chung, tiến hành việc xem nhà, xúc tiến các thủ tục cần thiết để hoàn tất quá trình chuyển nhượng.</p>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="icon-thumb-one text-center mb-5">
+                                    <div class="bg-primary text-white rounded-circle position-absolute z-index-9">1</div>
+                                    <div class="left-arrow"><i class="flaticon-investor flat-medium icon-primary" aria-hidden="true"></i></div>
+                                    <h5 class="text-secondary mt-5 mb-4">Thảo luận</h5>
+                                    <p>Việc thương lượng sẽ giúp đôi bên hiểu rõ sự mong muốn của bên còn lại, nhằm đi đến một mục đích có lợi cho cả đôi bên.</p>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="icon-thumb-one text-center mb-5">
-                                <div class="bg-primary text-white rounded-circle position-absolute z-index-9">3</div>
-                                <div><i class="flaticon-handshake flat-medium icon-primary" aria-hidden="true"></i></div>
-                                <h5 class="text-secondary mt-5 mb-4">Hoàn tất</h5>
-                                <p>Hoàn tất quá trình mua bán. </p>
+                            <div class="col-md-4">
+                                <div class="icon-thumb-one text-center mb-5">
+                                    <div class="bg-primary text-white rounded-circle position-absolute z-index-9">2</div>
+                                    <div class="left-arrow"><i class="flaticon-search flat-medium icon-primary" aria-hidden="true"></i></div>
+                                    <h5 class="text-secondary mt-5 mb-4">Thủ tục</h5>
+                                    <p>Sau khi đã có tiếng nói chung, tiến hành việc xem nhà, xúc tiến các thủ tục cần thiết để hoàn tất quá trình chuyển nhượng.</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="icon-thumb-one text-center mb-5">
+                                    <div class="bg-primary text-white rounded-circle position-absolute z-index-9">3</div>
+                                    <div><i class="flaticon-handshake flat-medium icon-primary" aria-hidden="true"></i></div>
+                                    <h5 class="text-secondary mt-5 mb-4">Hoàn tất</h5>
+                                    <p>Hoàn tất quá trình mua bán. </p>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
             <!--	How It Work -->
 
             <!--	Achievement
         ============================================================-->
-            <div class="full-row overlay-secondary" style="background-image: url('images/counterbg.jpg'); background-size: cover; background-position: center center; background-repeat: no-repeat;">
-                <div class="container">
-                    <div class="fact-counter">
-                        <div class="row">
-                            <div class="col-md-3">
-                                <div class="count wow text-center  mb-sm-50" data-wow-duration="300ms"> <i class="flaticon-house flat-large text-white" aria-hidden="true"></i>
-                                    <?php
-                                    $query = mysqli_query($con, "SELECT count(pid) FROM property");
-                                    while ($row = mysqli_fetch_array($query)) {
-                                    ?>
-                                        <div class="count-num text-primary my-4" data-speed="300" data-stop="<?php
-                                                                                                                $total = $row[0];
-                                                                                                                echo $total; ?>">0</div>
-                                    <?php } ?>
-                                    <div class="text-white h5">Nhà đang rao bán</div>
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="count wow text-center  mb-sm-50" data-wow-duration="300ms"> <i class="flaticon-house flat-large text-white" aria-hidden="true"></i>
-                                    <?php
-                                    $query = mysqli_query($con, "SELECT count(pid) FROM property where stype='Bán'");
-                                    while ($row = mysqli_fetch_array($query)) {
-                                    ?>
-                                        <div class="count-num text-primary my-4" data-speed="300" data-stop="<?php
-                                                                                                                $total = $row[0];
-                                                                                                                echo $total; ?>">0</div>
-                                    <?php } ?>
-                                    <div class="text-white h5">Nhà bán</div>
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="count wow text-center  mb-sm-50" data-wow-duration="300ms"> <i class="flaticon-house flat-large text-white" aria-hidden="true"></i>
-                                    <?php
-                                    $query = mysqli_query($con, "SELECT count(pid) FROM property where stype='Thuê'");
-                                    while ($row = mysqli_fetch_array($query)) {
-                                    ?>
-                                        <div class="count-num text-primary my-4" data-speed="300" data-stop="<?php
-                                                                                                                $total = $row[0];
-                                                                                                                echo $total; ?>">0</div>
-                                    <?php } ?>
-                                    <div class="text-white h5">Nhà thuê</div>
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="count wow text-center mb-sm-50" data-wow-duration="300ms">
-                                    <i class="flaticon-man flat-large text-white" aria-hidden="true"></i>
-                                    <?php
-                                    $query = mysqli_query($con, "SELECT count(uid) FROM user");
-                                    while ($row = mysqli_fetch_array($query)) {
-                                    ?>
-                                        <div class="count-num text-primary my-4" data-speed="300" data-stop="<?php
-                                                                                                                $total = $row[0];
-                                                                                                                echo $total; ?>">0</div>
-                                    <?php } ?>
-                                    <div class="text-white h5">Người dùng</div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
 
             <!--	Popular Place -->
-            <div class="full-row bg-gray" style="padding: 50px 0 0 0">
+            <div class="full-row " style="padding: 50px 0 0 0">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-12">
@@ -298,7 +235,7 @@ include("config.php");
                                 <div class="overflow-hidden position-relative overlay-secondary hover-zoomer mx-n13 z-index-9"> <img src="images/thumbnail4/danang_tn.jpg" alt="">
                                     <div class="text-white xy-center z-index-9 position-absolute text-center w-100">
                                         <?php
-                                        $query = mysqli_query($con, "SELECT count(city), property.* FROM property where city='Đà Nẵng'");
+                                        $query = mysqli_query($con, "SELECT count(city), property.* FROM property where city='Đà Nẵng'&&status='Khả dụng'");
                                         while ($row = mysqli_fetch_array($query)) {
                                         ?>
                                             <h4 class="hover-text-primary text-capitalize"><a href="cityproperty.php?id=<?php echo $row['17'] ?>"><?php echo $row['city']; ?></a></h4>
@@ -313,7 +250,7 @@ include("config.php");
                                 <div class="overflow-hidden position-relative overlay-secondary hover-zoomer mx-n13 z-index-9"> <img src="images/thumbnail4/hanoi_tn.jpg" alt="">
                                     <div class="text-white xy-center z-index-9 position-absolute text-center w-100">
                                         <?php
-                                        $query = mysqli_query($con, "SELECT count(city), property.* FROM property where city='Hà Nội'");
+                                        $query = mysqli_query($con, "SELECT count(city), property.* FROM property where city='Hà Nội'&&status='Khả dụng'");
                                         while ($row = mysqli_fetch_array($query)) {
                                         ?>
                                             <h4 class="hover-text-primary text-capitalize"><a href="cityproperty.php?id=<?php echo $row['17'] ?>"><?php echo $row['city']; ?></a></h4>
@@ -328,7 +265,7 @@ include("config.php");
                                 <div class="overflow-hidden position-relative overlay-secondary hover-zoomer mx-n13 z-index-9"> <img src="images/thumbnail4/saigon_tn.jpg" alt="">
                                     <div class="text-white xy-center z-index-9 position-absolute text-center w-100">
                                         <?php
-                                        $query = mysqli_query($con, "SELECT count(city), property.* FROM property where city='TP Hồ Chí Minh'");
+                                        $query = mysqli_query($con, "SELECT count(city), property.* FROM property where city='TP Hồ Chí Minh'&&status='Khả dụng'");
                                         while ($row = mysqli_fetch_array($query)) {
                                         ?>
                                             <h4 class="hover-text-primary text-capitalize"><a href="cityproperty.php?id=<?php echo $row['17'] ?>"><?php echo $row['city']; ?></a></h4>
@@ -343,7 +280,7 @@ include("config.php");
                                 <div class="overflow-hidden position-relative overlay-secondary hover-zoomer mx-n13 z-index-9"> <img src="images/thumbnail4/hue_tn.jpg" alt="">
                                     <div class="text-white xy-center z-index-9 position-absolute text-center w-100">
                                         <?php
-                                        $query = mysqli_query($con, "SELECT count(city), property.* FROM property where city='Huế'");
+                                        $query = mysqli_query($con, "SELECT count(city), property.* FROM property where city='Huế'&&status='Khả dụng'");
                                         while ($row = mysqli_fetch_array($query)) {
                                         ?>
                                             <h4 class="hover-text-primary text-capitalize"><a href="cityproperty.php?id=<?php echo $row['17'] ?>"><?php echo $row['city']; ?></a></h4>
@@ -390,6 +327,7 @@ include("config.php");
         <script src="js/validate.js"></script>
         <script src="js/jquery.cookie.js"></script>
         <script src="js/custom.js"></script>
+
 </body>
 
 </html>

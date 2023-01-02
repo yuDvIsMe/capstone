@@ -3,6 +3,7 @@ ini_set('session.cache_limiter', 'public');
 session_cache_limiter(false);
 session_start();
 include("config.php");
+$fmt = numfmt_create('vi_VN', NumberFormatter::CURRENCY);
 ///code
 
 ?>
@@ -88,20 +89,22 @@ include("config.php");
                                 <?php
 
                                 $city = $_REQUEST['id'];
-                                $query = mysqli_query($con, "SELECT property.*, user.uname,user.uimage FROM `property`,`user` WHERE property.uid=user.uid and city='$city'");
+                                $query = mysqli_query($con, "SELECT property.*, user.uname,user.uimage FROM `property`,`user` WHERE property.uid=user.uid and city='$city'&&status='Khả dụng'");
                                 while ($row = mysqli_fetch_array($query)) {
                                 ?>
 
                                     <div class="col-md-6">
                                         <div class="featured-thumb hover-zoomer mb-4">
-                                            <div class="overlay-black overflow-hidden position-relative"> <img src="admin/property/<?php echo $row['17']; ?>" alt="pimage">
+                                            <div class="overlay-black overflow-hidden position-relative"> <img class="property-img" src="admin/property/<?php echo $row['17']; ?>" alt="pimage">
                                                 <div class="sale bg-secondary text-white text-capitalize"><?php echo $row['5']; ?></div>
-                                                <div class="price text-primary"><b><?php echo $row['13']; ?> VNĐ</b></div>
+                                                <div class="price text-primary"><b><?php echo numfmt_format_currency($fmt, $row['13'], "VND"); ?></b></div>
                                             </div>
                                             <div class="featured-thumb-data shadow-one">
                                                 <div class="p-3">
-                                                    <h5 class="text-secondary hover-text-primary mb-2 text-capitalize"><a href="propertydetail.php?pid=<?php echo $row['0']; ?>"><?php echo $row['1']; ?></a></h5>
-                                                    <span class="location text-capitalize"><i class="fas fa-map-marker-alt text-primary"></i> <?php echo $row['14']; ?></span>
+                                                    <h5 class="text-secondary hover-text-primary mb-2 text-capitalize title-pro"><a href="propertydetail.php?pid=<?php echo $row['0']; ?>"><?php echo $row['1']; ?></a></h5>
+                                                    <div class="address-pro">
+                                                        <span class="location text-capitalize"><i class="fas fa-map-marker-alt text-primary"></i> <?php echo $row['14']; ?></span>
+                                                    </div>
                                                 </div>
                                                 <div class="bg-gray quantity px-4 pt-4">
                                                     <ul>
